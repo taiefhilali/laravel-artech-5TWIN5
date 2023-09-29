@@ -4,20 +4,32 @@
 
 <head>
 
+<link rel="stylesheet" href="{{ mix('css/app.css') }}" />
   @vite(['resources/assetsback/css/theme/bordered-layout.min'])
   @vite(['resources/assetsback/css/theme/bordered-layout.min'])
-  @vite(['resources/assetsback/vendors/css/vendors.min.css'])
-  @vite(['resources/assetsback/css/bootstrap.css'])
-  @vite(['resources/assetsback/css/bootstrap-extended.css'])
   @vite(['resources/assetsback/css/colors.css'])
   @vite(['resources/assetsback/css/themes/dark-layout.css'])
   @vite(['resources/assetsback/css/themes/semi-dark-layout.css'])
   @vite(['resources/assetsback/css/core/menu/menu-types/vertical-menu.css'])
   @vite(['resources/assetsback/css/style.css'])
+  @vite(['resources/assetsback/css/bootstrap.min.css'])
+  @vite(['resources/assetsback/css/components.css'])
+  @vite(['resources/assetsback/css/components.min.css'])
 
   @vite(['resources/assetsback/vendors/js/vendors.min.js'])
   @vite(['resources/assetsback/js/core/app-menu.js'])
   @vite(['resources/assetsback/js/core/app.js'])
+
+  @vite(['resources/assetsback/vendors/css/vendors.min.css'])
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    @vite(['resources/assetsback/css/bootstrap.css'])
+    @vite(['resources/assetsback/css/bootstrap-extended.css'])
+    @vite(['resources/assetsback/js/core/app-menu.js'])
+    @vite(['resources/assetsback/js/core/app-menu.min.js'])
+    @vite(['resources/assetsback/js/core/app.js'])
+    @vite(['resources/assetsback/js/core/app.min.js'])
   
 
 
@@ -28,28 +40,28 @@
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>Home - Vuexy - Bootstrap HTML admin template</title>
-    <link rel="apple-touch-icon" href="../../../assetsback/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../../../assetsback/images/ico/favicon.ico">
+    <link rel="apple-touch-icon" href="resources/assetsback/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="resources/assetsback/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="../../../assetsback/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/assetsback/vendors/css/vendors.min.css">
     <!-- END: Vendor CSS-->
 
-    <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="../../../assetsback/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../../../assetsback/css/bootstrap-extended.css">
-    <link rel="stylesheet" type="text/css" href="../../../assetsback/css/colors.css">
-    <link rel="stylesheet" type="text/css" href="../../../assetsback/css/components.css">
-    <link rel="stylesheet" type="text/css" href="../../../assetsback/css/themes/dark-layout.css">
-    <link rel="stylesheet" type="text/css" href="../../../assetsback/css/themes/semi-dark-layout.css">
+    BEGIN: Theme CSS
+    <link rel="stylesheet" type="text/css" href="resources/assetsback/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="resources/assetsback/css/bootstrap-extended.css">
+    <link rel="stylesheet" type="text/css" href="resources/assetsback/css/colors.css">
+    <link rel="stylesheet" type="text/css" href="resources/assetsback/css/components.css">
+    <link rel="stylesheet" type="text/css" href="resources/assetsback/css/themes/dark-layout.css">
+    <link rel="stylesheet" type="text/css" href="resources/assetsback/css/themes/semi-dark-layout.css">
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="../../../assetsback/css/core/menu/menu-types/vertical-menu.css">
+    <link rel="stylesheet" type="text/css" href="resources/assetsback/css/core/menu/menu-types/vertical-menu.css">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="resources/assets/css/style.css">
     <!-- END: Custom CSS-->
 
 </head>
@@ -58,7 +70,7 @@
 <!-- BEGIN: Body-->
 
 <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
-@yield('content')
+
     <!-- BEGIN: Header-->
     <nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-light navbar-shadow container-xxl">
         <div class="navbar-container d-flex content">
@@ -86,9 +98,10 @@
 
     <!-- BEGIN: Main Menu-->
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item me-auto"><a class="navbar-brand" href="../../../starter-kit/ltr/vertical-menu-template/"><span class="brand-logo">
+                <li class="nav-item me-auto"><a class="navbar-brand" href="resources/starter-kit/ltr/vertical-menu-template/"><span class="brand-logo">
                             <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                                 <defs>
                                     <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%" y2="89.4879456%">
@@ -243,15 +256,15 @@
 
 
     <!-- BEGIN: Vendor JS-->
-    <script src="../../../assetsback/vendors/js/vendors.min.js"></script>
+    <script src="resources/assetsback/vendors/js/vendors.min.js"></script>
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
-    <script src="../../../assetsback/js/core/app-menu.js"></script>
-    <script src="../../../assetsback/js/core/app.js"></script>
+    <script src="resources/assetsback/js/core/app-menu.js"></script>
+    <script src="resources/assetsback/js/core/app.js"></script>
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
