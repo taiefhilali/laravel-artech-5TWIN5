@@ -26,6 +26,8 @@ Route::get('/register', function () {
     return view('form');
 });
 Route::view('/admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
+Route::view('/user', 'user.userinterface')->name('user.userinterface');
+
 
 
 
