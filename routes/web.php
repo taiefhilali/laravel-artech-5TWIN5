@@ -25,9 +25,17 @@ Route::get('/page1', function () {
 Route::get('/register', function () {
     return view('form');
 });
-Route::view('/admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
-Route::view('/user', 'user.userinterface')->name('user.userinterface');
 
+//Back//
+Route::view('/admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
+//Front//
+Route::view('/user', 'user.userinterface')->name('user.userinterface');
+//Cart
+Route::view('/cart', 'cart.cart')->name('cart.cart');
+Route::view('/checkout', 'cart.checkout')->name('cart.checkout');
+
+//Contact
+Route::view('/contact', 'layouts.contact')->name('layouts.contact');
 
 
 
