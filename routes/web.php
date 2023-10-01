@@ -25,10 +25,13 @@ Route::get('/page1', function () {
 Route::get('/register', function () {
     return view('form');
 });
+
 Route::view('/admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
 Route::view('/user', 'user.userinterface')->name('user.userinterface');
-
-
+//events
+Route::view('/events', 'Event.event')->name('Event.event');
+//events
+Route::view('/eventdetails','Event.eventdetails')->name('Event.eventdetails');
 
 
 Route::get('/page2/{nom}', function ($nom) {

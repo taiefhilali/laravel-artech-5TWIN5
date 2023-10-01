@@ -56,11 +56,11 @@
 		
 		<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Blog
+            Events
           </a>
           <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="blog.html"> Blog</a></li>
-            <li><a class="dropdown-item border-0" href="blog_detail.html"> Blog Detail</a></li>
+            <li><a class="dropdown-item" href="events"> Event</a></li>
+            <li><a class="dropdown-item border-0" href="eventdetails"> Event Details</a></li>
           </ul>
         </li>
 		
