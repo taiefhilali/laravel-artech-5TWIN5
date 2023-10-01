@@ -27,7 +27,6 @@ Route::get('/register', function () {
 });
 
 
-Route::view('/products', 'product.products')->name('product.products');
 //Back//
 Route::view('/admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
 //Front//
