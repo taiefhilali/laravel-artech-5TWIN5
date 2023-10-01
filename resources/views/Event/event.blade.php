@@ -217,6 +217,7 @@
 		   <div class="grid clearfix">
 				  <figure class="effect-jazz mb-0">
 					<a href="blog_detail.html"><img src="{{Vite::asset('resources/assetsfront/img/18.jpg')}}" class="w-100" alt="abc"></a>
+					<a href="blog_detail.html"><img src="img/18.jpg" class="w-100" alt="abc"></a>
 				  </figure>
 			  </div>
 		 </div>
@@ -240,6 +241,8 @@
 		   <div class="grid clearfix">
 				  <figure class="effect-jazz mb-0">
 					<a href="blog_detail.html"><img src="{{Vite::asset('resources/assetsfront/img/19.jpg')}}"class="w-100" alt="abc"></a>
+
+					<a href="blog_detail.html"><img src="img/19.jpg" class="w-100" alt="abc"></a>
 				  </figure>
 			  </div>
 		 </div>
@@ -263,6 +266,8 @@
 		   <div class="grid clearfix">
 				  <figure class="effect-jazz mb-0">
 					<a href="blog_detail.html"><img  src="{{Vite::asset('resources/assetsfront/img/20.jpg')}}" class="w-100" alt="abc"></a>
+
+					<a href="blog_detail.html"><img src="img/20.jpg" class="w-100" alt="abc"></a>
 				  </figure>
 			  </div>
 		 </div>
@@ -286,6 +291,8 @@
 		   <div class="grid clearfix">
 				  <figure class="effect-jazz mb-0">
 					<a href="blog_detail.html"><img src="{{Vite::asset('resources/assetsfront/img/21.jpg')}}"class="w-100" alt="abc"></a>
+					<a href="blog_detail.html"><img src="img/21.jpg" class="w-100" alt="abc"></a>
+
 				  </figure>
 			  </div>
 		 </div>
@@ -309,6 +316,7 @@
 		   <div class="grid clearfix">
 				  <figure class="effect-jazz mb-0">
 					<a href="blog_detail.html"><img  src="{{Vite::asset('resources/assetsfront/img/16.jpg')}}" class="w-100" alt="abc"></a>
+
 				  </figure>
 			  </div>
 		 </div>
@@ -366,6 +374,7 @@
 		  <div class="grid clearfix">
 				  <figure class="effect-jazz mb-0">
 					<a href="#"><img src="{{Vite::asset('resources/assetsfront/img/30.jpg')}}" class="w-100" alt="abc"></a>
+
 				  </figure>
 			  </div>
 		</div>
@@ -375,6 +384,7 @@
 		  <div class="grid clearfix">
 				  <figure class="effect-jazz mb-0">
 					<a href="#"><img src="{{Vite::asset('resources/assetsfront/img/31.jpg')}}" class="w-100" alt="abc"></a>
+
 				  </figure>
 			  </div>
 		</div>
@@ -384,6 +394,7 @@
 		  <div class="grid clearfix">
 				  <figure class="effect-jazz mb-0">
 					<a href="#"><img src="{{Vite::asset('resources/assetsfront/img/32.jpg')}}" class="w-100" alt="abc"></a>
+
 				  </figure>
 			  </div>
 		</div>
@@ -395,6 +406,7 @@
 		  <div class="grid clearfix">
 				  <figure class="effect-jazz mb-0">
 					<a href="#"><img src="{{Vite::asset('resources/assetsfront/img/33.jpg')}}" class="w-100" alt="abc"></a>
+
 				  </figure>
 			  </div>
 		</div>
@@ -404,6 +416,7 @@
 		  <div class="grid clearfix">
 				  <figure class="effect-jazz mb-0">
 					<a href="#"><img src="{{Vite::asset('resources/assetsfront/img/34.jpg')}}" class="w-100" alt="abc"></a>
+
 				  </figure>
 			  </div>
 		</div>
@@ -413,6 +426,7 @@
 		  <div class="grid clearfix">
 				  <figure class="effect-jazz mb-0">
 					<a href="#"><img src="{{Vite::asset('resources/assetsfront/img/35.jpg')}}"class="w-100" alt="abc"></a>
+
 				  </figure>
 			  </div>
 		</div>
