@@ -38,7 +38,8 @@ Route::view('/checkout', 'cart.checkout')->name('cart.checkout');
 //Contact
 Route::view('/contact', 'layouts.contact')->name('layouts.contact');
 
-Route::view('/products', 'product.product')->name('product.product');
+Route::view('/products', 'product.products')->name('product.products');
+Route::view('/product', 'product.product')->name('product.product');
 
 
 Route::get('/page2/{nom}', function ($nom) {

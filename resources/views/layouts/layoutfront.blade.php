@@ -50,7 +50,7 @@
           </a>
           <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="products"> Product</a></li>
-            <li><a class="dropdown-item border-0" href="product/${id}"> Product Detail</a></li>
+            <li><a class="dropdown-item border-0" href="product"> Product Detail</a></li>
           </ul>
         </li>
 		
