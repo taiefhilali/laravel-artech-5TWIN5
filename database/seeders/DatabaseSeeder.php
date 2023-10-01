@@ -6,6 +6,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\EventSeeder;
 use Database\Seeders\CategorySeeder;
+use Database\Seeders\ProductSeeder;
+
 
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +20,7 @@ class DatabaseSeeder extends Seeder
      
         $this->call(EventSeeder::class);
         $this->call(CategorySeeder::class);
+        $this->call(ProductSeeder::class);
+
     }
 }
