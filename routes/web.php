@@ -28,7 +28,9 @@ Route::get('/register', function () {
 Route::view('/admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
 Route::view('/user', 'user.userinterface')->name('user.userinterface');
 
+Route::view('/products', 'product.products')->name('product.products');
 
+Route::view('/products', 'product.product')->name('product.product');
 
 
 Route::get('/page2/{nom}', function ($nom) {
