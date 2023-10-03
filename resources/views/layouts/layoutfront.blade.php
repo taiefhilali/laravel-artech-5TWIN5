@@ -69,13 +69,13 @@
             Pages
           </a>
           <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="cart.html"> Shopping Cart</a></li>
-            <li><a class="dropdown-item border-0" href="checkout.html"> Checkout</a></li>
+            <li><a class="dropdown-item" href="/cart"> Shopping Cart</a></li>
+            <li><a class="dropdown-item border-0" href="/checkout"> Checkout</a></li>
           </ul>
         </li>
 				
 		<li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
+          <a class="nav-link" href="/contact">Contact</a>
         </li>
 		
       </ul>
