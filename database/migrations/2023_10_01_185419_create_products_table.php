@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('medium'); // Add medium attribute
             $table->string('frame'); // Add frame attribute
             $table->string('image_url'); // Add image URL attribute
-            $table->decimal('quantity', 8, 2); // Add image URL attribute
+            $table->integer('quantity'); // Add image URL attribute
             $table->unsignedBigInteger('product_type_id');
             $table->foreign('product_type_id')->references('id')->on('product_types');
             $table->timestamps();

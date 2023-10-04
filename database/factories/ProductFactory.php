@@ -25,7 +25,7 @@ class ProductFactory extends Factory
             'quantity' => $this->faker->randomNumber(2),
             'frame' => $this->faker->boolean,
             'image_url' => $this->faker->imageUrl,
-            'product_type_id' => ProductType::factory(),
+            'product_type_id' => ProductType::inRandomOrder()->first()->id,
         ];
     }
     
