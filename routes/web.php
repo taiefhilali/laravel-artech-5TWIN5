@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\TestController;
 use  App\Http\Controllers\HomeController;
+use  App\Http\Controllers\CommandeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +28,17 @@ Route::get('/register', function () {
 });
 
 
-Route::view('/products', 'product.products')->name('product.products');
 //Back//
 Route::view('/admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
+//Commandes
+Route::get('/commande', [CommandeController::class, 'index'])->name('commande.indexB');
+Route::get('/commande/create', [CommandeController::class, 'create'])->name('commande.create');
+
+Route::post('/newCommande',[CommandeController::class,'store'])->name('commande.store');
+Route::get('/commande/{id}/edit',[CommandeController::class,'edit'])->name('commande.edit');
+Route::put('/commande/update/{id}', [CommandeController::class,'update'])->name('commande.update');
+Route::delete('/commande/delete/{id}', [CommandeController::class, 'destroy'])->name('commande.destroy');
+
 //Front//
 Route::view('/user', 'user.userinterface')->name('user.userinterface');
 //events
