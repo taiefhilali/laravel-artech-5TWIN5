@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Commande;
-use App\Models\Cart;
-
 
 
 class CommandeController extends Controller
@@ -106,31 +104,6 @@ class CommandeController extends Controller
         return redirect()->route('commande.indexB')->with('success', 'Commande mise à jour avec succès.');
     }
 
-    public function createOrderFromCart()
-{
-    $cartItems = Cart::where('user_id', auth()->id())->get();
-
-    if ($cartItems->isEmpty()) {
-        return redirect()->back()->with('error', 'Empty Cart!');
-    }
-
-    $order = new Commande;
-    $order->user_id = auth()->id();
-    $order->status = 'pending'; // or any default status you'd like
-    $order->total_price = $cartItems->sum(function($item) {
-        return $item->product->price * $item->quantity;
-    });
-    $order->save();
-
-    // Link cart items to the order
-    foreach ($cartItems as $item) {
-        $item->order_id = $order->id;
-        $item->save();
-    }
-
-    return redirect()->route('commande.indexB', $order->id)->with('success', 'Commande créée avec succès!');
-}
-
     /**
      * Remove the specified resource from storage.
      */
@@ -141,7 +114,4 @@ class CommandeController extends Controller
 
         return redirect()->route('commande.indexB')->with('success', 'Commande supprimée avec succès.');
     }
-
-   
-
 }

@@ -75,9 +75,7 @@
                                 </div>
 
                                 <div class="col-sm-9 offset-sm-3">
-                                    <button type="submit" class="btn btn-primary me-1">
-                                        <i data-feather="plus"></i>
-                                        Order</button>
+                                    <button type="submit" class="btn btn-primary me-1">Submit</button>
                                     <button type="reset" class="btn btn-outline-secondary">Reset</button>
                                 </div>
                             </div>

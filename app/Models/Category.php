@@ -12,8 +12,7 @@ class Category extends Model
     // Define the relationship with the Event model
     public function events()
     {
-        return $this->belongsToMany(Event::class);
+        return $this->hasMany(Event::class);
     }
-
 }
 

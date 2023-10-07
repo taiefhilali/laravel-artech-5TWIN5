@@ -17,19 +17,15 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->decimal('price', 8, 2);
             $table->string('artist'); // Add artist attribute
+            $table->string('artwork_title'); // Add artwork title attribute
             $table->date('creation_date'); // Add creation date attribute
             $table->string('dimensions'); // Add dimensions attribute
             $table->string('medium'); // Add medium attribute
-            $table->string('image_url')->nullable(); // Add image URL attribute
+            $table->string('frame'); // Add frame attribute
+            $table->string('image_url'); // Add image URL attribute
             $table->integer('quantity'); // Add image URL attribute
-            $table->unsignedBigInteger('product_type_id')->nullable();
-            $table->foreign('product_type_id')
-            ->references('id')
-            ->on('product_types')
-            ->onDelete('cascade');
+            $table->unsignedBigInteger('product_type_id');
             $table->timestamps();
-
-
         });
     }
 

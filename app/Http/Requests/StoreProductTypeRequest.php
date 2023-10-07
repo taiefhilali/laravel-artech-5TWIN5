@@ -11,7 +11,7 @@ class StoreProductTypeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,19 +22,7 @@ class StoreProductTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>[
-                'required',
-                'string'
-            ],
-            'description'=>[
-                'required',
-                'string',
-                'max:255'
-            ],
-            'image'=>[
-                'nullable',
-                'mimes:jpg,jpeg,png'
-            ]
+            //
         ];
     }
 }

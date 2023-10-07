@@ -27,14 +27,4 @@ class RedirectIfAuthenticated
 
         return $next($request);
     }
-
-//     public function handle($request, Closure $next, $guard = null)
-// {
-//     if (Auth::guard($guard)->check()) {
-//         return redirect('/dashboard');
-//     }
-
-//     return $next($request);
-//}
-
 }

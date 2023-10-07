@@ -44,20 +44,16 @@
    <div class="col-md-5">
      <div class="center_o1l">
 	  <h2 class="mb-0">Blog</h2>
-
 	 </div>
-
    </div>
-   <div class="col-md-7 d-flex align-items-center justify-content-center">
-    @yield('content')
-
-
+   <div class="col-md-7">
      <div class="center_o1r text-end">
 	  <h6 class="mb-0"><a href="#">Home</a> <span class="me-2 ms-2"><i class="fa fa-caret-right"></i></span> Creation of an Event</h6>
 
       <div class="container">
     <div class="row justify-content-center align-items-center">
         <div class="col-md-6">
+            @yield('content')
         </div>
     </div>
 </div>

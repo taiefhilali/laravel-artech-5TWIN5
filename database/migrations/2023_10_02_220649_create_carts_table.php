@@ -13,14 +13,7 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('commande_id')->nullable();
-            $table->integer('quantite');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('commande_id')->references('id')->on('commandes')->onDelete('cascade');
-
         });
     }
 

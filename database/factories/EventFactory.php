@@ -15,8 +15,6 @@ class EventFactory extends Factory
             'description' => $this->faker->paragraph, // Generate a random paragraph as the event description
             'date' => $this->faker->dateTimeBetween('now', '+1 year'), // Generate a random date within the next year
             'owner' => $this->faker->name, // Generate a random owner name
-            'category_id' => $this->faker->numberBetween(1, 100), // Generate a random category ID (adjust the range as needed)
-
         ];
     }
 }

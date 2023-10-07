@@ -7,13 +7,7 @@
         {{ session('success') }}
     </div>
 @endif
-<br>
-<div class="mt-4">
-    <a href="{{ route('commande.create') }}" class="btn btn-success">
-        <i data-feather="plus"></i> Orders
-    </a>
-</div>
-<br>
+
     <table class="table">
         <thead>
             <tr>
@@ -47,7 +41,7 @@
 
            <td>
             <a href="{{ route('commande.edit', $commandes->id) }}" class="btn btn-primary btn-sm">
-                <i data-feather="edit"></i>
+                Edit
             </a>
         </td>
         <td>
@@ -56,7 +50,7 @@
                 @method('DELETE')
         
                 <button type="submit" class="btn btn-danger btn-sm">
-                    <i data-feather="trash-2"></i>
+                    Delete
                 </button>
             </form>
         </td>
