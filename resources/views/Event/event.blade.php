@@ -103,11 +103,17 @@
    <div class="col-md-7">
      <div class="center_o1r text-end">
 	  <h6 class="mb-0"><a href="#">Home</a> <span class="me-2 ms-2"><i class="fa fa-caret-right"></i></span> Blog</h6>
+
+
 	 </div>
    </div>
+
   </div>
  </div>
+ 
 </section>
+
+
 
 <section id="blog" class="p_4">
  <div class="container-xl">
@@ -127,7 +133,7 @@
 	   </div>
 	   <div class="blog_1l1 bg_border p-3 mt-4">
 	    <hr class="line_1 mt-0">
-	    <h5 class="mb-3">RECENT POSTS</h5>
+	    <h5 class="mb-3">RECENT Events</h5>
 		<div class="blog_1l1i row">
 		 <div class="col-md-2 pe-0 col-2">
 		  <div class="blog_1l1il">
@@ -209,6 +215,7 @@
 	 </div>
 	</div>
 	<div class="col-md-9">
+<<<<<<< Updated upstream
 	 <div class="blog_1r">
 	  <div class="blog_1ri row">
 	   <div class="col-md-7">
@@ -324,6 +331,10 @@
 		  <h6 class="font_14 mb-0 mt-4"><a class="button p-3 pt-2 pb-2" href="blog_detail.html">READ MORE</a></h6>
 		</div>
 	   </div>
+=======
+
+@yield('content')
+>>>>>>> Stashed changes
 	  </div>
 	  <div class="pages">
 		 <div class="col-md-12">
