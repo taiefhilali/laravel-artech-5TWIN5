@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Commande extends Model
 {
-    use HasFactory;
+    protected $fillable = ['name', 'description', 'date', 'price', 'image'];
+
 }

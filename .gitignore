@@ -1,6 +1,4 @@
 /node_modules
-<<<<<<< Updated upstream
-=======
 .env
 *.sqlite*
->>>>>>> Stashed changes
+
