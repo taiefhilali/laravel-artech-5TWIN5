@@ -40,7 +40,7 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Home - Vuexy - Bootstrap HTML admin template</title>
+    <title>Artech</title>
     <link rel="apple-touch-icon" href="resources/assetsback/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="resources/assetsback/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -129,7 +129,7 @@
                                     </g>
                                 </g>
                             </svg></span>
-                        <h2 class="brand-text">Vuexy</h2>
+                        <h2 class="brand-text">ArTech</h2>
                     </a></li>
                 <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a></li>
             </ul>
@@ -159,6 +159,7 @@
                     </ul>
                 </li>
 
+
                 <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Products</span></a>
                     <ul class="menu-content">
                         <li><a class="d-flex align-items-center" href="/admin/products"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List of Products</span></a>
@@ -176,7 +177,16 @@
                         </li>
                     </ul>
                 </li>
-                
+
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Categories</span></a>
+                    <ul class="menu-content">
+                        <li><a class="d-flex align-items-center" href="/admin/categories"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List of Categories</span></a>
+                        </li>
+                        <li><a class="d-flex align-items-center" href="/admin/categories/create"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">Add Category</span></a>
+                        </li>
+                    </ul>
+                </li>
+   
             </ul>
         </div>
     </div>
@@ -218,9 +228,12 @@
             </div>
             <div class="content-body">
                 <!-- Kick start -->
-                @yield('content')
-                @yield('Edit')
+      
+               
+        @yield('content')
+        @yield('Edit')
 
+      
 
                 <!--/ Kick start -->
 
