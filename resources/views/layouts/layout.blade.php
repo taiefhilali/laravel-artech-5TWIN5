@@ -158,8 +158,7 @@
                         
                     </ul>
                 </li>
-<<<<<<< Updated upstream
-=======
+
 
                 <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Products</span></a>
                     <ul class="menu-content">
@@ -178,6 +177,7 @@
                         </li>
                     </ul>
                 </li>
+
                 <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Categories</span></a>
                     <ul class="menu-content">
                         <li><a class="d-flex align-items-center" href="/admin/categories"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List of Categories</span></a>
@@ -186,8 +186,7 @@
                         </li>
                     </ul>
                 </li>
->>>>>>> Stashed changes
-                
+   
             </ul>
         </div>
     </div>
@@ -272,7 +271,6 @@
 
     <!-- BEGIN: Page JS-->
     <!-- END: Page JS-->
-
     <script>
         $(window).on('load', function() {
             if (feather) {
@@ -283,6 +281,11 @@
             }
         })
     </script>
+
+@yield('scripts')
+@yield('scriptt')
+
+
 </body>
 <!-- END: Body-->
 

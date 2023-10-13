@@ -161,7 +161,6 @@
 	 </div>
 	</div>
 	<div class="col-md-9">
-<<<<<<< Updated upstream
 	 <div class="blog_1r">
 	  <div class="blog_1ri row">
 	   <div class="col-md-7">
@@ -285,10 +284,6 @@
 		  <h6 class="font_14 mb-0 mt-4"><a class="button p-3 pt-2 pb-2" href="blog_detail.html">READ MORE</a></h6>
 		</div>
 	   </div>
-=======
-
-@yield('content')
->>>>>>> Stashed changes
 	  </div>
 	  <div class="pages">
 		 <div class="col-md-12">
