@@ -39,6 +39,7 @@
 
 
 <section id="center" class="center_o bg_gray pt-2 pb-2">
+
  <div class="container-xl">
   <div class="row center_o1">
    <div class="col-md-5">
@@ -119,7 +120,6 @@
 		  </div>
 		 </div>
 		</div>
-		
 	   </div>
 	   <div class="blog_1l1 bg_border p-3 mt-4">
 	    <hr class="line_1 mt-0">
@@ -159,150 +159,17 @@
 	   </ul>
 	   </div>
 	 </div>
+
 	</div>
-	<div class="col-md-9">
-	 <div class="blog_1r">
-	  <div class="blog_1ri row">
-	   <div class="col-md-7">
-	    <div class="blog_1ril clearfix position-relative">
-		 <div class="blog_1ril1 clearfix">
-		   <div class="grid clearfix">
-				  <figure class="effect-jazz mb-0">
-					<a href="blog_detail.html"><img src="{{Vite::asset('resources/assetsfront/img/18.jpg')}}" class="w-100" alt="abc"></a>
-					<a href="blog_detail.html"><img src="img/18.jpg" class="w-100" alt="abc"></a>
-				  </figure>
-			  </div>
-		 </div>
-		 <div class="blog_1ril2 w-100 clearfix position-absolute  text-end">
-		   <span class="d-inline-block fs-2 bg-white col_dark"><i class="fa fa-edit"></i></span>
-		 </div>
-		</div>
-	   </div>
-	   <div class="col-md-5">
-	    <div class="blog_1rir ps-4 pe-3">
-		  <h5 class="mb-4"><a href="blog_detail.html">INTEGER AT DIAM GRAVIDA FRINGILLA NIBH PRETI PURUS</a></h5>
-		  <p class="font_14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tincidunt nunc lorem, nec faucibus mi facilisis eget. Mauris laoreet, nisl id faucibus pellentesque, mi mi tempor enim, sit amet interdum felis nibh a leo....</p>
-		  <h6 class="font_14 mb-0 mt-4"><a class="button p-3 pt-2 pb-2" href="blog_detail.html">READ MORE</a></h6>
-		</div>
-	   </div>
-	  </div>
-	  <div class="blog_1ri row mt-4">
-	   <div class="col-md-7">
-	    <div class="blog_1ril clearfix position-relative">
-		 <div class="blog_1ril1 clearfix">
-		   <div class="grid clearfix">
-				  <figure class="effect-jazz mb-0">
-					<a href="blog_detail.html"><img src="{{Vite::asset('resources/assetsfront/img/19.jpg')}}"class="w-100" alt="abc"></a>
+	@yield('content')
 
-					<a href="blog_detail.html"><img src="img/19.jpg" class="w-100" alt="abc"></a>
-				  </figure>
-			  </div>
-		 </div>
-		 <div class="blog_1ril2 w-100 clearfix position-absolute  text-end">
-		   <span class="d-inline-block fs-2 bg-white col_dark"><i class="fa fa-edit"></i></span>
-		 </div>
-		</div>
-	   </div>
-	   <div class="col-md-5">
-	    <div class="blog_1rir ps-4 pe-3">
-		  <h5 class="mb-4"><a href="blog_detail.html">INTEGER AT DIAM GRAVIDA FRINGILLA NIBH PRETI PURUS</a></h5>
-		  <p class="font_14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tincidunt nunc lorem, nec faucibus mi facilisis eget. Mauris laoreet, nisl id faucibus pellentesque, mi mi tempor enim, sit amet interdum felis nibh a leo....</p>
-		  <h6 class="font_14 mb-0 mt-4"><a class="button p-3 pt-2 pb-2" href="blog_detail.html">READ MORE</a></h6>
-		</div>
-	   </div>
-	  </div>
-	  <div class="blog_1ri row mt-4">
-	   <div class="col-md-7">
-	    <div class="blog_1ril clearfix position-relative">
-		 <div class="blog_1ril1 clearfix">
-		   <div class="grid clearfix">
-				  <figure class="effect-jazz mb-0">
-					<a href="blog_detail.html"><img  src="{{Vite::asset('resources/assetsfront/img/20.jpg')}}" class="w-100" alt="abc"></a>
 
-					<a href="blog_detail.html"><img src="img/20.jpg" class="w-100" alt="abc"></a>
-				  </figure>
-			  </div>
-		 </div>
-		 <div class="blog_1ril2 w-100 clearfix position-absolute  text-end">
-		   <span class="d-inline-block fs-2 bg-white col_dark"><i class="fa fa-edit"></i></span>
-		 </div>
-		</div>
-	   </div>
-	   <div class="col-md-5">
-	    <div class="blog_1rir ps-4 pe-3">
-		  <h5 class="mb-4"><a href="blog_detail.html">INTEGER AT DIAM GRAVIDA FRINGILLA NIBH PRETI PURUS</a></h5>
-		  <p class="font_14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tincidunt nunc lorem, nec faucibus mi facilisis eget. Mauris laoreet, nisl id faucibus pellentesque, mi mi tempor enim, sit amet interdum felis nibh a leo....</p>
-		  <h6 class="font_14 mb-0 mt-4"><a class="button p-3 pt-2 pb-2" href="blog_detail.html">READ MORE</a></h6>
-		</div>
-	   </div>
-	  </div>
-	  <div class="blog_1ri row mt-4">
-	   <div class="col-md-7">
-	    <div class="blog_1ril clearfix position-relative">
-		 <div class="blog_1ril1 clearfix">
-		   <div class="grid clearfix">
-				  <figure class="effect-jazz mb-0">
-					<a href="blog_detail.html"><img src="{{Vite::asset('resources/assetsfront/img/21.jpg')}}"class="w-100" alt="abc"></a>
-					<a href="blog_detail.html"><img src="img/21.jpg" class="w-100" alt="abc"></a>
-
-				  </figure>
-			  </div>
-		 </div>
-		 <div class="blog_1ril2 w-100 clearfix position-absolute  text-end">
-		   <span class="d-inline-block fs-2 bg-white col_dark"><i class="fa fa-edit"></i></span>
-		 </div>
-		</div>
-	   </div>
-	   <div class="col-md-5">
-	    <div class="blog_1rir ps-4 pe-3">
-		  <h5 class="mb-4"><a href="blog_detail.html">INTEGER AT DIAM GRAVIDA FRINGILLA NIBH PRETI PURUS</a></h5>
-		  <p class="font_14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tincidunt nunc lorem, nec faucibus mi facilisis eget. Mauris laoreet, nisl id faucibus pellentesque, mi mi tempor enim, sit amet interdum felis nibh a leo....</p>
-		  <h6 class="font_14 mb-0 mt-4"><a class="button p-3 pt-2 pb-2" href="blog_detail.html">READ MORE</a></h6>
-		</div>
-	   </div>
-	  </div>
-	  <div class="blog_1ri row mt-4">
-	   <div class="col-md-7">
-	    <div class="blog_1ril clearfix position-relative">
-		 <div class="blog_1ril1 clearfix">
-		   <div class="grid clearfix">
-				  <figure class="effect-jazz mb-0">
-					<a href="blog_detail.html"><img  src="{{Vite::asset('resources/assetsfront/img/16.jpg')}}" class="w-100" alt="abc"></a>
-
-				  </figure>
-			  </div>
-		 </div>
-		 <div class="blog_1ril2 w-100 clearfix position-absolute  text-end">
-		   <span class="d-inline-block fs-2 bg-white col_dark"><i class="fa fa-edit"></i></span>
-		 </div>
-		</div>
-	   </div>
-	   <div class="col-md-5">
-	    <div class="blog_1rir ps-4 pe-3">
-		  <h5 class="mb-4"><a href="blog_detail.html">INTEGER AT DIAM GRAVIDA FRINGILLA NIBH PRETI PURUS</a></h5>
-		  <p class="font_14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tincidunt nunc lorem, nec faucibus mi facilisis eget. Mauris laoreet, nisl id faucibus pellentesque, mi mi tempor enim, sit amet interdum felis nibh a leo....</p>
-		  <h6 class="font_14 mb-0 mt-4"><a class="button p-3 pt-2 pb-2" href="blog_detail.html">READ MORE</a></h6>
-		</div>
-	   </div>
-	  </div>
-	  <div class="pages">
-		 <div class="col-md-12">
-		   <ul class="mb-0">
-			<li><a href="blog_detail.html"><i class="fa fa-chevron-left"></i></a></li>
-			<li><a class="act" href="blog_detail.html">1</a></li>
-			<li><a href="blog_detail.html">2</a></li>
-			<li><a href="blog_detail.html">3</a></li>
-			<li><a href="blog_detail.html">4</a></li>
-			<li><a href="blog_detail.html">5</a></li>
-			<li><a href="blog_detail.html">6</a></li>
-			<li><a href="blog_detail.html"><i class="fa fa-chevron-right"></i></a></li>
-		   </ul>
-		 </div>
-	 </div>
-	 </div>
 	</div>
-   </div>
- </div>
+	</div>
+
+	
+
+	 
 </section>
 
 @include('partials.footer')

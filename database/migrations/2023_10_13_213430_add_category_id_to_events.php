@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('commandes', function (Blueprint $table) {
-           $table->string('image')->nullable()->after('price');
+        Schema::table('events', function (Blueprint $table) {
+            //
+            
+            $table->unsignedBigInteger('category_id')->default(1);
+            $table->foreign('category_id')->references('id')->on('categories');
+
         });
     }
 
@@ -21,8 +25,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('commandes', function (Blueprint $table) {
-            $table->dropColumn('image');
+        Schema::table('events', function (Blueprint $table) {
+            //
         });
     }
 };
