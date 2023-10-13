@@ -17,11 +17,11 @@
 		
 		<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Product
+          Products
           </a>
           <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="product.html"> Product</a></li>
-            <li><a class="dropdown-item border-0" href="detail.html"> Product Detail</a></li>
+            <li><a class="dropdown-item" href="/products"> View List </a></li>
+            <li><a class="dropdown-item" href="/products"> Favorites </a></li>
           </ul>
         </li>
 		

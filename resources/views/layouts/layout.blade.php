@@ -158,6 +158,24 @@
                         
                     </ul>
                 </li>
+
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Products</span></a>
+                    <ul class="menu-content">
+                        <li><a class="d-flex align-items-center" href="/admin/products"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List of Products</span></a>
+                        </li>
+                        <li><a class="d-flex align-items-center" href="/admin/createProduct"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">Add Product</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Catalogs</span></a>
+                    <ul class="menu-content">
+                        <li><a class="d-flex align-items-center" href="/admin/catalogs"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List of Catalogs</span></a>
+                        </li>
+                        <li><a class="d-flex align-items-center" href="/admin/createCatalog"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">Add Catalog</span></a>
+                        </li>
+                    </ul>
+                </li>
                 
             </ul>
         </div>
@@ -240,7 +258,6 @@
 
     <!-- BEGIN: Page JS-->
     <!-- END: Page JS-->
-
     <script>
         $(window).on('load', function() {
             if (feather) {
@@ -251,6 +268,11 @@
             }
         })
     </script>
+
+@yield('scripts')
+@yield('scriptt')
+
+
 </body>
 <!-- END: Body-->
 
