@@ -75,32 +75,7 @@
 		   <h6 class="font_14 mb-0">June 18, 2015</h6>
 		  </div>
 		 </div>
-		</div><hr>
-		<div class="blog_1l1i row">
-		 <div class="col-md-2 pe-0 col-2">
-		  <div class="blog_1l1il">
-		   <span class="font_8"><i class="fa fa-circle-o me-1 col_pink"></i></span>
-		  </div>
-		 </div>
-		 <div class="col-md-10 ps-0 col-10">
-		  <div class="blog_1l1ir">
-		   <p class="font_14 mb-1"><a href="blog_detail.html">Donec quis ex vel tincidunt</a></p>
-		   <h6 class="font_14 mb-0">June 18, 2015</h6>
-		  </div>
-		 </div>
-		</div><hr>
-		<div class="blog_1l1i row">
-		 <div class="col-md-2 pe-0 col-2">
-		  <div class="blog_1l1il">
-		   <span class="font_8"><i class="fa fa-circle-o me-1 col_pink"></i></span>
-		  </div>
-		 </div>
-		 <div class="col-md-10 ps-0 col-10">
-		  <div class="blog_1l1ir">
-		   <p class="font_14 mb-1"><a href="blog_detail.html">Integer at diam gravida fringilla Nibh preti purus</a></p>
-		   <h6 class="font_14 mb-0">June 18, 2015</h6>
-		  </div>
-		 </div>
+		
 		</div>
 		
 	   </div>

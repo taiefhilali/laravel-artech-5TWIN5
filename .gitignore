@@ -1,5 +1,4 @@
 /node_modules
-# Environment-specific files
-/.env
-/.env.*
-/.env.local
+.env
+*.sqlite*
+

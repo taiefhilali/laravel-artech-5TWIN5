@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\TestController;
 use  App\Http\Controllers\HomeController;
+
 use  App\Http\Controllers\CommandeController;
 use  App\Http\Controllers\ProductController;
 use  App\Http\Controllers\ProductTypeController;
-;
+
+
+use  App\Http\Controllers\EventController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,10 +65,21 @@ Route::get('/admin/catalog/{ProductType}/edit', [ProductTypeController::class, '
 //Front//
 Route::view('/user', 'user.userinterface')->name('user.userinterface');
 //events
-Route::view('/events', 'Event.event')->name('Event.event');
+//Route::view('/events', 'Event.event')->name('Event.event');
 //eventsdetails
 Route::view('/eventdetails','Event.eventdetails')->name('Event.eventdetails');
+// Event routes
+Route::get('/events', [EventController::class, 'index'])->name('Event.index');
+Route::get('/events/create', [EventController::class, 'create'])->name('Event.create');
+Route::post('/events/store', [EventController::class, 'store'])->name('Event.store');
+Route::get('/events/{id}', [EventController::class, 'show'])->name('Event.show');
+Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('Event.destroy');
+Route::get('events/{event}/edit', [EventController::class, 'edit'])->name('Event.edit');
+Route::put('events/{event}', [EventController::class, 'update'])->name('Event.update');
 
+
+// Category routes
+Route::resource('categories', 'CategoryController');
 //Cart
 Route::view('/cart', 'cart.cart')->name('cart.cart');
 Route::view('/checkout', 'cart.checkout')->name('cart.checkout');
@@ -76,49 +90,3 @@ Route::view('/contact', 'layouts.contact')->name('layouts.contact');
 
 
 
-
-Route::get('/page2/{nom}', function ($nom) {
-    return "<h1>Welcome $nom</h1>";
-});
-
-Route::get('/message/{nom}/{id}', function ($nom, $id) {
-    return "Message: nom=$nom, id=$id";
-});
-
-
-Route::get('/page2/{nom?}', function ($nom = null) {
-    if ($nom) {
-        return "<h1>Welcome $nom</h1>";
-    } else {
-        return "<h1>Welcome</h1>";
-    }
-});
-Route::get('/page3/{nom}', function ($nom) {
-    return "<h1>Welcome $nom</h1>";
-})->where('nom', '[A-Za-z]+');
-
-
-
-Route::get('/message/{nom}/{id}', function ($nom, $id) {
-    return "Message: nom=$nom, id=$id";
-})->where('id', '[0-9]+');
-
-
-
-//************************************** */
-
-// Route::get('/example', function () {
-//     return view('example');
-// });
-
-Route::get('/example/{id}', function ($id=null) {
-    return view('example',['id','$id']);
-});
-
-Route::get('/hello/{id?}', function ($id=null) {
-    echo 'test route hello'.$id;
-// }) ->where('id','[A-Z]{4}');
-});
-
-Route::get('/index',[TestController::class,'index']);
-Route::get('/show',[HomeController::class,'show']);
