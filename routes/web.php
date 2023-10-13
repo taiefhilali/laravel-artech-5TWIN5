@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\TestController;
 use  App\Http\Controllers\HomeController;
 use  App\Http\Controllers\CommandeController;
-
+use  App\Http\Controllers\ProductController;
+use  App\Http\Controllers\ProductTypeController;
+;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +41,24 @@ Route::get('/commande/{id}/edit',[CommandeController::class,'edit'])->name('comm
 Route::put('/commande/update/{id}', [CommandeController::class,'update'])->name('commande.update');
 Route::delete('/commande/delete/{id}', [CommandeController::class, 'destroy'])->name('commande.destroy');
 
+
+//Products_Admin
+Route::get('/admin/products', [ProductController::class, 'index'])->name('product.indexProduct');
+Route::get('/admin/createProduct', [ProductController::class, 'create'])->name('product.create');
+Route::post('admin/addProduct', [ProductController::class, 'store'])->name('product.store');
+
+//Products_User
+Route::get('/products', [ProductController::class, 'indexUser'])->name('product.indexUser');
+Route::view('/product', 'product.product')->name('product.product');
+
+//Catalog_Admin
+Route::get('/admin/catalogs', [ProductTypeController::class, 'index'])->name('catalog.indexProductType');
+Route::get('/admin/createCatalog', [ProductTypeController::class, 'create'])->name('catalog.create');
+Route::post('admin/addCatalog', [ProductTypeController::class, 'store'])->name('catalog.store');
+Route::get('/admin/catalog/{ProductType}/edit', [ProductTypeController::class, 'edit'])->name('catalog.edit');
+
+
+
 //Front//
 Route::view('/user', 'user.userinterface')->name('user.userinterface');
 //events
@@ -53,8 +73,8 @@ Route::view('/checkout', 'cart.checkout')->name('cart.checkout');
 //Contact
 Route::view('/contact', 'layouts.contact')->name('layouts.contact');
 
-Route::view('/products', 'product.products')->name('product.products');
-Route::view('/product', 'product.product')->name('product.product');
+
+
 
 
 Route::get('/page2/{nom}', function ($nom) {

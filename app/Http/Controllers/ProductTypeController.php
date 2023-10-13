@@ -13,15 +13,16 @@ class ProductTypeController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $catalogs = ProductType::all();
+        return view('catalog.indexProductType', compact('catalogs'));   
+     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('catalog.createProductType');
     }
 
     /**
@@ -29,7 +30,27 @@ class ProductTypeController extends Controller
      */
     public function store(StoreProductTypeRequest $request)
     {
-        //
+        $validatedData=$request->validated();
+
+        $category = new ProductType;
+        $category->name = $validatedData['name'];
+        $category->description = $validatedData['description'];
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $ext = $file->getClientOriginalExtension();
+            $fileName = time().'.'.$ext;
+
+            $file->move('uploads/catalog/',$fileName);
+            $category->image = $fileName;
+
+        }
+
+        $category->save();
+
+        return redirect('admin/catalogs')->with('message','Catalog Added Successfully');
+
+
     }
 
     /**
@@ -43,9 +64,9 @@ class ProductTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ProductType $productType)
+    public function edit(ProductType $ProductType)
     {
-        //
+        return  view('catalog.editProductType',compact('ProductType'));
     }
 
     /**
