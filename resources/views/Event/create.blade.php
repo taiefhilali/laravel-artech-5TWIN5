@@ -23,6 +23,14 @@
             <label for="owner">Owner:</label>
             <input type="text" name="owner" id="owner" class="form-control" required>
         </div>
+        <div class="form-group">
+        <label for="category_id" class="form-label">Category</label>
+        <select name="category_id" id="category_id" class="form-control">
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+        </div>
 
         <button type="submit" class="button p-3 pt-2 pb-2">Create</button>
     </form>
