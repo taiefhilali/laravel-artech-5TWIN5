@@ -11,15 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('feedback', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->text('description');
-            $table->dateTime('date');
-            $table->integer('ratings');
-
-            $table->timestamps();
+        Schema::table('commandes', function (Blueprint $table) {
+            $table->string('image')->nullable()->after('price');
         });
     }
 
@@ -28,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('feedback');
+        Schema::table('commandes', function (Blueprint $table) {
+            $table->dropColumn('image');
+        });
     }
 };

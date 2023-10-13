@@ -4,9 +4,10 @@
 
 <head>
 
-<link rel="stylesheet" href="{{ mix('css/app.css') }}" />
-  @vite(['resources/assetsback/css/theme/bordered-layout.min'])
-  @vite(['resources/assetsback/css/theme/bordered-layout.min'])
+{{-- <link rel="stylesheet" href="{{ mix('resources/assetsback/css/app.css') }}" /> --}}
+{{-- <link rel="stylesheet" href="{{ Vite::asset('resources/assetsback/css/app.css') }}" /> --}}
+
+  {{-- @vite(['resources/assetsback/css/theme/bordered-layout.min'])
   @vite(['resources/assetsback/css/colors.css'])
   @vite(['resources/assetsback/css/themes/dark-layout.css'])
   @vite(['resources/assetsback/css/themes/semi-dark-layout.css'])
@@ -14,20 +15,20 @@
   @vite(['resources/assetsback/css/style.css'])
   @vite(['resources/assetsback/css/bootstrap.min.css'])
   @vite(['resources/assetsback/css/components.css'])
-  @vite(['resources/assetsback/css/components.min.css'])
+  @vite(['resources/assetsback/css/components.min.css']) --}}
 
-  @vite(['resources/assetsback/vendors/js/vendors.min.js'])
-  @vite(['resources/assetsback/js/core/app-menu.js'])
+  {{-- @vite(['resources/assetsback/vendors/js/vendors.min.js']) --}}
+  {{-- @vite(['resources/assetsback/js/core/app-menu.js']) --}}
   @vite(['resources/assetsback/js/core/app.js'])
 
-  @vite(['resources/assetsback/vendors/css/vendors.min.css'])
+  {{-- @vite(['resources/assetsback/vendors/css/vendors.min.css']) --}}
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
-    @vite(['resources/assetsback/css/bootstrap.css'])
-    @vite(['resources/assetsback/css/bootstrap-extended.css'])
-    @vite(['resources/assetsback/js/core/app-menu.js'])
-    @vite(['resources/assetsback/js/core/app-menu.min.js'])
+    {{-- @vite(['resources/assetsback/css/bootstrap.css'])
+    @vite(['resources/assetsback/css/bootstrap-extended.css']) --}}
+    {{-- @vite(['resources/assetsback/js/core/app-menu.js']) --}}
+    {{-- @vite(['resources/assetsback/js/core/app-menu.min.js']) --}}
     @vite(['resources/assetsback/js/core/app.js'])
     @vite(['resources/assetsback/js/core/app.min.js'])
   
@@ -45,24 +46,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="resources/assetsback/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ Vite::asset('resources/assetsback/vendors/css/vendors.min.css')}}">
     <!-- END: Vendor CSS-->
 
     BEGIN: Theme CSS
-    <link rel="stylesheet" type="text/css" href="resources/assetsback/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="resources/assetsback/css/bootstrap-extended.css">
-    <link rel="stylesheet" type="text/css" href="resources/assetsback/css/colors.css">
-    <link rel="stylesheet" type="text/css" href="resources/assetsback/css/components.css">
-    <link rel="stylesheet" type="text/css" href="resources/assetsback/css/themes/dark-layout.css">
-    <link rel="stylesheet" type="text/css" href="resources/assetsback/css/themes/semi-dark-layout.css">
+    <link rel="stylesheet" type="text/css" href="{{ Vite::asset('resources/assetsback/css/bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ Vite::asset('resources/assetsback/css/bootstrap-extended.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ Vite::asset('resources/assetsback/css/colors.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ Vite::asset('resources/assetsback/css/components.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ Vite::asset('resources/assetsback/css/themes/dark-layout.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ Vite::asset('resources/assetsback/css/themes/semi-dark-layout.css')}}">
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="resources/assetsback/css/core/menu/menu-types/vertical-menu.css">
+    <link rel="stylesheet" type="text/css" href="{{ Vite::asset('resources/assetsback/css/core/menu/menu-types/vertical-menu.css')}}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="resources/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ Vite::asset('resources/assets/css/style.css')}}">
     <!-- END: Custom CSS-->
+
 
 </head>
 <!-- END: Head-->
@@ -70,7 +72,8 @@
 <!-- BEGIN: Body-->
 
 <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
-@yield('content')
+{{-- @yield('content') --}}
+
 
     <!-- BEGIN: Header-->
     <nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-light navbar-shadow container-xxl">
@@ -136,20 +139,44 @@
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class="active nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Home">Home</span></a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="layout"></i><span class="menu-title text-truncate" data-i18n="Page Layouts">Page Layouts</span><span class="badge badge-light-danger rounded-pill ms-auto me-1">2</span></a>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i data-feather="commandes"></i>
+                        <span class="menu-title text-truncate" data-i18n="commandes">Gestion des Commandes</span>
+                        <span class="badge badge-light-danger rounded-pill ms-auto me-1">2</span>
+                    </a>
+                    
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('commande.create') }}">
+                                <i data-feather="circle"></i>
+                                <span class="menu-item text-truncate" data-i18n="Collapsed Menu">Créer une Commande</span>
+                            </a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Products</span></a>
                     <ul class="menu-content">
-                        <li><a class="d-flex align-items-center" href="layout-collapsed-menu.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Collapsed Menu">Collapsed Menu</span></a>
+                        <li><a class="d-flex align-items-center" href="/admin/products"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List of Products</span></a>
                         </li>
-                        <li><a class="d-flex align-items-center" href="layout-full.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Layout Full">Layout Full</span></a>
-                        </li>
-                        <li><a class="d-flex align-items-center" href="layout-without-menu.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Without Menu">Without Menu</span></a>
-                        </li>
-                        <li><a class="d-flex align-items-center" href="layout-empty.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Layout Empty">Layout Empty</span></a>
-                        </li>
-                        <li><a class="d-flex align-items-center" href="layout-blank.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Layout Blank">Layout Blank</span></a>
+                        <li><a class="d-flex align-items-center" href="/admin/createProduct"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">Add Product</span></a>
                         </li>
                     </ul>
                 </li>
+
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Catalogs</span></a>
+                    <ul class="menu-content">
+                        <li><a class="d-flex align-items-center" href="/admin/catalogs"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List of Catalogs</span></a>
+                        </li>
+                        <li><a class="d-flex align-items-center" href="/admin/createCatalog"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">Add Catalog</span></a>
+                        </li>
+                    </ul>
+                </li>
+                
             </ul>
         </div>
     </div>
@@ -157,7 +184,11 @@
 
     <!-- BEGIN: Content-->
     <div class="app-content content ">
-        <div class="content-overlay"></div>
+        <div class="content-overlay">
+
+
+        </div>
+
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper container-xxl p-0">
             <div class="content-header row">
@@ -187,57 +218,14 @@
             </div>
             <div class="content-body">
                 <!-- Kick start -->
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Kick start your next project 🚀</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-text">
-                            <p>
-                                Getting start with your project custom requirements using a ready template which is quite difficult and time
-                                taking process, Vuexy Admin provides useful features to kick start your project development with no efforts !
-                            </p>
-                            <ul>
-                                <li>
-                                    Vuexy Admin provides you getting start pages with different layouts, use the layout as per your custom
-                                    requirements and just change the branding, menu &amp; content.
-                                </li>
-                                <li>
-                                    Every components in Vuexy Admin are decoupled, it means use use only components you actually need! Remove
-                                    unnecessary and extra code easily just by excluding the path to specific SCSS, JS file.
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                @yield('content')
+                @yield('Edit')
+
+
                 <!--/ Kick start -->
 
                 <!-- Page layout -->
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">What is page layout?</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-text">
-                            <p>
-                                Starter kit includes pages with different layouts, useful for your next project to start development process
-                                from scratch with no time.
-                            </p>
-                            <ul>
-                                <li>Each layout includes required only assets only.</li>
-                                <li>
-                                    Select your choice of layout from starter kit, customize it with optional changes like colors and branding,
-                                    add required dependency only.
-                                </li>
-                            </ul>
-                            <div class="alert alert-primary" role="alert">
-                                <div class="alert-body">
-                                    <strong>Info:</strong> Please check the &nbsp;<a class="text-primary" href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/documentation/documentation-layouts.html#layout-collapsed-menu" target="_blank">Layout documentation</a>&nbsp; for more layout options i.e collapsed menu, without menu, empty & blank.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <!--/ Page layout -->
 
             </div>
@@ -257,20 +245,19 @@
 
 
     <!-- BEGIN: Vendor JS-->
-    <script src="resources/assetsback/vendors/js/vendors.min.js"></script>
+    <script src="{{ Vite::asset('resources/assetsback/vendors/js/vendors.min.js')}}"></script>
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
-    <script src="resources/assetsback/js/core/app-menu.js"></script>
-    <script src="resources/assetsback/js/core/app.js"></script>
+    <script src="{{ Vite::asset('resources/assetsback/js/core/app-menu.js')}}"></script>
+    <script src="{{ Vite::asset('resources/assetsback/js/core/app.js')}}"></script>
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
     <!-- END: Page JS-->
-
     <script>
         $(window).on('load', function() {
             if (feather) {
@@ -281,6 +268,11 @@
             }
         })
     </script>
+
+@yield('scripts')
+@yield('scriptt')
+
+
 </body>
 <!-- END: Body-->
 

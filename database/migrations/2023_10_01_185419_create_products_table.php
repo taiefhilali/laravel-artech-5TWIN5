@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,23 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->text('title');
+            $table->string('title');
             $table->text('description');
-            $table->decimal('price', 10, 2); // Example: Price with 10 total digits and 2 decimal places
+            $table->decimal('price', 8, 2);
+            $table->string('artist'); // Add artist attribute
+            $table->date('creation_date'); // Add creation date attribute
+            $table->string('dimensions'); // Add dimensions attribute
+            $table->string('medium'); // Add medium attribute
+            $table->string('image_url')->nullable(); // Add image URL attribute
+            $table->integer('quantity'); // Add image URL attribute
+            $table->unsignedBigInteger('product_type_id');
+            $table->foreign('product_type_id')
+            ->references('id')
+            ->on('product_types')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }
-    
 
     /**
      * Reverse the migrations.
@@ -28,4 +38,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('products');
     }
-};
+}

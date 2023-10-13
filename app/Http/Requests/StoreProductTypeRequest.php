@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreFeedbackRequest extends FormRequest
+class StoreProductTypeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,19 @@ class StoreFeedbackRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'=>[
+                'required',
+                'string'
+            ],
+            'description'=>[
+                'required',
+                'string',
+                'max:255'
+            ],
+            'image'=>[
+                'nullable',
+                'mimes:jpg,jpeg,png'
+            ]
         ];
     }
 }
