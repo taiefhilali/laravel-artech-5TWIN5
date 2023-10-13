@@ -258,7 +258,6 @@
 
     <!-- BEGIN: Page JS-->
     <!-- END: Page JS-->
-
     <script>
         $(window).on('load', function() {
             if (feather) {
@@ -269,6 +268,11 @@
             }
         })
     </script>
+
+@yield('scripts')
+@yield('scriptt')
+
+
 </body>
 <!-- END: Body-->
 

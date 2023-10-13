@@ -8,6 +8,9 @@
     </div>
 @endif
 
+@include('partials.deleteProductModal')
+
+
     <table class="table">
         <thead>
             <tr>
@@ -40,19 +43,16 @@
            </td>
 
            <td>
-            <a href="" class="btn btn-primary btn-sm">
+            <a  href="{{ url('/admin/product/' . $products->id. '/edit') }}" class="btn btn-primary btn-sm">
                 Edit
             </a>
         </td>
         <td>
-            <form action="" method="POST">
-                @csrf
-                @method('DELETE')
+           
         
-                <button type="submit" class="btn btn-danger btn-sm">
+                <button type="submit" data-product-id="{{ $products->id }}" data-bs-target="#deleteProductModal" class="btn btn-danger  btn-sm deleteProductBtn ">
                     Delete
                 </button>
-            </form>
         </td>
         
         
@@ -67,5 +67,17 @@
     
 </div>
 </div>
+@section('scriptt')
+<script>
+    $(document).ready(function() {
+        $('.deleteProductBtn').click(function(e) {
+            e.preventDefault();
+            var product_id= $(this).data('product-id');
+            $('#product_id').val(product_id);
+            $('#deleteProductModal').modal('show');
+        });
+    });
+</script>
+@endsection
 
 @endsection

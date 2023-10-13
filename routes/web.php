@@ -49,6 +49,9 @@ Route::delete('/commande/delete/{id}', [CommandeController::class, 'destroy'])->
 Route::get('/admin/products', [ProductController::class, 'index'])->name('product.indexProduct');
 Route::get('/admin/createProduct', [ProductController::class, 'create'])->name('product.create');
 Route::post('admin/addProduct', [ProductController::class, 'store'])->name('product.store');
+Route::get('/admin/product/{Product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::put('/admin/editProduct/{Product}', [ProductController::class, 'update'])->name('product.update');
+Route::post('/admin/deleteProduct', [ProductController::class, 'destroy'])->name('product.destroy');
 
 //Products_User
 Route::get('/products', [ProductController::class, 'indexUser'])->name('product.indexUser');
@@ -59,6 +62,8 @@ Route::get('/admin/catalogs', [ProductTypeController::class, 'index'])->name('ca
 Route::get('/admin/createCatalog', [ProductTypeController::class, 'create'])->name('catalog.create');
 Route::post('admin/addCatalog', [ProductTypeController::class, 'store'])->name('catalog.store');
 Route::get('/admin/catalog/{ProductType}/edit', [ProductTypeController::class, 'edit'])->name('catalog.edit');
+Route::put('/admin/editCatalog/{ProductType}', [ProductTypeController::class, 'update'])->name('catalog.update');
+Route::post('/admin/deleteCatalog', [ProductTypeController::class, 'destroy'])->name('catalog.destroy');
 
 
 
