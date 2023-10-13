@@ -16,13 +16,15 @@ class EventSeeder extends Seeder
     {
         // Create and seed 20 events using the EventFactory
        // Event::factory()->count(20)->create();
-       for ($i = 0; $i < 20; $i++) {
+       for ($i = 0; $i < 10; $i++) {
         Event::create([
             'name' => 'Event ' . ($i + 1), // Customize the event name as needed
             'description' => 'Description for Event ' . ($i + 1), // Customize the description
             'date' => now(), // Customize the date
             'owner' => 'Owner ' . ($i + 1), // Customize the owner
+            'category_id' => rand(1, 100), // Generate a random category ID (adjust the range as needed)
         ]);
     }
+    
     }
 }

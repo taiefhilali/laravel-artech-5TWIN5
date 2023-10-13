@@ -177,7 +177,12 @@
                         </li>
                     </ul>
                 </li>
-
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Events</span></a>
+                    <ul class="menu-content">
+                        <li><a class="d-flex align-items-center" href="/admin/events"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List of Events</span></a>
+                        </li>
+                    </ul>
+                </li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Categories</span></a>
                     <ul class="menu-content">
                         <li><a class="d-flex align-items-center" href="/admin/categories"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List of Categories</span></a>

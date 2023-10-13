@@ -11,8 +11,6 @@ use  App\Http\Controllers\ProductTypeController;
 use  App\Http\Controllers\CategoryController;
 
 
-use  App\Http\Controllers\ProductController;
-use  App\Http\Controllers\ProductTypeController;
 
 
 
@@ -80,7 +78,9 @@ Route::view('/user', 'user.userinterface')->name('user.userinterface');
 //Route::view('/events', 'Event.event')->name('Event.event');
 //eventsdetails
 Route::view('/eventdetails','Event.eventdetails')->name('Event.eventdetails');
-// Event routes
+// Events routes
+Route::get('/admin/events', [EventController::class, 'indexb'])->name('Event.indexb');
+Route::delete('/admin/events/{event}', [EventController::class, 'destroyb'])->name('Event.destroyb');
 Route::get('/events', [EventController::class, 'index'])->name('Event.index');
 Route::get('/events/create', [EventController::class, 'create'])->name('Event.create');
 Route::post('/events/store', [EventController::class, 'store'])->name('Event.store');

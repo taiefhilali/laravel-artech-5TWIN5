@@ -1,4 +1,4 @@
-@extends('Event.event')
+@extends('Event.details')
 
 @section('content')
 <div class="container">

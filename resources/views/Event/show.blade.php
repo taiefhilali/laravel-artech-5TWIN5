@@ -1,4 +1,4 @@
-@extends('Event.event') <!-- Assuming you have a layout file -->
+@extends('Event.details') <!-- Assuming you have a layout file -->
 
 @section('content')
 <div class="container">
@@ -21,6 +21,8 @@
                     <p class="card-text">{{ $event->description }}</p>
                     <p><strong>Date:</strong> {{ $event->date }}</p>
                     <p><strong>Owner:</strong> {{ $event->owner }}</p>
+                    <p><strong>Category:</strong> {{ $event->category ? $event->category->name : 'Category not specified' }}</p>
+    
                 </div>
             </div>
         </div>
