@@ -12,6 +12,7 @@
                 <th>Date</th>
                 <th>Owner</th>
                 <th>Category</th>
+                <th>image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -24,6 +25,8 @@
                     <td>{{ date('Y-m-d', strtotime($event->date)) }}</td>
                     <td>{{ $event->owner }}</td>
                     <td>{{ $event->category->name }}</td>
+                    <td>    <img src="{{ asset('uploads/event/' . $event->image) }}" alt="{{ $event->name }}" class="img-thumbnail" width="100">
+</td>
                     <td>
                         <form action="{{ route('Event.destroyb', $event) }}" method="post" class="d-inline">
                             @csrf
