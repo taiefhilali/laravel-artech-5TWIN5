@@ -1,9 +1,11 @@
 @extends('Event.details')
 
 @section('content')
+@vite(['resources/css/app.css'])
+
 <div class="container">
     <h1>Edit Event</h1>
-    <form method="POST" action="{{ route('Event.update', $event->id) }}">
+    <form   class="dark-form form-horizontal" method="POST" action="{{ route('Event.update', $event->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT') {{-- Use PUT method for updating --}}
         
@@ -34,6 +36,10 @@
                 <option value="{{ $category->id }}">{{ $category->name }}</option>
             @endforeach
         </select>
+        </div>
+        <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file" name="image" id="image" class="form-control">
         </div>
 
         

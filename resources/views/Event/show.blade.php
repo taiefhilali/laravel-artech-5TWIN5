@@ -10,7 +10,7 @@
                 <div class="blog_1ril1 clearfix">
                     <div class="grid clearfix">
                         <figure class="effect-jazz mb-0">
-                            <a href="blog_detail.html"><img src="{{Vite::asset('resources/assetsfront/img/18.jpg')}}" class="w-100" alt="Event Image"></a>
+                        <img src="{{ asset('uploads/event/' . $event->image) }}" class="w-100" alt="{{ $event->name }}">
                         </figure>
                     </div>
                 </div>
