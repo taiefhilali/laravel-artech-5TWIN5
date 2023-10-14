@@ -1223,7 +1223,7 @@
  <div class="container-fluid">
   <div class="row port_1 text-center mb-4">
     <div class="col-md-12">
-	  <h1 class="font_60">BLOG</h1>
+	  <h1 class="font_60">Events</h1>
 	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
 	  <span class="icon_line col_pink"><i class="fa fa-square-o"></i></span>
 	</div>
