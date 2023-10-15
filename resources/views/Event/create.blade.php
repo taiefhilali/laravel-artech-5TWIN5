@@ -36,7 +36,9 @@
     </div>
    
 
-    <button type="submit" class="button p-3 pt-2 pb-2">Create</button>
+    <button type="submit" class="button p-3 pt-2 pb-2">
+        <i data-feather="plus"></i>
+        Event</button>
     </form>
 </div>
 @endsection

@@ -5,6 +5,8 @@ use  App\Http\Controllers\TestController;
 use  App\Http\Controllers\HomeController;
 
 use  App\Http\Controllers\CommandeController;
+use  App\Http\Controllers\CartController;
+
 
 use  App\Http\Controllers\ProductController;
 use  App\Http\Controllers\ProductTypeController;
@@ -48,6 +50,21 @@ Route::post('/newCommande',[CommandeController::class,'store'])->name('commande.
 Route::get('/commande/{id}/edit',[CommandeController::class,'edit'])->name('commande.edit');
 Route::put('/commande/update/{id}', [CommandeController::class,'update'])->name('commande.update');
 Route::delete('/commande/delete/{id}', [CommandeController::class, 'destroy'])->name('commande.destroy');
+
+//Carts (Back)
+Route::get('/admin/carts', [CartController::class, 'index'])->name('cart.indexB');
+Route::get('/cart/create', [CartController::class, 'create'])->name('cart.create');
+
+Route::post('/admin/newcart',[CartController::class,'store'])->name('cart.store');
+Route::get('/cart/{id}/edit',[CartController::class,'edit'])->name('cart.editB');
+Route::put('/cart/update/{id}', [CartController::class,'update'])->name('cart.update');
+Route::delete('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
+// Route::post('/products/{product}/add-to-cart', 'CartController@addToCart')->name('cart.add');
+Route::get('/create-order', [CommandeController::class,'createOrderFromCart'])->name('commande.createFromCart');
+Route::post('/product/{productId}/add-to-cart', [ProductController::class, 'addToCart'])->name('product.addToCart');
+Route::get('/cart', [CartController::class, 'showCart'])->name('cart.cart');
+// Route::post('/cart/update/{cartItemId}', [CartController::class, 'updateProductInCart'])->name('cart.update');
+Route::put('cart/update/{id}', [CartController::class, 'updateProductInCart'])->name('cart.update');
 
 
 //Products_Admin
@@ -101,7 +118,8 @@ Route::put('/admin/categories/{category}', [CategoryController::class, 'update']
 Route::delete('/admin/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 //Cart
-Route::view('/cart', 'cart.cart')->name('cart.cart');
+Route::view('/showCart', 'cart.cart')->name('cart.cart');
+
 Route::view('/checkout', 'cart.checkout')->name('cart.checkout');
 
 //Contact

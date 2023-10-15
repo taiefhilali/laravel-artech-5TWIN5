@@ -23,7 +23,8 @@
             <textarea name="description" id="description" class="form-control"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">
+            <i data-feather="plus"></i> Category</button>
     </form>
     </div>
                 </div>

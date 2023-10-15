@@ -140,25 +140,16 @@
                 <li class="active nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Home">Home</span></a>
                 </li>
                 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i data-feather="commandes"></i>
-                        <span class="menu-title text-truncate" data-i18n="commandes">Gestion des Commandes</span>
-                        <span class="badge badge-light-danger rounded-pill ms-auto me-1">2</span>
-                    </a>
-                    
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>
-                            <a class="dropdown-item" href="{{ route('commande.create') }}">
-                                <i data-feather="circle"></i>
-                                <span class="menu-item text-truncate" data-i18n="Collapsed Menu">Créer une Commande</span>
-                            </a>
+             
+
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Carts & Orders</span></a>
+                    <ul class="menu-content">
+                        <li><a class="d-flex align-items-center" href="/commande"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="orders">List of Orders</span></a>
                         </li>
-                        
-                        
+                        <li><a class="d-flex align-items-center" href="/admin/carts"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="carts">List of Carts</span></a>
+                        </li>
                     </ul>
                 </li>
-
 
                 <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Products</span></a>
                     <ul class="menu-content">

@@ -10,6 +10,10 @@
 
 @include('partials.deleteProductModal')
 
+<br>
+<br>
+<br>
+
 
     <table class="table">
         <thead>
@@ -18,7 +22,10 @@
                 <th>Description</th>
                 <th>creation_date</th>
                 <th>Price</th>
+
                 <th>Quantity</th>
+                <th>Image</th>
+
 
                 <th>Actions</th>
             </tr>
@@ -44,14 +51,14 @@
 
            <td>
             <a  href="{{ url('/admin/product/' . $products->id. '/edit') }}" class="btn btn-primary btn-sm">
-                Edit
+                <i data-feather="edit"></i>
             </a>
         </td>
         <td>
            
         
                 <button type="submit" data-product-id="{{ $products->id }}" data-bs-target="#deleteProductModal" class="btn btn-danger  btn-sm deleteProductBtn ">
-                    Delete
+                    <i data-feather="trash-2"></i>
                 </button>
         </td>
         
