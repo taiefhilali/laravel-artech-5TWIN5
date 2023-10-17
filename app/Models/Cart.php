@@ -11,7 +11,7 @@ use App\Models\User;
 class Cart extends Model
 {
     protected $fillable = [
-        'user_id', 'commande_id', 'quantite'
+        'user_id', 'commande_id', 'quantite', 'product_id'
     ];
 
     public function commande()
@@ -23,4 +23,9 @@ class Cart extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function product() {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
+    
 }

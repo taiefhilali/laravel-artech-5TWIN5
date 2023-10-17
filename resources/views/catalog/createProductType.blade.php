@@ -51,7 +51,7 @@
 
               <!-- Submit button -->
               <button type="submit" class="btn btn-primary btn-block mb-4">
-                Add Catalog
+                <i data-feather="plus"></i> Catalog
               </button>
 
     

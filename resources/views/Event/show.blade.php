@@ -1,4 +1,4 @@
-@extends('Event.event') <!-- Assuming you have a layout file -->
+@extends('Event.details') <!-- Assuming you have a layout file -->
 
 @section('content')
 <div class="container">
@@ -10,7 +10,7 @@
                 <div class="blog_1ril1 clearfix">
                     <div class="grid clearfix">
                         <figure class="effect-jazz mb-0">
-                            <a href="blog_detail.html"><img src="{{Vite::asset('resources/assetsfront/img/18.jpg')}}" class="w-100" alt="Event Image"></a>
+                        <img src="{{ asset('uploads/event/' . $event->image) }}" class="w-100" alt="{{ $event->name }}">
                         </figure>
                     </div>
                 </div>
@@ -21,6 +21,8 @@
                     <p class="card-text">{{ $event->description }}</p>
                     <p><strong>Date:</strong> {{ $event->date }}</p>
                     <p><strong>Owner:</strong> {{ $event->owner }}</p>
+                    <p><strong>Category:</strong> {{ $event->category ? $event->category->name : 'Category not specified' }}</p>
+    
                 </div>
             </div>
         </div>

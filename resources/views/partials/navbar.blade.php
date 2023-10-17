@@ -1,3 +1,4 @@
+
 <section id="header">
 <nav class="navbar navbar-expand-md navbar-light" id="navbar_sticky">
   <div class="container-xl">
@@ -27,11 +28,11 @@
 		
 		<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Blog
+            Events
           </a>
           <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="blog.html"> Blog</a></li>
-            <li><a class="dropdown-item border-0" href="blog_detail.html"> Blog Detail</a></li>
+            <li><a class="dropdown-item" href="events"> Event</a></li>
+            <li><a class="dropdown-item border-0" href="events/create"> Add a new Event </a></li>
           </ul>
         </li>
 		
@@ -40,13 +41,13 @@
             Pages
           </a>
           <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="cart.html"> Shopping Cart</a></li>
-            <li><a class="dropdown-item border-0" href="checkout.html"> Checkout</a></li>
+            <li><a class="dropdown-item" href="/cart"> Shopping Cart</a></li>
+            <li><a class="dropdown-item border-0" href="/checkout"> Checkout</a></li>
           </ul>
         </li>
 				
 		<li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
+          <a class="nav-link" href="/contact">Contact</a>
         </li>
 		
       </ul>

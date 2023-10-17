@@ -67,9 +67,9 @@
 	 </div>
    </div>
   </div>
-  <div class="row product_2 mt-4">
+  <div class="row product_2 mt-4" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
     @foreach ($products as $product)
-    <div class="col-md-3" style="margin-bottom:10px"> <!-- This column will create a grid of 4 products per row -->
+    <div class="col-md-3" style="margin-bottom:10px; flex: 0 1 calc(35% - 16px);"> <!-- This column will create a grid of 4 products per row -->
         <div class="prod_main p-1 bg-white clearfix" style="height:430px;">
             <div class="product_2im clearfix position-relative">
                 <div class="product_2imi clearfix">
@@ -106,6 +106,19 @@
             </div>
         </div>
     </div>
+
+
+    <div class="cart_3l1i2">
+
+        
+    <br>
+    <form action="{{ route('product.addToCart', $product->id) }}" method="POST">
+        @csrf
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit" class="btn btn-primary" style="background-color: #a81c51;">Add to Cart</button>
+    </form>
+    </div>
+
     @endforeach
 </div>
 
