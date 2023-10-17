@@ -29,14 +29,24 @@ class ProductController extends Controller
         return view('product.createProduct', compact('productType'));
     }
 
-    public function indexUser()
+    public function indexUser(Request $request)
     {
         $productType = ProductType::all();
-        $products = Product::all();
-
+        
+        $products = Product::when($request->categories, function ($query) use ($request) {
+            return $query->where('product_type_id', $request->categories);
+        })->get();
+    
         return view('product.products', compact('productType', 'products'));
     }
 
+    public function indexP($id)
+    {
+        $productTypes = ProductType::all();
+        $product = Product::findOrFail($id);
+        $productType = ProductType::findOrFail($product->product_type_id);
+        return view('product.product', compact('productType', 'product','productTypes'));
+    }
     /**
      * Store a newly created resource in storage.
      */

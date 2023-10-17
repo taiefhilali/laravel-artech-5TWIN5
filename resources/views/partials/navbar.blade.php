@@ -10,7 +10,7 @@
       <ul class="navbar-nav mb-0 ms-auto">
 	    
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="index.html">Home</a>
+          <a class="nav-link" aria-current="page" href="user">Home</a>
         </li>
 		<li class="nav-item">
           <a class="nav-link" href="about.html">About </a>
