@@ -40,7 +40,7 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-    <img src="{{Vite::asset('resources/assetsfront/img/1.jpg')}}" class="d-block w-100" alt="...">
+    <img src="{{Vite::asset('resources/assetsfront/img/paintings.jpg')}}" class="d-block w-100" style="height:760px" alt="...">
       <div class="carousel-caption d-md-block">
          <h1 class="text-white font_60">Red Beauty Nature</h1>
 		 <h4 class="text-white mt-3">Photography</h4>
@@ -50,7 +50,7 @@
       </div>
     </div>
     <div class="carousel-item">
-    <img src="{{Vite::asset('resources/assetsfront/img/2.jpg')}}" class="d-block w-100" alt="...">
+    <img src="{{Vite::asset('resources/assetsfront/img/pp.jpg')}}" class="d-block w-100" style="height:760px" alt="...">
       <div class="carousel-caption d-md-block">
          <h1 class="text-white font_60">Other Type Painting</h1>
 		 <h4 class="text-white mt-3">Photography</h4>
@@ -60,7 +60,7 @@
       </div>
     </div>
     <div class="carousel-item">
-    <img src="{{Vite::asset('resources/assetsfront/img/3.jpg')}}" class="d-block w-100" alt="...">
+    <img src="{{Vite::asset('resources/assetsfront/img/ppp.jpg')}}" class="d-block w-100" style="height:760px" alt="...">
       <div class="carousel-caption d-md-block">
          <h1 class="text-white font_60">Trending Art Picture</h1>
 		 <h4 class="text-white mt-3">Photography</h4>

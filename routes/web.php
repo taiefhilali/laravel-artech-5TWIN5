@@ -55,7 +55,7 @@ Route::post('/admin/deleteProduct', [ProductController::class, 'destroy'])->name
 
 //Products_User
 Route::get('/products', [ProductController::class, 'indexUser'])->name('product.indexUser');
-Route::view('/product', 'product.product')->name('product.product');
+Route::get('/product/{id}', [ProductController::class, 'indexP'])->name('product.product');
 
 //Catalog_Admin
 Route::get('/admin/catalogs', [ProductTypeController::class, 'index'])->name('catalog.indexProductType');
