@@ -21,7 +21,10 @@
 	<link href="css/product.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz@9..144&display=swap" rel="stylesheet">
 	<script src="js/bootstrap.bundle.min.js"></script>
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+     <!-- Include jQuery from CDN -->
+       <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  
 </head>
 <body>
 @include('partials.navbar')
@@ -146,143 +149,8 @@
 		 </div>
 	  </div>
     </div>
-    <div class="tab-pane" id="profile">
-		<div class="profilei row">
-		<div class="col-md-12">
-		<h5 class="mb-0">4 REVIEWS FOR OUR PRODUCT</h5>
-		</div>
-		</div>
-		<div class="profilei1 row mt-4">
-		<div class="col-lg-1 col-md-2 col-2">
-		<div class="profilei1l">
-		<img src="img/51.jpg" class="w-100" alt="abc">
-		</div>
-		</div>
-		<div class="col-lg-11 col-md-10 ps-0 col-10">
-		<div class="profilei1r p-3">
-		<h6 class="col_light font_14">
-		<span class="fw-bold">Semp Porta</span> – July 9, 2018
-		<span class="pull-right col_yell">
-		<i class="fa fa-star"></i>
-		<i class="fa fa-star"></i>
-		<i class="fa fa-star"></i>
-		<i class="fa fa-star"></i>
-		<i class="fa fa-star-half-o"></i>
-		</span>
-		</h6>
-		<p class="mt-3 mb-0">Really happy with this print. The colors are great, and the paper quality is good too.</p>
-		</div>
-		</div>
-		</div>
-		<div class="profilei1 row mt-3">
-		<div class="col-lg-1 col-md-2 col-2">
-		<div class="profilei1l">
-		<img src="img/52.jpg" class="w-100" alt="abc">
-		</div>
-		</div>
-		<div class="col-lg-11 col-md-10 ps-0 col-10">
-		<div class="profilei1r p-3">
-		<h6 class="col_light font_14">
-		<span class="fw-bold">Eget Nulla</span> – July 9, 2018
-		<span class="pull-right col_yell">
-		<i class="fa fa-star"></i>
-		<i class="fa fa-star"></i>
-		<i class="fa fa-star"></i>
-		<i class="fa fa-star"></i>
-		<i class="fa fa-star-half-o"></i>
-		</span>
-		</h6>
-		<p class="mt-3 mb-0">Really happy with this print. The colors are great, and the paper quality is good too.</p>
-		</div>
-		</div>
-		</div>
-		<div class="profilei1 row mt-3">
-		<div class="col-lg-1 col-md-2 col-2">
-		<div class="profilei1l">
-		<img src="img/53.jpg" class="w-100" alt="abc">
-		</div>
-		</div>
-		<div class="col-lg-11 col-md-10 ps-0 col-10">
-		<div class="profilei1r p-3">
-		<h6 class="col_light font_14">
-		<span class="fw-bold">Quis Sem</span> – July 9, 2018
-		<span class="pull-right col_yell">
-		<i class="fa fa-star"></i>
-		<i class="fa fa-star"></i>
-		<i class="fa fa-star"></i>
-		<i class="fa fa-star"></i>
-		<i class="fa fa-star-half-o"></i>
-		</span>
-		</h6>
-		<p class="mt-3 mb-0">Really happy with this print. The colors are great, and the paper quality is good too.</p>
-		</div>
-		</div>
-		</div>
-		<div class="profilei1 row mt-3">
-		<div class="col-lg-1 col-md-2 col-2">
-		<div class="profilei1l">
-		<img src="img/54.jpg" class="w-100" alt="abc">
-		</div>
-		</div>
-		<div class="col-lg-11 col-md-10 ps-0 col-10">
-		<div class="profilei1r p-3">
-		<h6 class="col_light font_14">
-		<span class="fw-bold">Lorem Dolor</span> – July 9, 2018
-		<span class="pull-right col_yell">
-		<i class="fa fa-star"></i>
-		<i class="fa fa-star"></i>
-		<i class="fa fa-star"></i>
-		<i class="fa fa-star"></i>
-		<i class="fa fa-star-half-o"></i>
-		</span>
-		</h6>
-		<p class="mt-3 mb-0">Really happy with this print. The colors are great, and the paper quality is good too.</p>
-		</div>
-		</div>
-		</div>
-		<div class="profilei row mt-4">
-		<div class="col-md-12">
-		<h5 class="text-uppercase">Add a review</h5>
-		<p>Your email address will not be published. Required fields are marked *</p>
-		<h5 class="text-uppercase">Your Rating</h5>
-		<span class="col_yell">
-			<i class="fa fa-star-o"></i>
-			<i class="fa fa-star-o"></i>
-			<i class="fa fa-star-o"></i>
-			<i class="fa fa-star-o"></i>
-			<i class="fa fa-star-o"></i>
-		</span>
-		</div>
-		</div>
-		<div class="profilei2 row mt-3">
-		<div class="col-md-12">
-		<h6 class="mb-3">Your review <span class="text-danger">*</span></h6>
-		<textarea class="form-control form_text"></textarea>
-		</div>
-		</div>
-		<div class="profilei2 row mt-3">
-		 <div class="col-md-6">
-		   <h6 class="mb-3">Name <span class="text-danger">*</span></h6>
-		   <input class="form-control" type="text">
-		 </div>
-		 <div class="col-md-6">
-		   <h6 class="mb-3">Email <span class="text-danger">*</span></h6>
-		   <input class="form-control" type="text">
-		 </div>
-	  </div>
-	     <div class="profilei2 row mt-3">
-		<div class="col-md-12">
-		  <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="customCheck1">
-        <label class="form-check-label" for="customCheck1">Save my name and email in this browser for the next time I comment.</label>
-    </div>
-	      <h6 class="mt-3 mb-0 text-uppercase"><a class="button ps-4 pe-4 pt-2 pb-2" href="#"> SUBMIT</a></h6>
-		</div>
-		</div>
-    </div>
-    
-</div>
-  </div>
+	@include('Feedback.feedback')
+
   <div class="row detail_4 mt-4">
    <h4 class="mb-0">RELATED PRODUCTS</h4>
   </div>

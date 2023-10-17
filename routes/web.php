@@ -8,6 +8,7 @@ use  App\Http\Controllers\CommandeController;
 use  App\Http\Controllers\ProductController;
 use  App\Http\Controllers\ProductTypeController;
 
+use  App\Http\Controllers\FeedbackController;
 
 use  App\Http\Controllers\EventController;
 /*
@@ -55,7 +56,18 @@ Route::post('/admin/deleteProduct', [ProductController::class, 'destroy'])->name
 
 //Products_User
 Route::get('/products', [ProductController::class, 'indexUser'])->name('product.indexUser');
-Route::view('/product', 'product.product')->name('product.product');
+
+
+
+
+//feedback
+Route::get('/product', [FeedbackController::class, 'index'])->name('product.product');
+Route::get('/feedback/create', [FeedbackController::class, 'create'])->name('Feedback.create');
+Route::post('/feedback', [FeedbackController::class, 'store'])->name('Feedback.store');
+Route::get('/feedback/{id}/edit', [FeedbackController::class, 'edit'])->name('Feedback.edit');
+Route::put('/feedback/update/{id}', [FeedbackController::class, 'update'])->name('Feedback.update');
+Route::delete('/feedback/delete/{id}', [FeedbackController::class, 'destroy'])->name('Feedback.destroy');
+
 
 //Catalog_Admin
 Route::get('/admin/catalogs', [ProductTypeController::class, 'index'])->name('catalog.indexProductType');
