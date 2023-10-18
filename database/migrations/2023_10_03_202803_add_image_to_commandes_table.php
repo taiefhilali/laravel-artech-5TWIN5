@@ -11,8 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('commandes', function (Blueprint $table) {
-            $table->string('image')->nullable()->after('price');
+        Schema::create('commandes', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->date('date');
+            $table->decimal('qte')->nullable();
+            $table->decimal('price', 10, 2); // Example: Price with 10 total digits and 2 decimal places
+            $table->string('image')->nullable();
+
+            $table->unsignedBigInteger('product_id')->nullable();
+            $table->foreign('product_id')
+            ->references('id')
+            ->on('products')
+            ->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('commandes', function (Blueprint $table) {
-            $table->dropColumn('image');
-        });
+        Schema::dropIfExists('commandes');
     }
 };

@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Cart;
+
 use App\Models\ProductType;
 use App\Http\Requests\UpdateProductTypeRequest;
 class ProductController extends Controller
@@ -15,7 +17,6 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        
         return view('product.indexProduct', compact('products'));
     }
 
@@ -28,14 +29,24 @@ class ProductController extends Controller
         return view('product.createProduct', compact('productType'));
     }
 
-    public function indexUser()
+    public function indexUser(Request $request)
     {
         $productType = ProductType::all();
-        $products = Product::all();
-
+        
+        $products = Product::when($request->categories, function ($query) use ($request) {
+            return $query->where('product_type_id', $request->categories);
+        })->get();
+    
         return view('product.products', compact('productType', 'products'));
     }
 
+    public function indexP($id)
+    {
+        $productTypes = ProductType::all();
+        $product = Product::findOrFail($id);
+        $productType = ProductType::findOrFail($product->product_type_id);
+        return view('product.product', compact('productType', 'product','productTypes'));
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -156,4 +167,24 @@ class ProductController extends Controller
         }
 
     }
+
+
+    public function addToCart(Request $request, $productId)
+{
+    $product = Product::find($productId);
+    
+    if (!$product) {
+        return redirect()->back()->with('error', 'Produit introuvable!');
+    }
+
+    $cart = new Cart;
+    $cart->product_id = $product->id;
+    // $cart->user_id = auth()->id();
+    $cart->user_id  = 1;
+    $cart->quantity = $request->input('quantity', 1); // Default to 1 if not provided
+    $cart->save();
+
+    return redirect()->back()->with('success', 'Produit ajouté au panier!');
+}
+
 }

@@ -10,6 +10,7 @@ use Database\Seeders\ProductTypeSeeder;
 use Database\Seeders\ProductSeeder;
 use Database\Seeders\FeedbackSeeder;
 use Database\Seeders\CommentSeeder;
+use Database\Seeders\CommandeSeeder;
 
 
 
@@ -27,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductSeeder::class);
         $this->call(FeedbackSeeder::class);
         $this->call(CommentSeeder::class);
+        $this->call(CommandeSeeder::class);
 
     }
 }

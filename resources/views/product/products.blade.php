@@ -53,25 +53,30 @@
    </div>
    <div class="col-md-3">
      <div class="product_1r">
-        <select name="categories" class="form-select bg_gray col_light" required="">
-			<option value="">Choose a Catalog</option>
-			@foreach ($productType as $type)
-				<option value="{{ $type->id }}">{{ $type->name }}</option>
-            @endforeach
-			</select>
+     <form action="{{ route('product.indexUser') }}" method="GET">
+            <div style="display: flex;">
+                <select name="categories" class="form-select bg_gray col_light" required>
+                    <option value="">Choose a Catalog</option>
+                    @foreach ($productType as $type)
+                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                    @endforeach
+                </select>
+                <button type="submit">Filter</button>
+            </div>
+        </form> 
 	 </div>
    </div>
   </div>
-  <div class="row product_2 mt-4">
+  <div class="row product_2 mt-4" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
     @foreach ($products as $product)
-    <div class="col-md-3" style="margin-bottom:10px"> <!-- This column will create a grid of 4 products per row -->
+    <div class="col-md-3" style="margin-bottom:10px; flex: 0 1 calc(35% - 16px);"> <!-- This column will create a grid of 4 products per row -->
         <div class="prod_main p-1 bg-white clearfix" style="height:430px;">
             <div class="product_2im clearfix position-relative">
                 <div class="product_2imi clearfix">
                     <div class="grid clearfix">
                         <figure class="effect-jazz mb-0">
                             <a href="detail.html">
-                                <img src="{{Vite::asset('resources/assetsfront/img/36.jpg')}}" class="w-100" alt="abc">
+                                <img src="{{ asset( 'uploads/product/' . $product->image_url) }}" style="height:290px;" class="w-100" alt="abc">
                             </a>
                         </figure>
                     </div>
@@ -96,11 +101,24 @@
                     <h6 class="col_dark mt-2 mb-0">{{ $product->price }}</h6>
                 </div>
                 <div class="clearfix product_2im1i1 text-center position-absolute w-100">
-                    <h6 class="d-inline-block bg_pink p-2 ps-3 pe-3"><span class="text-decoration-line-through me-2 col_gray">View Detail</span></h6>
+                    <a class="d-inline-block bg_pink p-2 ps-3 pe-3" style="cursor:pointer;" href="{{url('product',$product->id)}}" > <span class="text-decoration me-2 ">View Detail</span></a>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <div class="cart_3l1i2">
+
+        
+    <br>
+    <form action="{{ route('product.addToCart', $product->id) }}" method="POST">
+        @csrf
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit" class="btn btn-primary" style="background-color: #a81c51;">Add to Cart</button>
+    </form>
+    </div>
+
     @endforeach
 </div>
 

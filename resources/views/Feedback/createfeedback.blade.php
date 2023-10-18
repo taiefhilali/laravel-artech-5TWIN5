@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('Feedback.store') }}">
+<!-- <form method="POST" action="{{ route('Feedback.store') }}">
     @csrf
 <div class="profilei row mt-4">
 		<div class="col-md-12">
@@ -34,10 +34,10 @@
     </div>
    
 
-    <!-- <div class="col-md-6">
+    <div class="col-md-6">
         <h6 class="mb-3">Ratings <span class="text-danger">*</span></h6>
         <input class="form-control" type="text" name="ratings">
-    </div> -->
+    </div> 
 
     <div class="profilei2 row mt-3">
         <div class="col-md-6">
@@ -48,10 +48,10 @@
             <h6 class="mb-3">Email <span class="text-danger">*</span></h6>
             <input class="form-control" type="text" name="email">
         </div>
-        <!-- <div class="form-group">
+        <div class="form-group">
             <label for="date">Date:</label>
             <input type="date" name="date" id="date" class="form-control" required>
-        </div> -->
+        </div> 
     </div>
 
     <div class="profilei2 row mt-3">
@@ -63,4 +63,4 @@
             <button type="submit" class="button ps-4 pe-4 pt-2 pb-2">SUBMIT</button>
         </div>
     </div>
-</form>
+</form> -->

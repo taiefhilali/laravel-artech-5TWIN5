@@ -22,12 +22,14 @@ class CreateProductsTable extends Migration
             $table->string('medium'); // Add medium attribute
             $table->string('image_url')->nullable(); // Add image URL attribute
             $table->integer('quantity'); // Add image URL attribute
-            $table->unsignedBigInteger('product_type_id');
+            $table->unsignedBigInteger('product_type_id')->nullable();
             $table->foreign('product_type_id')
             ->references('id')
             ->on('product_types')
             ->onDelete('cascade');
             $table->timestamps();
+
+
         });
     }
 

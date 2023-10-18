@@ -1,4 +1,4 @@
-<div class="tab-pane" id="profile">
+<!-- <div class="tab-pane" id="profile">
     <div class="profilei row">
         <div class="col-md-12">
             <h5 class="mb-0">4 REVIEWS FOR OUR PRODUCT</h5>
@@ -20,8 +20,8 @@
                             <h6 class="col_light font_14">
                                 <span class="fw-bold">{{ $feedback->name}}</span>  {{ $feedback->date}}
                                 <span class="pull-right col_yell">
-                                    <!-- Your star rating display code goes here -->
-                                </span>
+                                     Your star rating display code goes here -->
+                                <!-- </span>
                             </h6>
 
                             <div class="edit-feedback-icons">
@@ -58,8 +58,9 @@
                             <h6 class="col_light font_14">
                                 <span class="fw-bold">{{ $feedback->name}}</span>  {{ $feedback->date}}
                                 <span class="pull-right col_yell">
-                                    <!-- Your star rating display code goes here -->
-                                </span>
+
+
+                            </span>
                             </h6>
 
                             <div class="edit-feedback-icons">
@@ -72,7 +73,6 @@
                                 <form method="POST" action="{{ route('Feedback.destroy', ['id' => $feedback->id]) }}" class="delete-feedback-form" data-feedback-id="{{ $feedback->id }}">
         @csrf
                @method('DELETE')
-        <!-- Use the icon as a clickable element -->
         <i class="delete-icon fas fa-trash-alt delete-feedback" data-feedback-id="{{ $feedback->id }}" style="float: right; cursor: pointer;"></i>
           </form>
                           
@@ -167,4 +167,4 @@ $(document).on('click', 'form.delete-feedback-form i.delete-icon', function () {
 </script>
 
 
-</div>
+</div>  -->
