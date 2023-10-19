@@ -2,10 +2,13 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\EventSeeder;
 use Database\Seeders\CategorySeeder;
+use Database\Seeders\ProductTypeSeeder;
+use Database\Seeders\ProductSeeder;
+
 
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +21,8 @@ class DatabaseSeeder extends Seeder
      
         $this->call(EventSeeder::class);
         $this->call(CategorySeeder::class);
+        $this->call(ProductTypeSeeder::class);
+        $this->call(ProductSeeder::class);
+
     }
 }
