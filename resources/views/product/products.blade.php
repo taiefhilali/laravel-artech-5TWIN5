@@ -94,7 +94,17 @@
                         </button>
                     </form>
                     </li>
-                        <li class="d-inline-block"><a class="bg_pink text-white d-block" href="detail.html"><i class="fa fa-heart-o"></i></a></li>
+                    <li class="d-inline-block">
+                        <form action="{{ route('fav.add', $product->id) }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <button type="submit"  style="size:large;border:none;background:transparent" class="bg_pink text-white d-block">
+                            <a class="bg_pink text-white d-block">   
+                            <i class="fa fa-heart-o"></i>
+                            </a>
+                            </button>
+                        </form>
+                    </li>                   
                     </ul>
                 </div>
             </div>
@@ -140,6 +150,7 @@
 
 @include('partials.footer')
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
 window.onscroll = function() {myFunction()};
@@ -157,7 +168,9 @@ function myFunction() {
 	document.body.style.paddingTop = '0'
   }
 }
+
 </script>
+
 
 </body>
 

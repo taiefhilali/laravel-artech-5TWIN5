@@ -11,6 +11,7 @@ use  App\Http\Controllers\CartController;
 use  App\Http\Controllers\ProductController;
 use  App\Http\Controllers\ProductTypeController;
 use  App\Http\Controllers\CategoryController;
+use  App\Http\Controllers\UserFavoriteProductsController;
 
 
 
@@ -127,4 +128,9 @@ Route::view('/contact', 'layouts.contact')->name('layouts.contact');
 
 
 
+//favorite_Products
+
+Route::get('users/{userId}/favorites', [UserFavoriteProductsController::class, 'index'])->name('product.indexFav');;
+Route::post('/user/addfav/{productId}', [UserFavoriteProductsController::class, 'add'])->name('fav.add');
+Route::delete('user/removefav/{productId}', [UserFavoriteProductsController::class, 'remove'])->name('product.removeFav');
 
