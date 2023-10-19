@@ -10,7 +10,7 @@
       <ul class="navbar-nav mb-0 ms-auto">
 	    
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="user">Home</a>
+          <a class="nav-link" aria-current="page" href="/user">Home</a>
         </li>
 		<li class="nav-item">
           <a class="nav-link" href="about.html">About </a>
@@ -22,7 +22,7 @@
           </a>
           <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/products"> View List </a></li>
-            <li><a class="dropdown-item" href="/products"> Favorites </a></li>
+            <li><a class="dropdown-item" href="/users/1/favorites"> Favorites </a></li>
           </ul>
         </li>
 		

@@ -5,8 +5,7 @@
 	 <div class="footer_1i">
 	  <hr class="line_1">
 	  <h5 class="mb-3">ABOUT</h5>
-	  <p>Phasellus et nisl tellus. Etiam facilisis eu nisi scelerisque faucibus. Proin semper suscipit magna, nec imperdiet lacus semper vitae. Sed hendrerit enim non justo posuere placerat eget purus mauris.</p>
-	  <p>Etiam facilisis eu nisi scelerisque faucibus. Proin semper suscipit magna, nec imperdiet lacus semper.</p>
+	  <p>Artech offers an online space where artists can professionally showcase their work, and art enthusiasts can discover, purchase, and collect exceptional artworks. It's a dynamic marketplace comprising passionate art enthusiasts seeking new inspiring pieces and talented artists eager to share their unique creations.</p>
 	 </div>
 	</div>
 	<div class="col-md-3">

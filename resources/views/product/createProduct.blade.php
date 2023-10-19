@@ -22,10 +22,12 @@
   <!-- Jumbotron -->
   <div class="container py-4">
     <div class="row g-0 align-items-center">
-      <div class="col-lg-6 mb-5 mb-lg-0">
+      <div class="col">
         <div class="card cascading-right" style="
             background: hsla(0, 0%, 100%, 0.55);
             backdrop-filter: blur(30px);
+            width:80%;
+            margin-left:80px
             ">
           <div class="card-body p-5 shadow-5 text-center">
             <h2 class="fw-bold mb-5">Add Product</h2>
@@ -103,9 +105,9 @@
         </div>
       </div>
 
-      <div class="col-lg-6 mb-5 mb-lg-0">
+      <!-- <div class="col-lg-6 mb-5 mb-lg-0">
       <img src="{{Vite::asset('resources/assetsback/images/Product.png')}}" class="w-100" alt="abc" style="height:1100px" >        
-      </div>
+      </div> -->
     </div>
   </div>
   <!-- Jumbotron -->

@@ -155,20 +155,16 @@ class ProductController extends Controller
     public function destroy(Request $request)
     {
         $product = Product::find($request->product_delete_id);
-        $category = ProductType::findOrFail($request->product_delete_id);
-        
         if ($product) {
             $destination = 'uploads/product/'.$product->image_url;
             if (File::exists($destination)) {
                 File::delete($destination);
             }
-            $category->products()->delete();
             $product->delete();
             return redirect('admin/products')->with('message', 'Product Deleted Successfully');
         } else {
             return redirect('admin/products')->with('message', 'No product id found');
         }
-
     }
 
 

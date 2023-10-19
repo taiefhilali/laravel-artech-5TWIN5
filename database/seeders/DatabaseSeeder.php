@@ -11,6 +11,7 @@ use Database\Seeders\ProductSeeder;
 use Database\Seeders\FeedbackSeeder;
 use Database\Seeders\CommentSeeder;
 
+use Database\Seeders\UserSeeder;
 
 
 class DatabaseSeeder extends Seeder
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(ProductTypeSeeder::class);
         $this->call(ProductSeeder::class);
+        $this->call(UserSeeder::class);
         $this->call(FeedbackSeeder::class);
         $this->call(CommentSeeder::class);
 
