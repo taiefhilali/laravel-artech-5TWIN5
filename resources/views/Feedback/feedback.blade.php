@@ -73,9 +73,10 @@
             <h6 class="col_light font_14">
                 <span style="margin-bottom: 12px;" class="fw-bold">{{ $comment->dateComment }}</span>
                 <br>
-                <p style="margin-top: 16px">
-                    {{ $comment->descriptionComment }}
-                </p>
+                <p style="margin-top: 16px; font-size: 20px;">
+    {{ $comment->descriptionComment }}
+</p>
+
             </h6>
              <!-- Delete form for each comment -->
         <form method="POST" action="{{ route('comments.destroy', ['feedbackId' => $feedback->id, 'commentId' => $comment->id]) }}"  style="display: inline;"   class="delete-comment-form" data-feedback-id="{{ $comment->id }}">

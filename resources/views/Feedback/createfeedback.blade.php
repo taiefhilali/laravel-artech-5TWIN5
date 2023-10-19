@@ -5,10 +5,10 @@
             
             <h5 class="text-uppercase">Add a review</h5>
             <p>Your email address will not be published. Required fields are marked *</p>
-            <h5 class="text-uppercase">Your Rating</h5>
-            <div class="col-md-6">
+            <!-- <h5 class="text-uppercase">Your Rating</h5> -->
+            <!-- <div class="col-md-6">
                 <h6 class="mb-3">Ratings <span class="text-danger">*</span></h6>
-                <div id="star-rating"></div>
+                <div id="star-rating"></div> -->
                 <input type="hidden" name="ratings" id="ratings">
 
                 <span class="col_yell">
@@ -20,7 +20,6 @@
                 </span>
 
             </div>
-        </div>
     </div>
     <div class="profilei2 row mt-3">
         <div class="col-md-12">
