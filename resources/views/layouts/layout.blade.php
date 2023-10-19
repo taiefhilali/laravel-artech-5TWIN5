@@ -7,6 +7,8 @@
 {{-- <link rel="stylesheet" href="{{ mix('resources/assetsback/css/app.css') }}" /> --}}
 {{-- <link rel="stylesheet" href="{{ Vite::asset('resources/assetsback/css/app.css') }}" /> --}}
 
+
+
   {{-- @vite(['resources/assetsback/css/theme/bordered-layout.min'])
   @vite(['resources/assetsback/css/colors.css'])
   @vite(['resources/assetsback/css/themes/dark-layout.css'])

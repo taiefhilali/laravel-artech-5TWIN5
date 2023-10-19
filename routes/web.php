@@ -12,6 +12,10 @@ use  App\Http\Controllers\ProductController;
 use  App\Http\Controllers\ProductTypeController;
 use  App\Http\Controllers\CategoryController;
 
+use  App\Http\Controllers\FeedbackController;
+
+
+use  App\Http\Controllers\CommentController;
 
 
 
@@ -79,6 +83,22 @@ Route::post('/admin/deleteProduct', [ProductController::class, 'destroy'])->name
 Route::get('/products', [ProductController::class, 'indexUser'])->name('product.indexUser');
 Route::get('/product/{id}', [ProductController::class, 'indexP'])->name('product.product');
 
+// //feedback
+Route::post('/product/{productId}/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store');
+Route::get('/product/{productId}/feedback/create', [FeedbackController::class, 'create'])->name('feedback.create');
+Route::delete('/products/{productId}/feedback/{feedbackId}', [FeedbackController::class, 'destroy'])->name('feedback.destroy');
+
+Route::post('/comments/{feedbackId}/store', [CommentController::class, 'store'])->name('comments.store');
+
+Route::get('/comments/create/{feedbackId}', [CommentController::class, 'create'])->name('comments.create');
+
+Route::get('/comments/{feedbackId}', [CommentController::class, 'show'])->name('comments.show');
+
+Route::delete('/comments/{feedbackId}/{commentId}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+// Route::get('/feedback/{productId}/edit/{feedbackId}', [FeedbackController::class, 'edit'])->name('feedback.edit');
+// Route::put('/feedback/{productId}/feedback/{feedbackId}', [FeedbackController::class, 'update'])->name('feedback.update');
+
 //Catalog_Admin
 Route::get('/admin/catalogs', [ProductTypeController::class, 'index'])->name('catalog.indexProductType');
 Route::get('/admin/createCatalog', [ProductTypeController::class, 'create'])->name('catalog.create');
@@ -105,6 +125,10 @@ Route::get('/events/{id}', [EventController::class, 'show'])->name('Event.show')
 Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('Event.destroy');
 Route::get('events/{event}/edit', [EventController::class, 'edit'])->name('Event.edit');
 Route::put('events/{event}', [EventController::class, 'update'])->name('Event.update');
+
+
+
+
 
 
 // Category routes

@@ -21,6 +21,7 @@
 	<link href="css/product.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz@9..144&display=swap" rel="stylesheet">
 	<script src="js/bootstrap.bundle.min.js"></script>
+    
 
 </head>
 <body>

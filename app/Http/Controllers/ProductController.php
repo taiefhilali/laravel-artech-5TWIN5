@@ -17,6 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
+        
         return view('product.indexProduct', compact('products'));
     }
 
@@ -45,7 +46,9 @@ class ProductController extends Controller
         $productTypes = ProductType::all();
         $product = Product::findOrFail($id);
         $productType = ProductType::findOrFail($product->product_type_id);
-        return view('product.product', compact('productType', 'product','productTypes'));
+        $feedbacks = $product->feedbacks; // Retrieve associated feedbacks
+
+        return view('product.product', compact('productType', 'product','productTypes','feedbacks'));
     }
     /**
      * Store a newly created resource in storage.
