@@ -43,7 +43,7 @@
                                 Product
                             </a>
                             <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="product.html"> Product</a></li>
+                                <li><a class="dropdown-item" href="/products"> Product</a></li>
                                 <li><a class="dropdown-item border-0" href="detail.html"> Product Detail</a></li>
                             </ul>
                         </li>
@@ -174,15 +174,60 @@
 											
 											<button type="submit" class="button">UPDATE CART</button>
 										</form>
+
 										
                                     @endif
 
                                 </div>
                             </div>
                         </div>
+
+                        
                     @endforeach
 
+                    
+                    {{-- <form action="{{ route('cart.confirm') }}" method="POST">
+                        @csrf
+                        @method('POST')
 
+                        <button type="submit">Confirmer</button>
+                    </form>
+
+                    <br> --}}
+                    {{-- <div class="mt-1" style="background-color: white; border: 1px solid black;">
+                        {{ $cartItems->links() }}
+                        <style>
+                            .pagination img {
+                                width: 20px; /* ou une autre valeur qui convient */
+                                height: 20px;
+                            }
+                        </style>
+                    </div> --}}
+
+                    <div class="pages">
+                        <div class="col-md-12">
+                            <ul class="mb-0">
+                                <li><a href="{{ $cartItems->previousPageUrl() }}"><i class="fa fa-chevron-left" style="font-size: 12px;"></i></a></li>
+                                
+                                @for($i = 1; $i <= $cartItems->lastPage(); $i++)
+                                    <li><a class="{{ ($cartItems->currentPage() == $i) ? 'act' : '' }}" href="{{ $cartItems->url($i) }}">{{ $i }}</a></li>
+                                @endfor
+                    
+                                <li><a href="{{ $cartItems->nextPageUrl() }}"><i class="fa fa-chevron-right" style="font-size: 12px;"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+
+                    <br>
+
+                    
+                    {{-- <a href="{{ route('cart.exportToPDF') }}" class="btn btn-primary">Exporter en PDF</a> --}}
+
+                    <a href="{{ route('cart.exportCartToPDF') }}" class="btn btn-primary" style="background-color: #a81c51;">Exporter en PDF</a>
 
                 </div>
                 <div class="col-md-4">
@@ -220,7 +265,6 @@
         </div>
     </section>
 
-    <h6 class="text-center mt-3"><a class="button" href="/createOrderFromCart">Create Order</a></h6>
 
     <section id="footer" class="pt-3 pb-3">
         <div class="container-fluid">

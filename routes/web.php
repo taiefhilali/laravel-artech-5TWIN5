@@ -12,6 +12,11 @@ use  App\Http\Controllers\ProductTypeController;
 use  App\Http\Controllers\CategoryController;
 use  App\Http\Controllers\EventController;
 
+use  App\Http\Controllers\UserFavoriteProductsController;
+use  App\Http\Controllers\FeedbackController;
+use  App\Http\Controllers\CommentController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +36,10 @@ Route::get('/', function () {
 Route::get('dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
+
+
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -80,7 +89,27 @@ Route::post('/product/{productId}/add-to-cart', [ProductController::class, 'addT
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.cart');
 // Route::post('/cart/update/{cartItemId}', [CartController::class, 'updateProductInCart'])->name('cart.update');
 Route::put('cart/update/{id}', [CartController::class, 'updateProductInCart'])->name('cart.update');
+//Ca marche pas
+Route::post('/cart/confirm', [CartController::class, 'confirm'])->name('cart.confirm');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cart/export-to-pdf', [CartController::class, 'exportCartToPDF'])->name('cart.exportToPDF');
+});
 
+Route::get('/cart/export-to-pdf', [CartController::class, 'exportCartToPDF'])->name('cart.exportCartToPDF');
+
+
+
+//Products_Admin
+Route::get('/admin/products', [ProductController::class, 'index'])->name('product.indexProduct');
+Route::get('/admin/createProduct', [ProductController::class, 'create'])->name('product.create');
+Route::post('admin/addProduct', [ProductController::class, 'store'])->name('product.store');
+Route::get('/admin/product/{Product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::put('/admin/editProduct/{Product}', [ProductController::class, 'update'])->name('product.update');
+Route::post('/admin/deleteProduct', [ProductController::class, 'destroy'])->name('product.destroy');
+
+//Products_User
+Route::get('/products', [ProductController::class, 'indexUser'])->name('product.indexUser');
+Route::get('/product/{id}', [ProductController::class, 'indexP'])->name('product.product');
 
 //Products_Admin
 Route::get('/admin/products', [ProductController::class, 'index'])->name('product.indexProduct');
@@ -94,17 +123,8 @@ Route::post('/admin/deleteProduct', [ProductController::class, 'destroy'])->name
 Route::get('/products', [ProductController::class, 'indexUser'])->name('product.indexUser');
 Route::get('/product/{id}', [ProductController::class, 'indexP'])->name('product.product');
 
-//Products_Admin
-Route::get('/admin/products', [ProductController::class, 'index'])->name('product.indexProduct');
-Route::get('/admin/createProduct', [ProductController::class, 'create'])->name('product.create');
-Route::post('admin/addProduct', [ProductController::class, 'store'])->name('product.store');
-Route::get('/admin/product/{Product}/edit', [ProductController::class, 'edit'])->name('product.edit');
-Route::put('/admin/editProduct/{Product}', [ProductController::class, 'update'])->name('product.update');
-Route::post('/admin/deleteProduct', [ProductController::class, 'destroy'])->name('product.destroy');
-
-//Products_User
-Route::get('/products', [ProductController::class, 'indexUser'])->name('product.indexUser');
-Route::get('/product/{id}', [ProductController::class, 'indexP'])->name('product.product');
+//Front
+Route::view('/user', 'user.userinterface')->name('user.userinterface');
 
 //events
 //Route::view('/events', 'Event.event')->name('Event.event');
@@ -131,6 +151,22 @@ Route::get('/admin/categories/{category}/edit', [CategoryController::class, 'edi
 Route::put('/admin/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/admin/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
+
+// //feedback
+Route::post('/product/{productId}/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store');
+Route::get('/product/{productId}/feedback/create', [FeedbackController::class, 'create'])->name('feedback.create');
+Route::delete('/products/{productId}/feedback/{feedbackId}', [FeedbackController::class, 'destroy'])->name('feedback.destroy');
+
+Route::post('/comments/{feedbackId}/store', [CommentController::class, 'store'])->name('comments.store');
+Route::get('/comments/create/{feedbackId}', [CommentController::class, 'create'])->name('comments.create');
+Route::get('/comments/{feedbackId}', [CommentController::class, 'show'])->name('comments.show');
+Route::delete('/comments/{feedbackId}/{commentId}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+//favorite_Products
+
+Route::get('users/{userId}/favorites', [UserFavoriteProductsController::class, 'index'])->name('product.indexFav');;
+Route::post('/user/addfav/{productId}', [UserFavoriteProductsController::class, 'add'])->name('fav.add');
+Route::delete('user/removefav/{productId}', [UserFavoriteProductsController::class, 'remove'])->name('product.removeFav');
 //Cart
 Route::view('/showCart', 'cart.cart')->name('cart.cart');
 

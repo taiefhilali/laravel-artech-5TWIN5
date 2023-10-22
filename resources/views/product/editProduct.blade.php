@@ -22,10 +22,12 @@
   <!-- Jumbotron -->
   <div class="container py-4">
     <div class="row g-0 align-items-center">
-      <div class="col-lg-6 mb-5 mb-lg-0">
+      <div class="col">
         <div class="card cascading-right" style="
             background: hsla(0, 0%, 100%, 0.55);
             backdrop-filter: blur(30px);
+            width:80%;
+            margin-left:110px
             ">
           <div class="card-body p-5 shadow-5 text-center">
             <h2 class="fw-bold mb-5">Edit Product</h2>
@@ -103,19 +105,10 @@
           </div>
         </div>
       </div>
-
-      <div class="col-lg-6 mb-5 mb-lg-0">
-      <img src="{{Vite::asset('resources/assetsback/images/Product.png')}}" class="w-100" alt="abc" style="height:1100px" >        
-      </div>
     </div>
   </div>
   <!-- Jumbotron -->
 </section>
 <!-- Section: Design Block -->
 
-    {{-- <script>
-        @vite(['resources/assetsback/vendors/js/vendors.min.js'])
-        @vite(['resources/assetsback/js/core/app-menu.js'])
-        @vite(['resources/assetsback/js/core/app.js'])
-    </script> --}}
 @endsection

@@ -34,12 +34,23 @@ class ProductController extends Controller
 
     public function indexUser()
     {
+
         $productType = ProductType::all();
-        $products = Product::all();
+        // $products = Product::all();
+        $products = Product::paginate(3); // Ici, 10 est le nombre de produits par page, vous pouvez le changer selon vos besoins
 
         return view('product.products', compact('productType', 'products'));
     }
 
+    public function indexP($id)
+    {
+        $productTypes = ProductType::all();
+        $product = Product::findOrFail($id);
+        $productType = ProductType::findOrFail($product->product_type_id);
+        $feedbacks = $product->feedbacks; // Retrieve associated feedbacks
+
+        return view('product.product', compact('productType', 'product','productTypes','feedbacks'));
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -162,54 +173,54 @@ class ProductController extends Controller
     }
 
 
-//     public function addToCart(Request $request, $productId)
-// {
-//     $product = Product::find($productId);
-    
-//     if (!$product) {
-//         return redirect()->back()->with('error', 'Produit introuvable!');
-//     }
-
-//     $cart = new Cart;
-//     $cart->product_id = $product->id;
-//     // $cart->user_id = auth()->id();
-//     $cart->user_id  = 1;
-//     $cart->quantity = $request->input('quantity', 1); // Default to 1 if not provided
-//     $cart->save();
-
-//     return redirect()->back()->with('success', 'Produit ajouté au panier!');
-// }
-
-public function addToCart(Request $request, $productId) {
-    // Trouver le produit par son ID
+    public function addToCart(Request $request, $productId)
+{
     $product = Product::find($productId);
-
-    // Ajoutez le produit au panier
-    $cart = new Cart;
-    $cart->product_id = $product->id;
-    $cart->user_id = 3;
-    $cart->quantity = $request->input('quantity', 1); // Default à 1 si non
-
-    $cart->save();
-
-    // Vérifiez si une commande existe déjà pour cet utilisateur
-    $commande = Commande::where('user_id', 3)->where('status', 'pending')->first();
-
-    // Si aucune commande n'existe, créez-en une nouvelle
-    if(!$commande) {
-        $commande = new Commande;
-        $commande->user_id = 3;
-        $commande->status = 'pending'; // Vous pouvez définir le statut par défaut comme 'pending'
-       
-        $commande->save();
+    
+    if (!$product) {
+        return redirect()->back()->with('error', 'Produit introuvable!');
     }
 
-    // Liez le produit à la commande
-    $commande->products()->attach($product->id); 
+    $cart = new Cart;
+    $cart->product_id = $product->id;
+    // $cart->user_id = auth()->id();
+    $cart->user_id  = 1;
+    $cart->quantity = $request->input('quantity', 1); // Default to 1 if not provided
+    $cart->save();
 
-    // Redirigez l'utilisateur avec un message de réussite
-    return redirect()->back()->with('success', 'Produit ajouté au panier et à la commande avec succès!');
+    return redirect()->back()->with('success', 'Produit ajouté au panier!');
 }
+
+// public function addToCart(Request $request, $productId) {
+//     // Trouver le produit par son ID
+//     $product = Product::find($productId);
+
+//     // Ajoutez le produit au panier
+//     $cart = new Cart;
+//     $cart->product_id = $product->id;
+//     $cart->user_id = 3;
+//     $cart->quantity = $request->input('quantity', 1); // Default à 1 si non
+
+//     $cart->save();
+
+//     // Vérifiez si une commande existe déjà pour cet utilisateur
+//     $commande = Commande::where('user_id', 3)->where('status', 'pending')->first();
+
+//     // Si aucune commande n'existe, créez-en une nouvelle
+//     if(!$commande) {
+//         $commande = new Commande;
+//         $commande->user_id = 3;
+//         // $commande->status = 'pending'; // Vous pouvez définir le statut par défaut comme 'pending'
+       
+//         $commande->save();
+//     }
+
+//     // Liez le produit à la commande
+//     $commande->products()->attach($product->id); 
+
+//     // Redirigez l'utilisateur avec un message de réussite
+//     return redirect()->back()->with('success', 'Produit ajouté au panier et à la commande avec succès!');
+// }
 
 
 public function showCommandeWithProducts($id) {

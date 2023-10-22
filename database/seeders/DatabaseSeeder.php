@@ -8,6 +8,8 @@ use Database\Seeders\EventSeeder;
 use Database\Seeders\CategorySeeder;
 use Database\Seeders\ProductTypeSeeder;
 use Database\Seeders\ProductSeeder;
+use Database\Seeders\CommentSeeder;
+use Database\Seeders\FeedbackSeeder;
 
 
 
@@ -23,6 +25,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(ProductTypeSeeder::class);
         $this->call(ProductSeeder::class);
+        $this->call(CommentSeeder::class);
+        $this->call(FeedbackSeeder::class);
+
 
     }
 }

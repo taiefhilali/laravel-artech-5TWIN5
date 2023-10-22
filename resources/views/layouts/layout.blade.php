@@ -91,7 +91,22 @@
                         <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder">John Doe</span><span class="user-status">Admin</span></div><span class="avatar"><img class="round" src="{{Vite::asset('resources/assetsback/images/portrait/small/avatar-s-11.jpg')}}" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user"><a class="dropdown-item" href="#"><i class="me-50" data-feather="user"></i> Profile</a><a class="dropdown-item" href="#"><i class="me-50" data-feather="mail"></i> Inbox</a><a class="dropdown-item" href="#"><i class="me-50" data-feather="check-square"></i> Task</a><a class="dropdown-item" href="#"><i class="me-50" data-feather="message-square"></i> Chats</a>
-                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="me-50" data-feather="settings"></i> Settings</a><a class="dropdown-item" href="#"><i class="me-50" data-feather="credit-card"></i> Pricing</a><a class="dropdown-item" href="#"><i class="me-50" data-feather="help-circle"></i> FAQ</a><a class="dropdown-item" href="#"><i class="me-50" data-feather="power"></i> Logout</a>
+                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="me-50" data-feather="settings"></i> Settings</a><a class="dropdown-item" href="#"><i class="me-50" data-feather="credit-card"></i> Pricing</a><a class="dropdown-item" href="#"><i class="me-50" data-feather="help-circle"></i> FAQ</a>
+
+                        {{-- <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <a class="dropdown-item"><i class="me-50" data-feather="power"></i> Logout</a>
+
+                        </form> --}}
+                        <br>
+
+                        <form action="{{ route('logout') }}" method="POST" style="display: inline-block;">
+                            @csrf
+                            <button type="submit" class="dropdown-item" style="background: none; border: none; padding: 10; margin: 10;">
+                                <i class="me-50" data-feather="power"></i> Logout
+                            </button>
+                        </form>
+                        
                     </div>
                 </li>
             </ul>
