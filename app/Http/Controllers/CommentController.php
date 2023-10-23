@@ -6,11 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Feedback;
 
-use App\Http\Requests\StoreCommentRequest;
-use App\Http\Requests\UpdateCommentRequest;
 class CommentController extends Controller
 {
-
     public function index()
     {
         $comments = Comment::all();
@@ -22,75 +19,85 @@ class CommentController extends Controller
     public function create($feedbackId)
     {
         $feedback = Feedback::findOrFail($feedbackId);
-        $comments = $feedback->comments; // Fetch comments for the feedback
+        $comments = $feedback->comments; 
     
         return view('product.product', compact('comments', 'feedback'));
     }
     
 
-
     /**
      * Store a newly created resource in storage.
      */
-    // public function store(Request $request, $feedbackId)
-    // {
-    //     $validatedData = $request->validate([
-    //         'descriptionComment' => 'required|string',
-    //     ]);
-    
-    //     // Assuming you have a relationship between Feedback and Comment
-    //     $feedback = Feedback::findOrFail($feedbackId);
-    
-    //     $comment = new Comment([
-    //         'descriptionComment' => $validatedData['descriptionComment'],
-    //         'dateComment' => now(),
-    //     ]);
-    
-    //     $feedback->comments()->save($comment);
-    
-    //     // Assuming there is a relationship between Feedback and Product
-    //     $productId = $feedback->product->id;
-    
-    //     return redirect()->route('product.product', ['id' => $productId])->with('success', 'Comment created successfully.');
-    // }
-    public function store(StoreCommentRequest $request)
+    public function store(Request $request, $feedbackId)
     {
-        // Validate the form data
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'date' => 'required|date',
-            'owner' => 'required|string|max:255',
+            'descriptionComment' => 'required|string',
         ]);
     
-        // Create a new event using the validated data
-        Event::create($validatedData);
+        $feedback = Feedback::findOrFail($feedbackId);
     
-        // Redirect to a success page or route
-        return redirect()->route('Event.index')->with('success', 'Event created successfully.');
+        $comment = new Comment([
+            'descriptionComment' => $validatedData['descriptionComment'],
+            'dateComment' => now(),
+        ]);
+    
+        $feedback->comments()->save($comment);
+    
+        $productId = $feedback->product->id;
+    
+        return redirect()->route('product.product', ['id' => $productId])->with('success', 'Comment created successfully.');
     }
-
     
-    public function show(Comment $feedback)
+    public function show($feedbackId)
     {
-        //
+        // Retrieve the feedback and associated comments
+        $feedback = Feedback::findOrFail($feedbackId);
+        $comments = Comment::where('feedback_id', $feedbackId)->get();
+    
+        // Pass the retrieved instances to the view for rendering
+        return view('product.product', compact('feedback', 'comments'));
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Comment $feedback)
-    {
-        //
-    }
+  
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCommentRequest $request, Comment $comment)
-    {
-        //
+   
+public function update(Request $request, $feedbackId, $commentId)
+{
+    $comment = Comment::findOrFail($commentId);
+    $request->validate([
+        'descriptionComment' => 'required|max:255',
+    ]);
+    
+    // Check if the comment belongs to the specified feedback
+    if ($comment->feedback_id != $feedbackId) {
+        abort(404);
     }
+
+    $comment->update([
+        'descriptionComment' => $request->input('descriptionComment'),
+        // Add other fields as needed
+    ]);
+    $comment->save();
+
+    if ($request->ajax()) {
+        return response()->json([
+            'comment' => $comment,
+        ]);
+    }
+
+    $productId = $comment->feedback->product->id;
+
+    return redirect()->route('product.product', ['id' => $productId])->with('success', 'Comment updated successfully.');
+}
+
+        
+      
 
     /**
      * Remove the specified resource from storage.
@@ -99,12 +106,10 @@ class CommentController extends Controller
     {
         $comment = Comment::findOrFail($commentId);
     
-        // Verify that the comment is associated with the specified feedback
         if ($comment->feedback_id != $feedbackId) {
-            abort(404); // Or handle the error as needed
+            abort(404); 
         }
     
-        // Get the product id from the associated feedback
         $productId = $comment->feedback->product->id;
     
         $comment->delete();
@@ -112,5 +117,3 @@ class CommentController extends Controller
         return redirect()->route('product.product', ['id' => $productId])->with('success', 'Comment deleted successfully.');
     }
 }    
-   
-
