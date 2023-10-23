@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Feedback;
 
+use App\Http\Requests\StoreCommentRequest;
+use App\Http\Requests\UpdateCommentRequest;
 class CommentController extends Controller
 {
+
     public function index()
     {
         $comments = Comment::all();
@@ -25,30 +28,48 @@ class CommentController extends Controller
     }
     
 
+
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $feedbackId)
+    // public function store(Request $request, $feedbackId)
+    // {
+    //     $validatedData = $request->validate([
+    //         'descriptionComment' => 'required|string',
+    //     ]);
+    
+    //     // Assuming you have a relationship between Feedback and Comment
+    //     $feedback = Feedback::findOrFail($feedbackId);
+    
+    //     $comment = new Comment([
+    //         'descriptionComment' => $validatedData['descriptionComment'],
+    //         'dateComment' => now(),
+    //     ]);
+    
+    //     $feedback->comments()->save($comment);
+    
+    //     // Assuming there is a relationship between Feedback and Product
+    //     $productId = $feedback->product->id;
+    
+    //     return redirect()->route('product.product', ['id' => $productId])->with('success', 'Comment created successfully.');
+    // }
+    public function store(StoreCommentRequest $request)
     {
+        // Validate the form data
         $validatedData = $request->validate([
-            'descriptionComment' => 'required|string',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'date' => 'required|date',
+            'owner' => 'required|string|max:255',
         ]);
     
-        // Assuming you have a relationship between Feedback and Comment
-        $feedback = Feedback::findOrFail($feedbackId);
+        // Create a new event using the validated data
+        Event::create($validatedData);
     
-        $comment = new Comment([
-            'descriptionComment' => $validatedData['descriptionComment'],
-            'dateComment' => now(),
-        ]);
-    
-        $feedback->comments()->save($comment);
-    
-        // Assuming there is a relationship between Feedback and Product
-        $productId = $feedback->product->id;
-    
-        return redirect()->route('product.product', ['id' => $productId])->with('success', 'Comment created successfully.');
+        // Redirect to a success page or route
+        return redirect()->route('Event.index')->with('success', 'Event created successfully.');
     }
+
     
     public function show(Comment $feedback)
     {
@@ -91,3 +112,5 @@ class CommentController extends Controller
         return redirect()->route('product.product', ['id' => $productId])->with('success', 'Comment deleted successfully.');
     }
 }    
+   
+

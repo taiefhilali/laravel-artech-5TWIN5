@@ -30,7 +30,7 @@
                
               
            <td>{{ $carts->user->name }}</td> 
-           <td>{{ $carts->commande->name }}</td>
+           <td>{{ $carts->commande->name ?? 'Nom inconnu' }}</td>
            <td> {{$carts->quantity}} </td>
 
          

@@ -1,8 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use  App\Http\Controllers\TestController;
-use  App\Http\Controllers\HomeController;
 
 use  App\Http\Controllers\CommandeController;
 use  App\Http\Controllers\CartController;
@@ -11,17 +10,13 @@ use  App\Http\Controllers\CartController;
 use  App\Http\Controllers\ProductController;
 use  App\Http\Controllers\ProductTypeController;
 use  App\Http\Controllers\CategoryController;
+use  App\Http\Controllers\EventController;
+
 use  App\Http\Controllers\UserFavoriteProductsController;
-
 use  App\Http\Controllers\FeedbackController;
-
-
 use  App\Http\Controllers\CommentController;
 
 
-
-
-use  App\Http\Controllers\EventController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,11 +32,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/page1', function () {
-    return view('page');
-});
-Route::get('/register', function () {
-    return view('form');
+Route::get('dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('admin.dashboard');
+
+
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->name('logout');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 
@@ -60,6 +62,24 @@ Route::delete('/commande/delete/{id}', [CommandeController::class, 'destroy'])->
 Route::get('/admin/carts', [CartController::class, 'index'])->name('cart.indexB');
 Route::get('/cart/create', [CartController::class, 'create'])->name('cart.create');
 
+
+// Route::view('/admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
+//Commandes
+Route::get('/commande', [CommandeController::class, 'index'])->name('commande.indexB');
+Route::get('/commande/create', [CommandeController::class, 'create'])->name('commande.create');
+
+Route::post('/newCommande',[CommandeController::class,'store'])->name('commande.store');
+Route::get('/commande/{id}/edit',[CommandeController::class,'edit'])->name('commande.edit');
+Route::put('/commande/update/{id}', [CommandeController::class,'update'])->name('commande.update');
+Route::delete('/commande/delete/{id}', [CommandeController::class, 'destroy'])->name('commande.destroy');
+Route::get('/showPC/{id}', [ProductController::class, 'showCommandeWithProducts'])->name('commandes.showPC');
+
+
+//Carts (Back)
+Route::get('/admin/carts', [CartController::class, 'index'])->name('cart.indexB');
+Route::get('/cart/create', [CartController::class, 'create'])->name('cart.create');
+Route::get('/cart/create', [CartController::class, 'create'])->name('cart.create');
+
 Route::post('/admin/newcart',[CartController::class,'store'])->name('cart.store');
 Route::get('/cart/{id}/edit',[CartController::class,'edit'])->name('cart.editB');
 Route::put('/cart/update/{id}', [CartController::class,'update'])->name('cart.update');
@@ -70,6 +90,14 @@ Route::post('/product/{productId}/add-to-cart', [ProductController::class, 'addT
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.cart');
 // Route::post('/cart/update/{cartItemId}', [CartController::class, 'updateProductInCart'])->name('cart.update');
 Route::put('cart/update/{id}', [CartController::class, 'updateProductInCart'])->name('cart.update');
+//Ca marche pas
+Route::post('/cart/confirm', [CartController::class, 'confirm'])->name('cart.confirm');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cart/export-to-pdf', [CartController::class, 'exportCartToPDF'])->name('cart.exportToPDF');
+});
+
+Route::get('/cart/export-to-pdf', [CartController::class, 'exportCartToPDF'])->name('cart.exportCartToPDF');
+
 
 
 //Products_Admin

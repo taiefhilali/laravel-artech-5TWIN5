@@ -85,11 +85,11 @@
                 <div class="product_2imi1 position-absolute clearfix w-100 top-0 text-center">
                     <ul class="mb-0">
                     <li class="d-inline-block">
-                    <form action="{{ route('product.addToCart', $product->id) }}" method="POST">
+                    <form action="{{ route('product.addToCart', $product->id) }}" method="POST" >
                         @csrf
                         <input type="hidden" name="quantity" value="1">
                         <button type="submit" style="size:small;border:none;background:transparent">
-                        <a class="bg_pink text-white d-block" href="detail.html">
+                        <a class="bg_pink text-white d-block" >
                             <i class="fa fa-shopping-cart"></i>
                         </a>
                         </button>
@@ -132,21 +132,22 @@
     @endforeach
 </div>
 
-  <div class="pages">
-		 <div class="col-md-12">
-		   <ul class="mb-0">
-			<li><a  href="detail.html"><i class="fa fa-chevron-left"></i></a></li>
-			<li><a class="act" href="detail.html">1</a></li>
-			<li><a href="detail.html">2</a></li>
-			<li><a href="detail.html">3</a></li>
-			<li><a href="detail.html">4</a></li>
-			<li><a href="detail.html">5</a></li>
-			<li><a href="detail.html">6</a></li>
-			<li><a  href="detail.html"><i class="fa fa-chevron-right"></i></a></li>
-		   </ul>
-		 </div>
-	 </div>
- </div>
+<div class="pages">
+                <div class="col-md-12">
+                    <ul class="mb-0">
+                        <li><a href="{{ $products->previousPageUrl() }}"><i class="fa fa-chevron-left"
+                                    style="font-size: 12px;"></i></a></li>
+
+                        @for ($i = 1; $i <= $products->lastPage(); $i++)
+                            <li><a class="{{ $products->currentPage() == $i ? 'act' : '' }}"
+                                    href="{{ $products->url($i) }}">{{ $i }}</a></li>
+                        @endfor
+
+                        <li><a href="{{ $products->nextPageUrl() }}"><i class="fa fa-chevron-right"
+                                    style="font-size: 12px;"></i></a></li>
+                    </ul>
+                </div>
+            </div>
 </section>
 
 @include('partials.footer')

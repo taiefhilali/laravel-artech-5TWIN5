@@ -19,4 +19,10 @@ class Comment extends Model
     {
         return $this->belongsTo(Feedback::class);
     }
+
+    public function User()
+    {
+        return $this->hasMany(User::class);
+    }
+    
 }

@@ -83,7 +83,11 @@
 	  <h4 class="mt-3"><span class="me-2">{{$product->price}}</span></h4>
 	  <p>{{$product->description}}</p>
 	  <input type="number" min="1" value="1" class="form-control mt-2 bg_dark" placeholder="Qty" style="width:80px; height:49px; margin-right:10px; float:left;">
-	  <h6 class="mt-4 mb-0 text-uppercase"><a class="button" href="#"><i class="fa fa-shopping-cart bg-white col_pink p-3"> </i> <span class="ps-3 pe-3">Add To Cart</span></a></h6>
+	  <h6 class="mt-4 mb-0 text-uppercase">
+      <a class="button" ><i class="fa fa-shopping-cart bg-white col_pink p-3"> 
+      </i> <span class="ps-3 pe-3">Add To Cart</span>
+    </a>
+  </h6>
 	  <p class="mt-3 mb-2">The product is already in the wishlist! <a class="col_pink hover_white" href="#">Browse Wishlist</a></p>
 	  <p>Category: {{$productType->name}}</p>
 	  <ul class="social-network social-circle mb-0">
@@ -119,16 +123,16 @@
        <div class="home_i row">
 		 <div class="col-md-12">
 		   <h4>DESCRIPTION</h4>
-		   <p>{{$product->description}}</p>
+		   <p><i class="fa fa-circle-o me-1 col_pink"></i>{{$product->description}}</p>
 		   <h5 class="text-uppercase mb-3">DETAILS</h5>
-		   <ul class="mb-0">
-		   <li class="mb-2"><i class="fa fa-circle-o me-1 col_pink"></i>Artist's name : {{$product->artist}}</li>
-		   <li class="mb-2"><i class="fa fa-circle-o me-1 col_pink"></i> Creation date : {{$product->creation_date}}</li>
-			<li class="mb-2"><i class="fa fa-circle-o me-1 col_pink"></i>Medium : {{$product->medium}}</li>
-			<li class="mb-2"><i class="fa fa-circle-o me-1 col_pink"></i> Dimensions : {{$product->dimensions}}</li>
-			<li class="mb-2"><i class="fa fa-circle-o me-1 col_pink"></i>Quanity : {{$product->quantity}}</li>
+		   <div class="mb-0" style="display:flex" >
+		   <p ><i class="fa fa-circle-o me-1 col_pink"></i>Artist's name : {{$product->artist}}</p>
+		   <p class="mb-2"><i class="fa fa-circle-o me-1 col_pink"></i> Creation date : {{$product->creation_date}}</p>
+			<p class="mb-2"><i class="fa fa-circle-o me-1 col_pink"></i>Medium : {{$product->medium}}</p>
+			<p class="mb-2"><i class="fa fa-circle-o me-1 col_pink"></i> Dimensions : {{$product->dimensions}}</p>
+			<p class="mb-2"><i class="fa fa-circle-o me-1 col_pink"></i>Quanity : {{$product->quantity}}</p>
 
-			</ul>
+			</div>
 		 </div>
 	  </div>
     </div>
@@ -146,7 +150,7 @@
 
 
 	
-  <section id="center" class="center_o bg_gray pt-2 pb-2" style="margin-top:20px">
+  <section id="center" class="center_o bg_gray pt-2 pb-2" style="margin-top:20px;">
  <div class="container-xl">
   <div class="row center_o1">
    <div class="col-md-5">
@@ -158,7 +162,7 @@
  </div>
 </section>
   
-  <div class="row product_2">
+  <div class="row product_2" style="margin-left:30px" >
   	@foreach ($productTypes as $type)
    	 <div class="col-md-3">
         <div class="prod_main p-1 bg-white clearfix">
