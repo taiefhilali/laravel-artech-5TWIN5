@@ -22,6 +22,28 @@
 	<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz@9..144&display=swap" rel="stylesheet">
 	<script src="js/bootstrap.bundle.min.js"></script>
 
+<<<<<<< Updated upstream
+=======
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha512-XYZ" crossorigin="anonymous"></script>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-XYZ" crossorigin="anonymous" />
+<link href="css/bootstrap.min.css" rel="stylesheet" >
+	<link href="css/font-awesome.min.css" rel="stylesheet" >
+	<link href="css/global.css" rel="stylesheet">
+	<link href="css/product.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz@9..144&display=swap" rel="stylesheet">
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+     <!-- Include jQuery from CDN -->
+       <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- Bootstrap JS and Popper.js (required for some Bootstrap components) -->
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-XYZ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-XYZ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-XYZ" crossorigin="anonymous"></script>
+>>>>>>> Stashed changes
 </head>
 <body>
 @include('partials.navbar')
