@@ -107,6 +107,7 @@ Route::post('admin/addProduct', [ProductController::class, 'store'])->name('prod
 Route::get('/admin/product/{Product}/edit', [ProductController::class, 'edit'])->name('product.edit');
 Route::put('/admin/editProduct/{Product}', [ProductController::class, 'update'])->name('product.update');
 Route::post('/admin/deleteProduct', [ProductController::class, 'destroy'])->name('product.destroy');
+Route::get('/statistics', [ProductController::class, 'showStatistics'])->name('product.statistic');
 
 //Products_User
 Route::get('/products', [ProductController::class, 'indexUser'])->name('product.indexUser');

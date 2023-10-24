@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 <head>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 @section('content')
     <!-- Basic Horizontal form layout section start -->
@@ -35,17 +35,29 @@
               <div class="form-outline mb-4">
                 <input type="text" id="form3Example3" class="form-control" name="name"/>
                 <label class="form-label" for="form3Example3">Name</label>
+                @error('name')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                @enderror
               </div>
 
               <!-- Password input -->
               <div class="form-outline mb-4">
                 <input type="text" id="form3Example4" class="form-control" name="description" style="height:150px;width:100%;resize:none"/>
                 <label class="form-label" for="form3Example4">Description</label>
+                @error('description')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                @enderror
               </div>
 
               <div class="form-outline mb-4">
                 <input type="file" id="form3Example4" class="form-control" name="image" />
                 <label class="form-label" for="form3Example4">Image</label>
+                @error('image')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                @enderror
               </div>
 
 
@@ -76,3 +88,6 @@
         @vite(['resources/assetsback/js/core/app.js'])
     </script> --}}
 @endsection
+
+
+

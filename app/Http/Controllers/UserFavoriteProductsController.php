@@ -10,8 +10,7 @@ class UserFavoriteProductsController extends Controller
 {
     public function index($userId)
     {
-        $fixedUserId = 1;
-            $user = User::find($fixedUserId);
+            $user = User::find($userId);
     
         if (!$user) {
             return response()->json(['message' => 'User not found'], 404);
