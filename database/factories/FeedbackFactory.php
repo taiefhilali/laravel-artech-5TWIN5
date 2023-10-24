@@ -21,6 +21,7 @@ class FeedbackFactory extends Factory
     public function definition()
     {
         return [
+           
             'date' => now(), 
             'description' => $this->faker->paragraph, // Generate a random paragraph as the Feedback description
             'ratings' => $this->faker->numberBetween(1, 5), 

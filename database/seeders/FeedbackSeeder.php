@@ -16,7 +16,6 @@ class FeedbackSeeder extends Seeder
         {
             for ($i = 0; $i < 20; $i++) {
                 Feedback::create([
-                   
                     'description' => 'Description for Feedback ' . ($i + 1), // Customize the description
                     'date' => now(), // Customize the date
                     'ratings' => rand(1, 5), // Add a random rating between 1 and 5

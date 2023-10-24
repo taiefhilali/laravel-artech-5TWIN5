@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="profilei2 row mt-3">
-      
+        
         <div class="form-group">
             <label for="date">Date:</label>
             <input type="date" name="date" id="date" class="form-control" required>

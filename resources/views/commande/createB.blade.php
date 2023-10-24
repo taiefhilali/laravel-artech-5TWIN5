@@ -73,7 +73,21 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="region">Région</label>
+                                    <select class="form-control" id="region" name="region">
+                                        <option value="Tunis">Tunis</option>
+                                        <option value="Ariana">Ariana</option>
+                                        <option value="Ben_Arous">Ben Arous</option>
+                                        <option value="Nabeul">Nabeul</option>
+                                        <!-- Vous pouvez ajouter d'autres options si nécessaire -->
+                                    </select>
+                                </div>
 
+                                <div class="form-group">
+                                    <label for="quantite_produits">Quantité de Produits</label>
+                                    <input type="number" class="form-control" id="quantite_produits" name="quantite_produits">
+                                </div>
                                 <div class="col-sm-9 offset-sm-3">
                                     <button type="submit" class="btn btn-primary me-1">
                                         <i data-feather="plus"></i>

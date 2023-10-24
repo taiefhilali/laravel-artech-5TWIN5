@@ -48,6 +48,7 @@ class FeedbackController extends Controller
             $feedbackRequest->request->add(['user_id' => $userId]);
         
             $feedback = new Feedback([
+               
                 'description' => $request->input('description'),
                 'ratings' => $request->input('ratings'),
                 'date' => now(),

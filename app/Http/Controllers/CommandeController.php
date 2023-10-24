@@ -40,6 +40,8 @@ class CommandeController extends Controller
             'date' => 'required|date',
             'price' => 'required|numeric',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'region' => 'required|string', // Validation de la région
+            'quantite_produits' => 'required|integer', // Validation de la quantité de produits
         ]);
 
         // Enregistrement de la commande
@@ -89,6 +91,8 @@ class CommandeController extends Controller
             'date' => 'required|date',
             'price' => 'required|numeric',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'region' => 'required|string', // Validation de la région
+            'quantite_produits' => 'required|integer', // Validation de la quantité de produits
         ]);
 
         // Mise à jour de la commande

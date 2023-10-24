@@ -13,7 +13,7 @@ class Event extends Model
 
     public function participants()
 {
-    return $this->hasMany(Participant::class);
+    return $this->hasMany(User::class,'participations');
 }
     // Define any relationships here
 }

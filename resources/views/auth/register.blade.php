@@ -116,8 +116,9 @@ data-menu="vertical-menu-modern" data-col="blank-page"> <!-- BEGIN: Content-->
                             :value="old('email')" required autocomplete="username" />
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
+
                     <!-- UserName -->
-                        <div>
+                        <div class="mt-4">
                             <x-input-label for="username" :value="__('Username')" />
 
                             <x-text-input id="username" class="block mt-1 w-full" type="text" name="username"
@@ -126,7 +127,7 @@ data-menu="vertical-menu-modern" data-col="blank-page"> <!-- BEGIN: Content-->
                             <x-input-error :messages="$errors->get('username')" class="mt-2" />
                         </div>
                         <!-- phone Number -->
-                        <div>
+                        <div class="mt-4">
                             <x-input-label for="phone" :value="__('Phonenumber')" />
 
                             <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone"

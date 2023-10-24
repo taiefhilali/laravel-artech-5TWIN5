@@ -1,9 +1,25 @@
-
 @extends('Event.event') 
 
 @section('content')
-@vite(['resources/css/app.css'])
 
+<head>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+  <style>
+    .modal-title{
+      background-color: #222222;
+      color: #ffffff;
+    }
+    .modal-body{
+      background-color: #222222;
+      color: #ffffff;
+    }
+    .modal-content{
+      background-color: #222222;
+      color: #ffffff;
+    }
+  </style>
+</head>
 <div class="col-md-9">
 
     <div class="blog_1r">
@@ -33,7 +49,19 @@
     </button>
 </form>
 
+
 </figure>
+<form action="{{ route('Participant.participate', $event->id) }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="event_id" value="{{ $event->id }}">
+                            <button type="submit"  style="size:large;border:none;background:transparent" class="bg-red-700 text-white d-block">
+                            <a class="bg_pink text-white d-block">   
+                            <i class="fas fa-check"></i> Participate
+
+                            </a>
+                            </button>
+                        </form>
+                        
 
 
                         </div>
@@ -54,4 +82,3 @@
     </div>
 </div>
 @endsection
-

@@ -24,6 +24,7 @@ class FeedbackRequest extends FormRequest
     public function rules(): array
     {
         return [
+          
             'description' => 'required|string',
             'ratings' => 'required|integer|min:1|max:5',
         ];

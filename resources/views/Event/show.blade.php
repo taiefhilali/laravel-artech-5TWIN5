@@ -27,6 +27,29 @@
             </div>
         </div>
     </div>
+    <!-- <div class="blog_1r">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#participateModal">
+    Participate
+  </button>
+
+  <div class="modal fade" id="participateModal" tabindex="-1" aria-labelledby="participateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="participateModalLabel">Participate in {{ $event->name }}?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to participate in {{ $event->name }}?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="swal({ title: 'Are you sure you want to participate in {{ $event->name }}?', text: '', type: 'warning', showCancelButton: true, confirmButtonText: 'Participate', cancelButtonText: 'Cancel', closeOnConfirm: false }, function(result) { if (result.value) { window.location.href = '{{ route('Event.participate', $event) }}'; } });">Participate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
 
     <div class="mt-3">
         <a href="{{ route('Event.index') }}"class="button p-3 pt-2 pb-2">Back to Events</a>
