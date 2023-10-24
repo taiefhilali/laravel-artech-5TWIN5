@@ -135,24 +135,30 @@ class ProductController extends Controller
             'creation_date' => $validatedData['creation_date'],
         ];
     
-        if ($request->hasFile('image_url')) {
-            $path = 'uploads/product/' . $product->image_url;
-            if (File::exists($path)) {
-                File::delete($path);
+            if ($request->hasFile('image_url')) {
+                $path = 'uploads/product/' . $product->image_url;
+                if (File::exists($path)) {
+                    File::delete($path);
+                }
+
+                $file = $request->file('image_url');
+                $ext = $file->getClientOriginalExtension();
+                $fileName = time() . '.' . $ext;
+
+                $file->move('uploads/product/', $fileName);
+
+                $productData['image_url'] = $fileName;
             }
-    
-            $file = $request->file('image_url');
-            $ext = $file->getClientOriginalExtension();
-            $fileName = time() . '.' . $ext;
-    
-            $file->move('uploads/product/', $fileName);
-    
-            $productData['image_url'] = $fileName; 
-        }
+
     
         $product->update($productData); 
+        
+        if ($product) {
+            return redirect('admin/products')->with('message', 'Product Updated Successfully');
+        } else {
+            return back()->withInput()->withErrors($request->validated());
+        }
     
-        return redirect('admin/products')->with('message', 'Product Updated Successfully');
     }
     
     /**
