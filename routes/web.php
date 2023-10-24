@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\ClientLivraisonController;
+use App\Http\Controllers\LivraisonController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 
 use  App\Http\Controllers\CommandeController;
 use  App\Http\Controllers\CartController;
@@ -15,7 +19,6 @@ use  App\Http\Controllers\EventController;
 use  App\Http\Controllers\UserFavoriteProductsController;
 use  App\Http\Controllers\FeedbackController;
 use  App\Http\Controllers\CommentController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +40,8 @@ Route::get('dashboard', function () {
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
 
 
-Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-    ->name('logout');
+// Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+//     ->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -160,9 +163,23 @@ Route::get('/events/{id}', [EventController::class, 'show'])->name('Event.show')
 Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('Event.destroy');
 Route::get('events/{event}/edit', [EventController::class, 'edit'])->name('Event.edit');
 Route::put('events/{event}', [EventController::class, 'update'])->name('Event.update');
+Route::get('events/{event}/participate', [EventController::class, 'participate'])->name('Event.participate');
+Route::get('event/unparticipate/{event}', [EventController::class, 'unparticipate'])->name('Event.unparticipate');
 
+//livraison
+Route::get('/livraisons', [LivraisonController::class, 'index'])->name('Livraisons');
+Route::post('/livraison/create', [LivraisonController::class, 'store'])->name('livraison.store');
+Route::get('/livraison/{livraisonId}', [LivraisonController::class,'getLivraisonDetails']);
+Route::put('/livraison/{livraisonId}/edit', [LivraisonController::class,'edit']);
+Route::delete('/livraison/{livraisonId}/delete', [LivraisonController::class,'delete']);
+Route::get('/calendar', [LivraisonController::class,'calendriertunis']);
+Route::get('/livreur/livraisonsbase', [ClientLivraisonController::class, 'index'])->name('LivraisonsC');
+Route::get('/livreur/livraisonslist', [ClientLivraisonController::class, 'index2'])->name('LivraisonsList');
+Route::put('/livraison/{livraisonId}/accept', [ClientLivraisonController::class,'accepter']);
+Route::get('/livraison/{livraisonId}/commandes', [ClientLivraisonController::class,'getCommandesLiv']);
 
-
+Route::put('/livraison/commande/{id}/annuler', [ClientLivraisonController::class,'annulerCommande']);
+Route::put('/livraison/commande/{id}/payee', [ClientLivraisonController::class,'payerCommande']);
 
 
 
@@ -185,6 +202,9 @@ Route::view('/checkout', 'cart.checkout')->name('cart.checkout');
 Route::view('/contact', 'layouts.contact')->name('layouts.contact');
 
 
+// Route::group(['middleware' => 'client'], function () {
+//     // Vos routes pour les clients ici
+// });
 
 //favorite_Products
 
@@ -192,3 +212,13 @@ Route::get('users/{userId}/favorites', [UserFavoriteProductsController::class, '
 Route::post('/user/addfav/{productId}', [UserFavoriteProductsController::class, 'add'])->name('fav.add');
 Route::delete('user/removefav/{productId}', [UserFavoriteProductsController::class, 'remove'])->name('product.removeFav');
 
+
+Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+->name('logout');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

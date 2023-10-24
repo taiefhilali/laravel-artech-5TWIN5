@@ -46,9 +46,24 @@
           </ul>
         </li>
 				
-		<li class="nav-item">
-          <a class="nav-link" href="/contact">Contact</a>
-        </li>
+
+        <!-- Authentication -->
+        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
+                        </form>
+
+        <!-- <li class="nav-item">
+  <form ction="{{ route('logout') }}"  method="POST">
+  @csrf
+    <button type="submit" class="nav-link">Logout</button>
+  </form>
+</li> -->
 		
       </ul>
     </div>

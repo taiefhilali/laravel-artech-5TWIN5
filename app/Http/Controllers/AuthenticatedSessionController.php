@@ -18,14 +18,14 @@ class AuthenticatedSessionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
-        // if (Auth::attempt($request->only('email', 'password'))) {
-            if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            return redirect()->intended('admin/dashboard');
-        }
+        // // if (Auth::attempt($request->only('email', 'password'))) {
+        //     if (Auth::attempt(['username'=>$username, 'password'=>$password])) {
+        //     return redirect()->intended('admin/dashboard');
+        // }
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
