@@ -36,18 +36,30 @@
               <div class="form-outline mb-4">
                 <input type="text" id="form3Example3" class="form-control" value="{{ $ProductType->name }} " name="name"/>
                 <label class="form-label" for="form3Example3">Name</label>
+                @error('name')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                 @enderror
               </div>
 
               <!-- Password input -->
               <div class="form-outline mb-4">
                 <input type="text" id="form3Example4" class="form-control" value="{{ $ProductType->description }} " name="description" style="height:150px;width:100%;resize:none"/>
                 <label class="form-label" for="form3Example4">Description</label>
+                @error('description')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                 @enderror
               </div>
 
               <div class="form-outline mb-4">
                 <input type="file" id="form3Example4" value="{{ $ProductType->image }} " class="form-control" name="image" />
                 <img  src="{{ asset( 'uploads/catalog/' . $ProductType->image) }}" style="width:200px;height:200px;" />
                 <label class="form-label" for="form3Example4">Image</label>
+                @error('image')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                 @enderror
               </div>
 
 
