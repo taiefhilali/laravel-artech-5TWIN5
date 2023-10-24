@@ -16,6 +16,7 @@
 		 </div>
 
 </div>
+
 <div class="blog_1ril2 w-100 clearfix position-absolute  text-end">
 		   <span class="d-inline-block fs-2 bg-white col_dark"><i class="fa fa-edit"></i></span>
 		 </div>

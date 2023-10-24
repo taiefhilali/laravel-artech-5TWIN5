@@ -76,7 +76,22 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="region">Région</label>
+                                    <select class="form-control" id="region" name="region">
+                                        <option value="Tunis" @if ($commande->region === 'Tunis') selected @endif>Tunis</option>
+                                        <option value="Ariana" @if ($commande->region === 'Ariana') selected @endif>Ariana</option>
+                                        <option value="Ben_Arous" @if ($commande->region === 'Ben_Arous') selected @endif>Ben Arous</option>
+                                        <option value="Nabeul" @if ($commande->region === 'Nabeul') selected @endif>Nabeul</option>
+                                        <!-- Ajoutez les autres options en fonction de vos besoins -->
+                                    </select>
+                                </div>
 
+                                <div class="form-group">
+                                    <label for="quantite_produits">Quantité de Produits</label>
+                                    <input type="number" class="form-control" id="quantite_produits" name="quantite_produits" value="{{ $commande->quantite_produits }}">
+                                </div>
+                            
                                 <div class="col-sm-9 offset-sm-3">
                                     <button type="submit" class="btn btn-primary me-1">Submit</button>
                                     <button type="reset" class="btn btn-outline-secondary">Reset</button>

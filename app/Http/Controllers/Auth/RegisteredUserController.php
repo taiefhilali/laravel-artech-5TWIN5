@@ -50,8 +50,11 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
+       
+    // **Add a flash message to the session.**
+    session()->flash('success', 'You have successfully registered. Please log in to access the rest of the website.');
 
-        return redirect(RouteServiceProvider::HOME);
+    // **Redirect the user to the login page.**
+    return redirect()->route('login');
     }
 }

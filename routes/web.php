@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ClientLivraisonController;
 use App\Http\Controllers\LivraisonController;
+use App\Http\Controllers\Participant;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -163,8 +164,9 @@ Route::get('/events/{id}', [EventController::class, 'show'])->name('Event.show')
 Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('Event.destroy');
 Route::get('events/{event}/edit', [EventController::class, 'edit'])->name('Event.edit');
 Route::put('events/{event}', [EventController::class, 'update'])->name('Event.update');
-Route::get('events/{event}/participate', [EventController::class, 'participate'])->name('Event.participate');
-Route::get('event/unparticipate/{event}', [EventController::class, 'unparticipate'])->name('Event.unparticipate');
+Route::post('events/participate/{eventId}', [Participant::class, 'participate'])->name('Participant.participate');
+Route::delete('event/unparticipate/{eventId}', [Participant::class, 'unparticipate'])->name('Participant.unparticipate');
+Route::get('/participations', [Participant::class, 'index'])->name('Event.indexpart');;
 
 //livraison
 Route::get('/livraisons', [LivraisonController::class, 'index'])->name('Livraisons');
@@ -192,6 +194,8 @@ Route::get('/admin/categories/{category}', [CategoryController::class, 'show'])-
 Route::get('/admin/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::put('/admin/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/admin/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+Route::get('/admin/categories/search', [CategoryController::class, 'search'])->name('categories.search');
+
 
 //Cart
 Route::view('/showCart', 'cart.cart')->name('cart.cart');
