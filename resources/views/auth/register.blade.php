@@ -95,7 +95,7 @@ data-menu="vertical-menu-modern" data-col="blank-page"> <!-- BEGIN: Content-->
     <!-- Register-->
     <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
         <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
-
+       
 
             <x-guest-layout>
                 <form method="POST" action="{{ route('register') }}">
@@ -205,12 +205,9 @@ data-menu="vertical-menu-modern" data-col="blank-page"> <!-- BEGIN: Content-->
 <script src="{{ Vite::asset('resources/assetsback/js/scripts/pages/auth-register.js')}}"></script>
 <!-- END: Page JS-->
 
+
 <script>
-               w).on('load', function () {
-                (feather) {
-                feather.replace(                      width                          h                        ;
-        }
- })
+    feather.replace();
 </script>
 </body>
 <!-- END: Body-->

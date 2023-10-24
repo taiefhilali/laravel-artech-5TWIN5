@@ -1,7 +1,6 @@
 @extends('layouts.layout')
-
 <head>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 @section('content')
     <!-- Basic Horizontal form layout section start -->
@@ -40,51 +39,89 @@
                     <input type="text" id="form3Example1" class="form-control" name="title" />
                     <label class="form-label" for="form3Example1">Title</label>
                   </div>
+                  @error('title')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                 @enderror
                 </div>
+             
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                     <input type="text" id="form3Example2" class="form-control" name="artist"/>
                     <label class="form-label" for="form3Example2">Artist name</label>
                   </div>
+                  @error('artist')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                 @enderror
                 </div>
               </div>
+            
 
               <div class="form-outline mb-4">
                 <input type="text" id="form3Example4" class="form-control" name="description" style="height:150px;width:100%;resize:none"/>
                 <label class="form-label" for="form3Example4">Description</label>
+                @error('description')
+                <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                <span class="text-danger"><b>{{ $message }}</b></span>
+              @enderror
               </div>
-
+            
               <div class="form-outline mb-4">
                 <input type="date" id="form3Example4" class="form-control" name="creation_date"/>
                 <label class="form-label" for="form3Example4">Creation date</label>
+                @error('creation_date')
+                <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                <span class="text-danger"><b>{{ $message }}</b></span>
+              @enderror
               </div>
-
+          
               <div class="form-outline mb-4">
                 <input type="text" id="form3Example3" class="form-control" name="medium" />
                 <label class="form-label" for="form3Example3">Medium</label>
+                @error('medium')
+                <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                <span class="text-danger"><b>{{ $message }}</b></span>
+              @enderror
               </div>
-
+           
               <div class="form-outline mb-4">
                 <input type="text" id="form3Example4" class="form-control" name="dimensions" placeholder="example: 73.7 cm × 92.1 cm" />
                 <label class="form-label" for="form3Example4">Dimension</label>
+                @error('dimensions')
+                <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                <span class="text-danger"><b>{{ $message }}</b></span>
+              @enderror
               </div>
-
+            
               <div class="form-outline mb-4">
                 <input type="file" id="form3Example3" class="form-control" name="image_url" />
                 <label class="form-label" for="form3Example3">Image</label>
+                @error('image_url')
+                <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                <span class="text-danger"><b>{{ $message }}</b></span>
+              @enderror
               </div>
-
+              
 
               <div class="form-outline mb-4">
                 <input type="number" step="0.01" id="form3Example4" class="form-control" name="price" />
                 <label class="form-label" for="form3Example4">Price</label>
+                @error('price')
+                <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                <span class="text-danger"><b>{{ $message }}</b></span>
+              @enderror
               </div>
-
+              
               <div class="form-outline mb-4">
                 <input type="number" id="form3Example4" class="form-control" name="quantity" />
                 <label class="form-label" for="form3Example4">Quantity</label>
+                @error('quantity')
+                <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                <span class="text-danger"><b>{{ $message }}</b></span>
+              @enderror
               </div>
-
+        
 
               <div class="form-outline mb-4">
                   <select id="productType" name="product_type_id" class="form-control" >
@@ -93,13 +130,18 @@
                       @endforeach
                   </select>
                   <label class="form-label" for="productType">Catalog</label>
+                  @error('product_type_id')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+              @enderror
               </div>
-
+           
 
               <!-- Submit button -->
               <button type="submit" class="btn btn-primary btn-block mb-4">
                 <i data-feather="plus"></i> Product
               </button>
+
             </form>
           </div>
         </div>
@@ -113,8 +155,9 @@
   <!-- Jumbotron -->
 </section>
 <!-- Section: Design Block -->
-
     {{-- <script>
+
+
         @vite(['resources/assetsback/vendors/js/vendors.min.js'])
         @vite(['resources/assetsback/js/core/app-menu.js'])
         @vite(['resources/assetsback/js/core/app.js'])

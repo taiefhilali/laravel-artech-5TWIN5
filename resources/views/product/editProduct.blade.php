@@ -40,50 +40,86 @@
                   <div class="form-outline">
                     <input type="text"  value="{{ $Product->title }} " id="form3Example1" class="form-control" name="title" />
                     <label class="form-label" for="form3Example1">Title</label>
+                    @error('title')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                 @enderror
                   </div>
                 </div>
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                     <input type="text" value="{{ $Product->artist }} " id="form3Example2" class="form-control" name="artist"/>
                     <label class="form-label" for="form3Example2">Artist name</label>
+                    @error('artist')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                 @enderror
                   </div>
                 </div>
               </div>
 
               <div class="form-outline mb-4">
-                <input type="text" value="{{ $Product->title }} " class="form-control" name="description" style="height:150px;width:100%;resize:none"/>
+                <input type="text" value="{{ $Product->description }} " class="form-control" name="description" style="height:150px;width:100%;resize:none"/>
                 <label class="form-label" for="form3Example4">Description</label>
+                @error('description')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                 @enderror
               </div>
 
               <div class="form-outline mb-4">
                 <input type="date"  value="{{ date('Y-m-d', strtotime($Product->creation_date)) }}" class="form-control" name="creation_date"/>
                 <label class="form-label" for="form3Example4">Creation date</label>
+                @error('creation_date')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                 @enderror
               </div>
 
               <div class="form-outline mb-4">
                 <input type="text" value="{{ $Product->medium }} "class="form-control" name="medium" />
                 <label class="form-label" for="form3Example3">Medium</label>
+                @error('medium')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                 @enderror
               </div>
 
               <div class="form-outline mb-4">
                 <input type="text" value="{{ $Product->dimensions }} "class="form-control" name="dimensions" placeholder="example: 73.7 cm × 92.1 cm" />
                 <label class="form-label" for="form3Example4">Dimension</label>
+                @error('dimensions')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                 @enderror
               </div>
 
               <div class="form-outline mb-4" >
                 <input type="file" id="form3Example3" class="form-control" name="image_url"  />
                 <img  src="{{ asset( 'uploads/product/' . $Product->image_url) }}" style="width:200px;height:200px;" />
+                @error('image_url')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                 @enderror
               </div>
 
 
               <div class="form-outline mb-4">
                 <input type="number" step="0.01" value="{{ floatval($Product->price) }}" class="form-control" name="price" />
                 <label class="form-label" for="form3Example4">Price</label>
+                @error('price')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                 @enderror
               </div>
 
               <div class="form-outline mb-4">
-                <input type="number" value="{{ floatval($Product->price) }}"  class="form-control" name="quantity" />
+                <input type="number" value="{{ $Product->quantity}}"  class="form-control" name="quantity" />
                 <label class="form-label" for="form3Example4">Quantity</label>
+                @error('quantity')
+                  <i class="fa fa-exclamation-triangle" style="color:red"></i>
+                  <span class="text-danger"><b>{{ $message }}</b></span>
+                 @enderror
               </div>
 
 

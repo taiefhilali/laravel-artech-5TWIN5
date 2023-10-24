@@ -61,7 +61,7 @@
                                     </button>
                                 </form>
                                 <button class="button" onclick="window.location.href='{{ url('product', $product->id) }}';">
-                                    <span class="ps-3 pe-3">VIEW GALLERY</span>
+                                    <span class="ps-3 pe-3">VIEW DETAILS</span>
                                 </button>
                                 </h6>
                         </div>

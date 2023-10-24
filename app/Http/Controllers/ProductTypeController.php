@@ -51,10 +51,11 @@ class ProductTypeController extends Controller
         }
 
         $category->save();
-
-        return redirect('admin/catalogs')->with('message','Catalog Added Successfully');
-
-
+        if ($category) {
+            return redirect('admin/catalogs')->with('message','Catalog Added Successfully');
+        } else {
+            return back()->withInput()->withErrors($request->validated());
+        }
     }
 
     /**
@@ -104,8 +105,12 @@ class ProductTypeController extends Controller
         }
 
         $category->update();
+        if ($category) {
+            return redirect('admin/catalogs')->with('message','Catalog Updated Successfully');
+        } else {
+            return back()->withInput()->withErrors($request->validated());
+        }
 
-        return redirect('admin/catalogs')->with('message','Catalog Updated Successfully');
     }
 
     /**

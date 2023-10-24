@@ -29,7 +29,8 @@ class StoreProductTypeRequest extends FormRequest
             'description'=>[
                 'required',
                 'string',
-                'max:255'
+                'max:255',
+                'min:15'
             ],
             'image'=>[
                 'nullable',

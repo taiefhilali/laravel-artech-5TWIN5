@@ -22,7 +22,7 @@
           </a>
           <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/products"> View List </a></li>
-            <li><a class="dropdown-item" href="/users/1/favorites"> Favorites </a></li>
+            <li><a class="dropdown-item" href="/users/favorites"> Favorites </a></li>
           </ul>
         </li>
 		
@@ -48,15 +48,17 @@
 				
 
         <!-- Authentication -->
-        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
+        <form method="POST" action="{{ route('logout') }}" style="margin-top: 4px;">
+    @csrf
 
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
+    <x-dropdown-link :href="route('logout')"
+       
+            onclick="event.preventDefault();
+                        this.closest('form').submit();">
+        {{ __('Log Out') }}
+    </x-dropdown-link>
+</form>
+
 
         <!-- <li class="nav-item">
   <form ction="{{ route('logout') }}"  method="POST">

@@ -13,7 +13,7 @@
                     <div class="col-lg-11 col-md-10 ps-0 col-10">
                         <div class="profilei1r p-3">
                             <h6 class="col_light font_14">
-                                <span class="fw-bold">{{ $feedback->name}}</span>  {{ $feedback->date}}
+                                <span class="fw-bold">siwar</span>  {{ $feedback->date}}
                                 <span class="pull-right col_yell">
                                     <!-- Your star rating display code goes here -->
                                 </span>
@@ -277,6 +277,10 @@ $('form.update-feedback-form').on('submit', function (e) {
     });
 });
 
+document.querySelector('form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  // Submit the form using AJAX or another method
+});
 
 
 

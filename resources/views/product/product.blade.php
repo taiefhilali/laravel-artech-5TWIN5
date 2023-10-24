@@ -88,7 +88,7 @@
       </i> <span class="ps-3 pe-3">Add To Cart</span>
     </a>
   </h6>
-	  <p class="mt-3 mb-2">The product is already in the wishlist! <a class="col_pink hover_white" href="#">Browse Wishlist</a></p>
+	  <p class="mt-3 mb-2">Check Out your wishlist! <a class="col_pink hover_white" href="/users/favorites">Browse Wishlist</a></p>
 	  <p>Category: {{$productType->name}}</p>
 	  <ul class="social-network social-circle mb-0">
 					<li><a href="#" class="icoRss" title="Rss"><i class="fa fa-skype"></i></a></li>
