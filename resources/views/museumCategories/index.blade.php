@@ -7,9 +7,19 @@
 
 <div class="card">
 <div class="card-header">
+  <div class="row justify-content-between" style="width:100%">
+  <div class="col-auto">
   <h4>
     Museums' categories list
   </h4>
+  </div>
+
+  <div class="col-auto">
+        <a href="{{url('/category/create')}}" class="btn btn-warning">
+                    New museum category
+        </a>
+        </div>
+</div>
 </div>
 <div class="card-datatable table-responsive my-2">
       <table class="invoice-list-table table">
