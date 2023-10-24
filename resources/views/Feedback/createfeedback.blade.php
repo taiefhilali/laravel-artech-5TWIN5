@@ -39,20 +39,7 @@
         </div>
     </div>
     <div class="profilei2 row mt-3">
-        <div class="col-md-6">
-            <h6 class="mb-3">Name <span class="text-danger">*</span></h6>
-            <input class="form-control" type="text" name="name">
-            @error('name')
-                                <span class="text-danger">{{ $message }}</span>
-              @enderror
-        </div>
-        <div class="col-md-6">
-            <h6 class="mb-3">Email <span class="text-danger">*</span></h6>
-            <input class="form-control" type="text" name="email">
-            @error('email')
-                                <span class="text-danger">{{ $message }}</span>
-              @enderror
-        </div>
+        
         <div class="form-group">
             <label for="date">Date:</label>
             <input type="date" name="date" id="date" class="form-control" required>
