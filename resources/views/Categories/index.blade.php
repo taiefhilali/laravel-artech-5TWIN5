@@ -1,7 +1,41 @@
 @extends('layouts.layout')
 
 @section('content')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <h1>Categories</h1>
+    <div id="search-results"></div>
+
+    <div class="mb-3">
+    <label for="search" class="form-label">Search Categories</label>
+    <input type="text" name="search" id="search" class="form-control">
+</div>
+
+
+<script>
+  $(document).ready(function () {
+    $('#search').on('input', function () {
+        var query = $(this).val();
+
+        if (query.length >= 3) {
+            $.ajax({
+                url: "{{ route('categories.search') }}",
+                method: 'GET',
+                data: {
+  query: query,
+  _token: '{{ csrf_token() }}'
+},
+                success: function (data) {
+                    $('#search-results').html(data);
+                }
+            });
+        } else {
+            $('#search-results').html('');
+        }
+    });
+});
+
+</script>
 
     <table class="table">
         <thead>
@@ -35,4 +69,5 @@
             @endforeach
         </tbody>
     </table>
+
 @endsection

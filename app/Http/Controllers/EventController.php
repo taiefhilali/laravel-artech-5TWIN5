@@ -1,18 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Participant;
+use Auth;
 use Illuminate\Support\Facades\File; 
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use SweetAlert2\SweetAlert2;
+
 
 class EventController extends Controller
-{
-    public function index()
+{public function index()
     {
         $events = Event::all();
-
-        return view('Event.index', ['events' => $events]);
+        $user = Auth::user();
+    
+        return view('Event.index', ['events' => $events, 'user' => $user]);
     }
     public function indexb()
     {
@@ -34,11 +38,11 @@ class EventController extends Controller
     {
         // Validate the form data
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'date' => 'required|date',
-            'owner' => 'required|string|max:255',
-          //  'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'name' => 'required|string|max:255|min:5',
+            'description' => 'required|string|min:10',
+            'date' => 'required|date|after_or_equal:today',
+            'owner' => 'required|string|max:10',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
     
         // Check if the event already exists
@@ -69,6 +73,7 @@ class EventController extends Controller
               // Create a new event using the validated data
               $event = Event::create($validatedData);
               $event->category()->associate($request->input('category_id'));
+              // Display a sweetalert2 message
     
         // Redirect to a success page or route
         return redirect()->route('Event.index')->with('success', 'Event created successfully.');
@@ -81,8 +86,10 @@ class EventController extends Controller
 
         if ($event) {
             $categories = Category::all();
-            return view('Event.show', compact('event', 'categories'));
-        } else {
+            return view('event.show', [
+                'event' => $event,
+                'user' => Auth::user(),
+            ]);        } else {
             return redirect()->route('Event.index')->with('error', 'Event not found.');
         }
     }
@@ -102,8 +109,8 @@ class EventController extends Controller
         // Validate the form data
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'date' => 'required|date',
+            'description' => 'required|string|min:10',
+            'date' => 'required|date|after_or_equal:today',
             'owner' => 'required|string|max:255',
             'category_id' => 'exists:categories,id', // Validate that the category exists
         ]);
@@ -153,6 +160,29 @@ class EventController extends Controller
         Event::destroy($id);
         return redirect()->route('Event.indexb');
     }
+    // public function participate(Event $event)
+    // {
+    //     $user = Auth::user();
 
+    //     $participant = new Participant();
+    //     $participant->user_id = $user->id;
+    //     $participant->event_id = $event->id;
+    //     $participant->save();
+
+    //     return redirect()->route('Event.show', $event);
+    // }
+
+    // public function unparticipate(Event $event)
+    // {
+    //     $user = Auth::user();
+
+    //     $participant = $user->participant()->where('event_id', $event->id)->first();
+
+    //     if ($participant) {
+    //         $participant->delete();
+    //     }
+
+    //     return redirect()->route('Event.show', $event);
+    // }
 
 }

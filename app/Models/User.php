@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -52,16 +53,41 @@ class User extends Authenticatable
 {
     return $this->belongsToMany(Product::class, 'favorites');
 }
-public function participant()
+
+public function participations()
 {
-    return $this->hasOne(Participant::class);
+    return $this->belongsToMany(Event::class, 'participations');
 }
-// public function isParticipatingInEvent($event)
+
+// public function participant()
 // {
-//     // Check if the user is participating in the event
-//     return $this->participant->where('event_id', $event->id)->exists();
+//     return $this->hasOne(Participant::class);
 // }
+
+public function isParticipatingInEvent($event)
+{
+
+    // if (!Auth::user()) {
+    //     return false;
+    // }
+
+    // // Check if the user is participating in the event
+
+    // return $this->participant->where('event_id', $event->id)->exists();
+
+}
   
+
+public function showParticipateButton($event)
+{
+
+    if (!$this->isParticipatingInEvent($event)) {
+        return true;
+    }
+
+    return false;
+}
+
 public function feedback()
 {
     return $this->hasMany(Feedback::class);

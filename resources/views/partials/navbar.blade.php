@@ -33,6 +33,8 @@
           <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="events"> Event</a></li>
             <li><a class="dropdown-item border-0" href="events/create"> Add a new Event </a></li>
+            <li><a class="dropdown-item border-0" href="participations"> Participated Events</a></li>
+           
           </ul>
         </li>
 		
