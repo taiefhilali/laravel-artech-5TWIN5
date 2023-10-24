@@ -34,9 +34,11 @@ class ProductController extends Controller
     {
         $productType = ProductType::all();
         
+        
         $products = Product::when($request->categories, function ($query) use ($request) {
             return $query->where('product_type_id', $request->categories);
-        })->get();
+        })->paginate(3); // Add the paginate method here
+    
     
         return view('product.products', compact('productType', 'products'));
     }
@@ -185,5 +187,43 @@ class ProductController extends Controller
 
     return redirect()->back()->with('success', 'Produit ajouté au panier!');
 }
+
+// public function addToCart(Request $request, $productId) {
+//     // Trouver le produit par son ID
+//     $product = Product::find($productId);
+
+//     // Ajoutez le produit au panier
+//     $cart = new Cart;
+//     $cart->product_id = $product->id;
+//     $cart->user_id = 3;
+//     $cart->quantity = $request->input('quantity', 1); // Default à 1 si non
+
+//     $cart->save();
+
+//     // Vérifiez si une commande existe déjà pour cet utilisateur
+//     $commande = Commande::where('user_id', 3)->where('status', 'pending')->first();
+
+//     // Si aucune commande n'existe, créez-en une nouvelle
+//     if(!$commande) {
+//         $commande = new Commande;
+//         $commande->user_id = 3;
+//         // $commande->status = 'pending'; // Vous pouvez définir le statut par défaut comme 'pending'
+       
+//         $commande->save();
+//     }
+
+//     // Liez le produit à la commande
+//     $commande->products()->attach($product->id); 
+
+//     // Redirigez l'utilisateur avec un message de réussite
+//     return redirect()->back()->with('success', 'Produit ajouté au panier et à la commande avec succès!');
+// }
+
+
+public function showCommandeWithProducts($id) {
+    $commande = Commande::with('products')->find($id);  // Chargez la relation 'products' avec la commande
+    return view('commande/showPC', ['commande' => $commande]);
+}
+
 
 }

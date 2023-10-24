@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .blog_1ri {
     margin-bottom: 40px;
   }
@@ -24,4 +28,3 @@
   padding: 20px;
   border-radius: 5px;
 }
-
