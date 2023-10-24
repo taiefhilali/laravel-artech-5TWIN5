@@ -33,7 +33,8 @@ class UpdateProductTypeRequest extends FormRequest
             'description'=>[
                 'required',
                 'string',
-                'max:255'
+                'max:255',
+                'min:15',
             ],
             'artist'=>[
                 'required',

@@ -182,6 +182,7 @@
                         <li><a class="d-flex align-items-center" href="/admin/products"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List of Products</span></a>
                         </li>
                         <li><a class="d-flex align-items-center" href="/admin/createProduct"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">Add Product</span></a>
+                        <li><a class="d-flex align-items-center" href="/statistics"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">Basic Statistics</span></a>
                         </li>
                     </ul>
                 </li>

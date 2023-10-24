@@ -115,6 +115,7 @@ Route::post('admin/addProduct', [ProductController::class, 'store'])->name('prod
 Route::get('/admin/product/{Product}/edit', [ProductController::class, 'edit'])->name('product.edit');
 Route::put('/admin/editProduct/{Product}', [ProductController::class, 'update'])->name('product.update');
 Route::post('/admin/deleteProduct', [ProductController::class, 'destroy'])->name('product.destroy');
+Route::get('/statistics', [ProductController::class, 'showStatistics'])->name('product.statistic');
 
 //Products_User
 Route::get('/products', [ProductController::class, 'indexUser'])->name('product.indexUser');
@@ -213,7 +214,7 @@ Route::view('/contact', 'layouts.contact')->name('layouts.contact');
 
 //favorite_Products
 
-Route::get('users/{userId}/favorites', [UserFavoriteProductsController::class, 'index'])->name('product.indexFav');;
+Route::get('users/favorites', [UserFavoriteProductsController::class, 'index'])->name('product.indexFav');;
 Route::post('/user/addfav/{productId}', [UserFavoriteProductsController::class, 'add'])->name('fav.add');
 Route::delete('user/removefav/{productId}', [UserFavoriteProductsController::class, 'remove'])->name('product.removeFav');
 

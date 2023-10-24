@@ -22,7 +22,7 @@
           </a>
           <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/products"> View List </a></li>
-            <li><a class="dropdown-item" href="/users/1/favorites"> Favorites </a></li>
+            <li><a class="dropdown-item" href="/users/favorites"> Favorites </a></li>
           </ul>
         </li>
 		
