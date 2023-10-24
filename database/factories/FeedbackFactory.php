@@ -21,8 +21,6 @@ class FeedbackFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->sentence(3), // Generate a random sentence as the Feedback name
-            'email' => $this->faker->email, // Use $this->faker->email to generate a random email
             'date' => now(), 
             'description' => $this->faker->paragraph, // Generate a random paragraph as the Feedback description
             'ratings' => $this->faker->numberBetween(1, 5), 

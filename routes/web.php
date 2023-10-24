@@ -122,6 +122,7 @@ Route::get('/products', [ProductController::class, 'indexUser'])->name('product.
 Route::get('/product/{id}', [ProductController::class, 'indexP'])->name('product.product');
 
  //feedback
+ 
 Route::post('/product/{productId}/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store');
 Route::get('/product/{productId}/feedback/create', [FeedbackController::class, 'create'])->name('feedback.create');
 Route::delete('/products/{productId}/feedback/{feedbackId}', [FeedbackController::class, 'destroy'])->name('feedback.destroy');
@@ -130,6 +131,7 @@ Route::get('/statisticscomment', [FeedbackController::class, 'showStatistics'])-
 
 
 //comments
+
 Route::post('/comments/{feedbackId}/store', [CommentController::class, 'store'])->name('comments.store');
 
 
