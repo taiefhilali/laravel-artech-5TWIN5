@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
- @vite(['resources/assetsfront/css/bootstrap.min.css'])
+    @vite(['resources/assetsfront/css/bootstrap.min.css'])
     @vite(['resources/assetsfront/css/font-awesome.min.css'])
     @vite(['resources/assetsfront/css/global.css'])
     @vite(['resources/assetsfront/css/index.css'])
@@ -44,12 +44,12 @@
   <div class="row center_o1">
    <div class="col-md-5">
      <div class="center_o1l">
-	  <h2 class="mb-0">Blog</h2>
+	  <h2 class="mb-0">Events</h2>
 	 </div>
    </div>
    <div class="col-md-7">
      <div class="center_o1r text-end">
-	  <h6 class="mb-0"><a href="#">Home</a> <span class="me-2 ms-2"><i class="fa fa-caret-right"></i></span> Blog</h6>
+	  <h6 class="mb-0"><a href="#">Home</a> <span class="me-2 ms-2"><i class="fa fa-caret-right"></i></span> Events</h6>
 
 
 	 </div>

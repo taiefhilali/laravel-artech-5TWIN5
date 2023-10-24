@@ -9,12 +9,7 @@
         @foreach($feedbacks as $index => $feedback)
             @if ($index < 5)
                 <div class="profilei1 row mt-4">
-                    <div class="col-lg-1 col-md-2 col-2">
-                        <div class="profilei1l">
-                            <img src="img/51.jpg" class="w-100" alt="abc">
-                        </div>
-                    </div>
-
+                   
                     <div class="col-lg-11 col-md-10 ps-0 col-10">
                         <div class="profilei1r p-3">
                             <h6 class="col_light font_14">
@@ -24,9 +19,11 @@
                                 </span>
                             </h6>
 
-                           
+                        
+                        
+                            <a href="#" class="edit-icon fas fa-edit" data-feedback-id="{{ $feedback->id }}"  style="float: right;margin-left:15px; cursor: pointer;"></a>
 
-
+                     <!-- feedback edit icon -->
   <form method="POST" action="{{ route('feedback.destroy', ['productId' => $product->id, 'feedbackId' => $feedback->id]) }}" class="delete-feedback-form" data-feedback-id="{{ $feedback->id }}">
     @csrf
     @method('DELETE')
@@ -36,63 +33,25 @@
 
                             <br>
 
-
                             <p id="feedback-description-{{ $feedback->id }}">{{ $feedback->description }}</p>
-
-                            <input type="text" class="edit-description-input d-none" id="edit-feedback-description-{{ $feedback->id }}" value="{{ $feedback->description }}">
+                            <form method="POST" action="{{ route('feedback.update', ['productId' => $product->id, 'feedbackId' => $feedback->id]) }}" class="update-feedback-form " data-feedback-id="{{ $feedback->id }}">
+                
+    @csrf
+    @method('PUT')
+    <input type="text" class="edit-description-input d-none" id="edit-feedback-description-{{ $feedback->id }}" value="{{ $feedback->description }}" style="width: 850px; background-color: #ffffff!important; height: 50px;  border: 1px solid #252525!important;">
+</form>
                             <a href="#" class="comment-icon fas fa-comment" data-feedback-id="{{ $feedback->id }}" style="float: right; font-size: 20px;   cursor: pointer;"></a>
                             <a href="#" class="view-comments-icon fas fa-eye" data-feedback-id="{{ $feedback->id }}" style="float: left; cursor: pointer; margin-bottom: 10px; margin-left: 2px; font-size: 20px;"></a>
 <br>
                         </div>
 
-                        <!-- form for create comment -->
+                        <!--  comment section -->
 
-                        <div class="comment-input" style="display: none;">
-    <form method="POST" action="{{ route('comments.store', ['feedbackId' => $feedback->id]) }}">
-        @csrf
-        <input type="hidden" name="feedback_id" value="{{ $feedback->id }}">
-        <input type="text" id="comment-input-{{ $feedback->id }}" class="form-control" name="descriptionComment" style="background-color: #252525 !important; color: white !important;" placeholder="Reply">
-        <button type="submit" class="btn btn-primary" class="btn btn-primary mt-3" id="show-more-btn" style="background-color: #a81c51; border-color:#a81c51; color: #fff;">Submit Comment</button>
-    </form>
-</div>
+                        @include('Feedback.comments')
 
 
 
-<!-- end form for create comment -->
-
-
-                    </div>
-                </div>
-
-
-
-               
-                <div class="view-comments-container" id="view-comments-container-{{ $feedback->id }}" style="display: none">
-    @foreach($feedback->comments as $comment)
-        <div class="profilei1r p-3">
-            <h6 class="col_light font_14">
-                <span style="margin-bottom: 12px;" class="fw-bold">{{ $comment->dateComment }}</span>
-                <br>
-                <p style="margin-top: 16px; font-size: 20px;">
-    {{ $comment->descriptionComment }}
-</p>
-
-            </h6>
-             <!-- Delete form for each comment -->
-        <form method="POST" action="{{ route('comments.destroy', ['feedbackId' => $feedback->id, 'commentId' => $comment->id]) }}"  style="display: inline;"   class="delete-comment-form" data-feedback-id="{{ $comment->id }}">
-            @csrf
-            @method('DELETE')
-            <a href="#" class="delete-icon fas fa-trash-alt delete-feedback" data-feedback-id="{{ $comment->id }}" style="float: right; cursor: pointer;"></a>
-
-        </form>
-
-        <br>
-    </div>
-    @endforeach
-</div>
-
-
-
+                        <!--  comment section -->
 
 
 
@@ -113,38 +72,44 @@
                                 <span class="pull-right col_yell">
                                 </span>
                             </h6>
+<!-- feedback edit icon -->
+<a href="#" class="edit-icon fas fa-edit" data-feedback-id="{{ $feedback->id }}"  style="float: right;margin-left:15px; cursor: pointer;"></a>
+                       
+                          <!-- feedback edit icon -->
 
-                            <div class="edit-feedback-icons">
-                          
 
-</div>
+
 
 
                                <form method="POST" action="{{ route('feedback.destroy', ['productId' => $product->id, 'feedbackId' => $feedback->id]) }}" class="delete-feedback-form" data-feedback-id="{{ $feedback->id }}">
-    @csrf
-    @method('DELETE')
-    <a href="#" class="delete-icon fas fa-trash-alt delete-feedback" data-feedback-id="{{ $feedback->id }}" style="float: right; cursor: pointer;"></a>
-</form>
-  
+                                 @csrf
+                               @method('DELETE')
+                    <a href="#" class="delete-icon fas fa-trash-alt delete-feedback" data-feedback-id="{{ $feedback->id }}" style="float: right; cursor: pointer;"></a>
+                           
+                </form>
+
                             <br>
                             <p id="feedback-description-{{ $feedback->id }}">{{ $feedback->description }}</p>
-
-<input type="text" class="edit-description-input d-none" id="edit-feedback-description-{{ $feedback->id }}" value="{{ $feedback->description }}">
-<a href="#" class="comment-icon fas fa-comment" data-feedback-id="{{ $feedback->id }}" style="float: right; font-size: 20px;   cursor: pointer;"></a>
-<a href="#" class="view-comments-icon fas fa-eye" data-feedback-id="{{ $feedback->id }}" style="float: left; cursor: pointer; margin-bottom: 10px; margin-left: 2px; font-size: 20px;"></a>
+                            <form method="POST" action="{{ route('feedback.update', ['productId' => $product->id, 'feedbackId' => $feedback->id]) }}" class="update-feedback-form " data-feedback-id="{{ $feedback->id }}">
+                
+    @csrf
+    @method('PUT')
+    <input type="text" class="edit-description-input d-none" id="edit-feedback-description-{{ $feedback->id }}" value="{{ $feedback->description }}" style="width: 850px; background-color: #ffffff!important; height: 50px;  border: 1px solid #252525!important;">
+</form>
+                            <a href="#" class="comment-icon fas fa-comment" data-feedback-id="{{ $feedback->id }}" style="float: right; font-size: 20px;   cursor: pointer;"></a>
+                            <a href="#" class="view-comments-icon fas fa-eye" data-feedback-id="{{ $feedback->id }}" style="float: left; cursor: pointer; margin-bottom: 10px; margin-left: 2px; font-size: 20px;"></a>
 <br>
-</div>
+                        </div>
 
-<!-- form for create comment -->
-<div class="comment-input" style="display: none;">
-    <form method="POST" action="{{ route('comments.store', ['feedbackId' => $feedback->id]) }}">
-        @csrf
-        <input type="hidden" name="feedback_id" value="{{ $feedback->id }}">
-        <input type="text" id="comment-input-{{ $feedback->id }}" class="form-control" name="descriptionComment" style="background-color: #252525 !important; color: white !important;" placeholder="Reply">
-        <button type="submit" class="btn btn-primary">Submit Comment</button>
-    </form>
-</div>
-<!-- end form for create comment -->
+  <!--  comment section -->
+
+  @include('Feedback.comments')
+
+
+
+<!--  comment section -->
+
+
 
 
 
@@ -192,41 +157,7 @@
                 });
             }
 
-//  $('.edit-feedback').on('click', function () {
-//     var feedbackId = $(this).data('feedback-id');
-//     var productId = $(this).data('product-id'); // Assuming you have data-product-id attribute
 
-//     $('#feedback-description-' + feedbackId).hide();
-//     $('#edit-feedback-description-' + feedbackId).removeClass('d-none').data('product-id', productId).val($('#feedback-description-' + feedbackId).text()).focus();
-// });
-
-// $('form.edit-feedback-form').on('submit', function (e) {
-//     e.preventDefault();
-
-//     var feedbackId = $(this).data('feedback-id');
-//     var productId = $('#edit-feedback-description-' + feedbackId).data('product-id');
-
-//     $.ajax({
-//         url: $(this).attr('action'),
-//         method: $(this).attr('method'),
-//         data: {
-//             _token: $(this).find('input[name="_token"]').val(),
-//             _method: $(this).find('input[name="_method"]').val(),
-//             description: $('#edit-feedback-description-' + feedbackId).val(),
-//             productId: productId,
-//             feedbackId: feedbackId
-//         },
-//         success: function (response) {
-//             $('#feedback-description-' + feedbackId).text(response.description);
-//             $('#edit-feedback-description-' + feedbackId).addClass('d-none');
-//             $('#feedback-description-' + feedbackId).show();
-//             alert('Feedback updated successfully!');
-//         },
-//         error: function (error) {
-//             console.error(error);
-//         }
-//     });
-// });
 
 
             $(document).on('click', 'form.delete-feedback-form .delete-icon', function (e) {
@@ -253,6 +184,7 @@
             });
 
 
+
             $(document).on('click', 'form.delete-comment-form .delete-icon', function (e) {
                 e.preventDefault();
 
@@ -267,6 +199,7 @@
                         _method: deleteForm.find('input[name="_method"]').val(),
                     },
                     success: function (response) {
+                        
                         deleteForm.closest('.profilei1r').remove();
                         alert('Feedback deleted successfully!');
                     },
@@ -278,10 +211,11 @@
 
 
             $(document).ready(function() {
-        $(".comment-icon").click(function() {
-            $(".comment-input").toggle();
-            $(".view-comments-container").hide(); // Hide view comments container when showing comment input
-        });
+                $(".comment-icon").click(function() {
+        var feedbackId = $(this).data('feedback-id');
+        $("#comment-input-" + feedbackId).toggle(); 
+        $(".view-comments-container").hide(); 
+    });
         $(".view-comments-icon").click(function() {
             var feedbackId = $(this).data("feedback-id");
             $("#view-comments-container-" + feedbackId).toggle();
@@ -289,7 +223,112 @@
 
         
     });
-        })
+
+
+    // $('.edit-feedback').on('click', function () {
+        
+    //     var feedbackId = $(this).data('feedback-id');
+    //     $('#feedback-description-' + feedbackId).hide();
+    //     $('#edit-feedback-description-' + feedbackId).removeClass('d-none');
+    //     $('#edit-feedback-description-' + feedbackId).focus();
+    // });
+
+    $('.edit-icon').on('click', function () {
+  
+        var feedbackId = $(this).data('feedback-id');
+      $('#feedback-description-' + feedbackId).hide();
+      $('#edit-feedback-description-' + feedbackId).removeClass('d-none');
+      $('#edit-feedback-description-' + feedbackId).focus();
+});
+
+
+$('form.update-feedback-form').on('submit', function (e) {
+    e.preventDefault(); 
+    var feedbackId = $(this).data('feedback-id');
+    var form = $(this); 
+
+    $.ajax({
+        url: form.attr('action'),
+        method: form.attr('method'),
+        headers: {
+            'Accept': 'application/json',
+        },
+        data: {
+            _token: form.find('input[name="_token"]').val(),
+            _method: form.find('input[name="_method"]').val(),
+            description: $('#edit-feedback-description-' + feedbackId).val()
+        },        success: function (response) {
+            $('#feedback-description-' + feedbackId).text(response.feedback.description);
+
+            $('#edit-feedback-description-' + feedbackId).addClass('d-none');
+            $('#feedback-description-' + feedbackId).show().focus();
+
+            $('#feedback-description-' + feedbackId).fadeIn(500);
+
+            alert('Comment updated successfully!');
+        },
+        error: function (error) {
+            if (error.responseJSON) {
+                alert(error.responseJSON.message);
+            } else {
+                alert('An unknown error occurred.');
+            }
+        }
+    });
+});
+
+
+
+
+
+
+
+$('form.update-comment-form').on('submit', function (e) {
+    e.preventDefault(); 
+
+    var commentId = $(this).data('comment-id');
+    var form = $(this); 
+
+    $.ajax({
+        url: form.attr('action'),
+        method: form.attr('method'),
+        headers: {
+            'Accept': 'application/json',
+        },
+        data: {
+            _token: form.find('input[name="_token"]').val(),
+            _method: form.find('input[name="_method"]').val(),
+            descriptionComment: $('#edit-comment-description-' + commentId).val()
+        },        success: function (response) {
+            $('#comment-description-' + commentId).text(response.comment.descriptionComment);
+
+            $('#edit-comment-description-' + commentId).addClass('d-none');
+            $('#comment-description-' + commentId).show().focus();
+
+            $('#comment-description-' + commentId).fadeIn(500);
+
+            alert('Comment updated successfully!');
+        },
+        error: function (error) {
+            if (error.responseJSON) {
+                alert(error.responseJSON.message);
+            } else {
+                alert('An unknown error occurred.');
+            }
+        }
+    });
+});
+
+
+$('.edit-icon').on('click', function () {
+    var commentId = $(this).data('comment-id');
+    $('#comment-description-' + commentId).hide();
+    $('#edit-comment-description-' + commentId).removeClass('d-none');
+    $('#edit-comment-description-' + commentId).focus();
+});
+
+    
+    })
     </script>
 
 

@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\ClientLivraisonController;
+use App\Http\Controllers\LivraisonController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use  App\Http\Controllers\TestController;
-use  App\Http\Controllers\HomeController;
+
 
 use  App\Http\Controllers\CommandeController;
 use  App\Http\Controllers\CartController;
@@ -11,17 +14,12 @@ use  App\Http\Controllers\CartController;
 use  App\Http\Controllers\ProductController;
 use  App\Http\Controllers\ProductTypeController;
 use  App\Http\Controllers\CategoryController;
+use  App\Http\Controllers\EventController;
+
 use  App\Http\Controllers\UserFavoriteProductsController;
-
 use  App\Http\Controllers\FeedbackController;
-
-
 use  App\Http\Controllers\CommentController;
 
-
-
-
-use  App\Http\Controllers\EventController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,11 +35,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/page1', function () {
-    return view('page');
-});
-Route::get('/register', function () {
-    return view('form');
+Route::get('dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('admin.dashboard');
+
+
+// Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+//     ->name('logout');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 
@@ -60,6 +65,24 @@ Route::delete('/commande/delete/{id}', [CommandeController::class, 'destroy'])->
 Route::get('/admin/carts', [CartController::class, 'index'])->name('cart.indexB');
 Route::get('/cart/create', [CartController::class, 'create'])->name('cart.create');
 
+
+// Route::view('/admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
+//Commandes
+Route::get('/commande', [CommandeController::class, 'index'])->name('commande.indexB');
+Route::get('/commande/create', [CommandeController::class, 'create'])->name('commande.create');
+
+Route::post('/newCommande',[CommandeController::class,'store'])->name('commande.store');
+Route::get('/commande/{id}/edit',[CommandeController::class,'edit'])->name('commande.edit');
+Route::put('/commande/update/{id}', [CommandeController::class,'update'])->name('commande.update');
+Route::delete('/commande/delete/{id}', [CommandeController::class, 'destroy'])->name('commande.destroy');
+Route::get('/showPC/{id}', [ProductController::class, 'showCommandeWithProducts'])->name('commandes.showPC');
+
+
+//Carts (Back)
+Route::get('/admin/carts', [CartController::class, 'index'])->name('cart.indexB');
+Route::get('/cart/create', [CartController::class, 'create'])->name('cart.create');
+Route::get('/cart/create', [CartController::class, 'create'])->name('cart.create');
+
 Route::post('/admin/newcart',[CartController::class,'store'])->name('cart.store');
 Route::get('/cart/{id}/edit',[CartController::class,'edit'])->name('cart.editB');
 Route::put('/cart/update/{id}', [CartController::class,'update'])->name('cart.update');
@@ -70,6 +93,14 @@ Route::post('/product/{productId}/add-to-cart', [ProductController::class, 'addT
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.cart');
 // Route::post('/cart/update/{cartItemId}', [CartController::class, 'updateProductInCart'])->name('cart.update');
 Route::put('cart/update/{id}', [CartController::class, 'updateProductInCart'])->name('cart.update');
+//Ca marche pas
+Route::post('/cart/confirm', [CartController::class, 'confirm'])->name('cart.confirm');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cart/export-to-pdf', [CartController::class, 'exportCartToPDF'])->name('cart.exportToPDF');
+});
+
+Route::get('/cart/export-to-pdf', [CartController::class, 'exportCartToPDF'])->name('cart.exportCartToPDF');
+
 
 
 //Products_Admin
@@ -84,21 +115,27 @@ Route::post('/admin/deleteProduct', [ProductController::class, 'destroy'])->name
 Route::get('/products', [ProductController::class, 'indexUser'])->name('product.indexUser');
 Route::get('/product/{id}', [ProductController::class, 'indexP'])->name('product.product');
 
-// //feedback
+ //feedback
 Route::post('/product/{productId}/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store');
 Route::get('/product/{productId}/feedback/create', [FeedbackController::class, 'create'])->name('feedback.create');
 Route::delete('/products/{productId}/feedback/{feedbackId}', [FeedbackController::class, 'destroy'])->name('feedback.destroy');
+Route::put('/feedback/{productId}/{feedbackId}', [FeedbackController::class, 'update'])->name('feedback.update');
 
+
+//comments
 Route::post('/comments/{feedbackId}/store', [CommentController::class, 'store'])->name('comments.store');
+
+
+Route::put('/comments/{feedbackId}/{commentId}', [CommentController::class, 'update'])->name('comments.update');
 
 Route::get('/comments/create/{feedbackId}', [CommentController::class, 'create'])->name('comments.create');
 
-Route::get('/comments/{feedbackId}', [CommentController::class, 'show'])->name('comments.show');
 
 Route::delete('/comments/{feedbackId}/{commentId}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 // Route::get('/feedback/{productId}/edit/{feedbackId}', [FeedbackController::class, 'edit'])->name('feedback.edit');
 // Route::put('/feedback/{productId}/feedback/{feedbackId}', [FeedbackController::class, 'update'])->name('feedback.update');
+
 
 //Catalog_Admin
 Route::get('/admin/catalogs', [ProductTypeController::class, 'index'])->name('catalog.indexProductType');
@@ -126,9 +163,23 @@ Route::get('/events/{id}', [EventController::class, 'show'])->name('Event.show')
 Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('Event.destroy');
 Route::get('events/{event}/edit', [EventController::class, 'edit'])->name('Event.edit');
 Route::put('events/{event}', [EventController::class, 'update'])->name('Event.update');
+Route::get('events/{event}/participate', [EventController::class, 'participate'])->name('Event.participate');
+Route::get('event/unparticipate/{event}', [EventController::class, 'unparticipate'])->name('Event.unparticipate');
 
+//livraison
+Route::get('/livraisons', [LivraisonController::class, 'index'])->name('Livraisons');
+Route::post('/livraison/create', [LivraisonController::class, 'store'])->name('livraison.store');
+Route::get('/livraison/{livraisonId}', [LivraisonController::class,'getLivraisonDetails']);
+Route::put('/livraison/{livraisonId}/edit', [LivraisonController::class,'edit']);
+Route::delete('/livraison/{livraisonId}/delete', [LivraisonController::class,'delete']);
+Route::get('/calendar', [LivraisonController::class,'calendriertunis']);
+Route::get('/livreur/livraisonsbase', [ClientLivraisonController::class, 'index'])->name('LivraisonsC');
+Route::get('/livreur/livraisonslist', [ClientLivraisonController::class, 'index2'])->name('LivraisonsList');
+Route::put('/livraison/{livraisonId}/accept', [ClientLivraisonController::class,'accepter']);
+Route::get('/livraison/{livraisonId}/commandes', [ClientLivraisonController::class,'getCommandesLiv']);
 
-
+Route::put('/livraison/commande/{id}/annuler', [ClientLivraisonController::class,'annulerCommande']);
+Route::put('/livraison/commande/{id}/payee', [ClientLivraisonController::class,'payerCommande']);
 
 
 
@@ -151,6 +202,9 @@ Route::view('/checkout', 'cart.checkout')->name('cart.checkout');
 Route::view('/contact', 'layouts.contact')->name('layouts.contact');
 
 
+// Route::group(['middleware' => 'client'], function () {
+//     // Vos routes pour les clients ici
+// });
 
 //favorite_Products
 
@@ -158,3 +212,13 @@ Route::get('users/{userId}/favorites', [UserFavoriteProductsController::class, '
 Route::post('/user/addfav/{productId}', [UserFavoriteProductsController::class, 'add'])->name('fav.add');
 Route::delete('user/removefav/{productId}', [UserFavoriteProductsController::class, 'remove'])->name('product.removeFav');
 
+
+Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+->name('logout');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
