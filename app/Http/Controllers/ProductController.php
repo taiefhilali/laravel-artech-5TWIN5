@@ -37,7 +37,7 @@ class ProductController extends Controller
         
         $products = Product::when($request->categories, function ($query) use ($request) {
             return $query->where('product_type_id', $request->categories);
-        })->paginate(3); // Add the paginate method here
+        })->paginate(4); // Add the paginate method here
     
     
         return view('product.products', compact('productType', 'products'));
@@ -56,38 +56,42 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(UpdateProductTypeRequest $request)
-    {
-        $validatedData = $request->validated();
-    
-        $category = ProductType::findOrFail($validatedData['product_type_id']);
-    
-        $productData = [
-            'product_type_id' => $validatedData['product_type_id'],
-            'title' => $validatedData['title'],
-            'description' => $validatedData['description'],
-            'artist' => $validatedData['artist'],
-            'dimensions' => $validatedData['dimensions'],
-            'quantity' => $validatedData['quantity'],
-            'price' => $validatedData['price'],
-            'medium' => $validatedData['medium'], // Set the 'medium' attribute
-            'creation_date' => $validatedData['creation_date'],
-        ];
-    
-        if ($request->hasFile('image_url')) {
-            $file = $request->file('image_url');
-            $ext = $file->getClientOriginalExtension();
-            $fileName = time() . '.' . $ext;
-    
-            $file->move('uploads/product/', $fileName);
-    
-            $productData['image_url'] = $fileName; // Set the 'image_url' attribute
-        }
-    
-        $product = $category->products()->create($productData);
-    
-        return redirect('admin/products')->with('message', 'Product Added Successfully');
+{
+    $validatedData = $request->validated();
+
+    $category = ProductType::findOrFail($validatedData['product_type_id']);
+
+    $productData = [
+        'product_type_id' => $validatedData['product_type_id'],
+        'title' => $validatedData['title'],
+        'description' => $validatedData['description'],
+        'artist' => $validatedData['artist'],
+        'dimensions' => $validatedData['dimensions'],
+        'quantity' => $validatedData['quantity'],
+        'price' => $validatedData['price'],
+        'medium' => $validatedData['medium'], // Set the 'medium' attribute
+        'creation_date' => $validatedData['creation_date'],
+    ];
+
+    if ($request->hasFile('image_url')) {
+        $file = $request->file('image_url');
+        $ext = $file->getClientOriginalExtension();
+        $fileName = time() . '.' . $ext;
+
+        $file->move('uploads/product/', $fileName);
+
+        $productData['image_url'] = $fileName; // Set the 'image_url' attribute
     }
-    
+
+    $product = $category->products()->create($productData);
+
+    // Check if validation failed and return with errors if necessary
+    if ($product) {
+        return redirect('admin/products')->with('message', 'Product Added Successfully');
+    } else {
+        return back()->withInput()->withErrors($request->validated());
+    }
+}
 
     /**
      * Display the specified resource.
@@ -131,24 +135,30 @@ class ProductController extends Controller
             'creation_date' => $validatedData['creation_date'],
         ];
     
-        if ($request->hasFile('image_url')) {
-            $path = 'uploads/product/' . $product->image_url;
-            if (File::exists($path)) {
-                File::delete($path);
+            if ($request->hasFile('image_url')) {
+                $path = 'uploads/product/' . $product->image_url;
+                if (File::exists($path)) {
+                    File::delete($path);
+                }
+
+                $file = $request->file('image_url');
+                $ext = $file->getClientOriginalExtension();
+                $fileName = time() . '.' . $ext;
+
+                $file->move('uploads/product/', $fileName);
+
+                $productData['image_url'] = $fileName;
             }
-    
-            $file = $request->file('image_url');
-            $ext = $file->getClientOriginalExtension();
-            $fileName = time() . '.' . $ext;
-    
-            $file->move('uploads/product/', $fileName);
-    
-            $productData['image_url'] = $fileName; 
-        }
+
     
         $product->update($productData); 
+        
+        if ($product) {
+            return redirect('admin/products')->with('message', 'Product Updated Successfully');
+        } else {
+            return back()->withInput()->withErrors($request->validated());
+        }
     
-        return redirect('admin/products')->with('message', 'Product Updated Successfully');
     }
     
     /**
@@ -224,6 +234,27 @@ public function showCommandeWithProducts($id) {
     $commande = Commande::with('products')->find($id);  // Chargez la relation 'products' avec la commande
     return view('commande/showPC', ['commande' => $commande]);
 }
+
+public function showStatistics(Request $request)
+{
+    $products = Product::all();
+    $productTypes = ProductType::all();
+
+    // Transform the data to get products per catalog with catalog names
+    $productsPerCatalog = $products->groupBy('product_type_id')
+        ->mapWithKeys(function ($items, $key) use ($productTypes) {
+            $catalogName = $productTypes->where('id', $key)->first()->name;
+            return [$catalogName => $items->count()];
+        });
+        $productsByPrice = $products->groupBy('price')->map->sum('price');
+
+        // Create statistics by artist
+        $productsByArtist = $products->groupBy('artist')->map->count();
+
+    return view('product.statistics', compact('productTypes', 'productsPerCatalog','productsByPrice','productsByArtist'));
+}
+
+
 
 
 }

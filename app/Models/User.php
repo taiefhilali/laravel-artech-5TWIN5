@@ -27,6 +27,7 @@ class User extends Authenticatable
     
     ];
 
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -76,6 +77,7 @@ public function isParticipatingInEvent($event)
 
 }
   
+
 public function showParticipateButton($event)
 {
 
@@ -86,13 +88,19 @@ public function showParticipateButton($event)
     return false;
 }
 
+public function feedback()
+{
+    return $this->hasMany(Feedback::class);
+}
+
+
 public function is_admin(): bool {
-    return $this->role === 1;
+    return $this->role === 0;
     // Si vous avez stocké 1 pour les administrateurs dans la base de données
 }
 
 public function is_client(): bool {
-    return $this->role === 0;
+    return $this->role === 1;
     // Si vous avez stocké 1 pour les administrateurs dans la base de données
 }
 

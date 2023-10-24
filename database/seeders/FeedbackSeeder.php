@@ -22,6 +22,7 @@ class FeedbackSeeder extends Seeder
                     'ratings' => rand(1, 5), // Add a random rating between 1 and 5
                     'email' => 'Feedback' . ($i + 1) . '@example.com', // Customize the email
                     'product_id' => rand(1, 100), // Generate a random category ID (adjust the range as needed)
+                    'user_id' => rand(1, 100), // Generate a random category ID (adjust the range as needed)
 
                 ]);
             }

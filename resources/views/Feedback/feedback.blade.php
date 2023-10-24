@@ -277,6 +277,10 @@ $('form.update-feedback-form').on('submit', function (e) {
     });
 });
 
+document.querySelector('form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  // Submit the form using AJAX or another method
+});
 
 
 

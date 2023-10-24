@@ -50,11 +50,12 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-       
-    // **Add a flash message to the session.**
-    session()->flash('success', 'You have successfully registered. Please log in to access the rest of the website.');
 
-    // **Redirect the user to the login page.**
-    return redirect()->route('login');
+
+        session()->flash('success', 'You have successfully registered. Please log in to access the rest of the website.');
+
+        // **Redirect the user to the login page.**
+        return redirect()->route('login');
+
     }
 }

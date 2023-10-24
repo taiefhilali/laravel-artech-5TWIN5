@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\CommandeController;
 use  App\Http\Controllers\CartController;
 
+use  App\Http\Controllers\MuseumController;
+use  App\Http\Controllers\MuseumCategoriesController;
 
 use  App\Http\Controllers\ProductController;
 use  App\Http\Controllers\ProductTypeController;
@@ -56,6 +58,9 @@ Route::view('/admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
 //Commandes
 Route::get('/commande', [CommandeController::class, 'index'])->name('commande.indexB');
 Route::get('/commande/create', [CommandeController::class, 'create'])->name('commande.create');
+
+Route::resource('/museum', MuseumController::class);
+Route::resource('/category', MuseumCategoriesController::class);
 
 Route::post('/newCommande',[CommandeController::class,'store'])->name('commande.store');
 Route::get('/commande/{id}/edit',[CommandeController::class,'edit'])->name('commande.edit');
@@ -111,6 +116,7 @@ Route::post('admin/addProduct', [ProductController::class, 'store'])->name('prod
 Route::get('/admin/product/{Product}/edit', [ProductController::class, 'edit'])->name('product.edit');
 Route::put('/admin/editProduct/{Product}', [ProductController::class, 'update'])->name('product.update');
 Route::post('/admin/deleteProduct', [ProductController::class, 'destroy'])->name('product.destroy');
+Route::get('/statistics', [ProductController::class, 'showStatistics'])->name('product.statistic');
 
 //Products_User
 Route::get('/products', [ProductController::class, 'indexUser'])->name('product.indexUser');
@@ -121,6 +127,7 @@ Route::post('/product/{productId}/feedback/store', [FeedbackController::class, '
 Route::get('/product/{productId}/feedback/create', [FeedbackController::class, 'create'])->name('feedback.create');
 Route::delete('/products/{productId}/feedback/{feedbackId}', [FeedbackController::class, 'destroy'])->name('feedback.destroy');
 Route::put('/feedback/{productId}/{feedbackId}', [FeedbackController::class, 'update'])->name('feedback.update');
+Route::get('/statisticscomment', [FeedbackController::class, 'showStatistics'])->name('statistics');
 
 
 //comments
@@ -212,7 +219,7 @@ Route::view('/contact', 'layouts.contact')->name('layouts.contact');
 
 //favorite_Products
 
-Route::get('users/{userId}/favorites', [UserFavoriteProductsController::class, 'index'])->name('product.indexFav');;
+Route::get('users/favorites', [UserFavoriteProductsController::class, 'index'])->name('product.indexFav');;
 Route::post('/user/addfav/{productId}', [UserFavoriteProductsController::class, 'add'])->name('fav.add');
 Route::delete('user/removefav/{productId}', [UserFavoriteProductsController::class, 'remove'])->name('product.removeFav');
 

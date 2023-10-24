@@ -18,12 +18,18 @@ return new class extends Migration
                 ->references('id')
                 ->on('products')
                 ->onDelete('cascade');
+               
             $table->string('name');
             $table->string('email');
             $table->text('description');
             $table->dateTime('date');
             $table->integer('ratings');
             $table->timestamps();
+            $table->unsignedBigInteger('user_id'); // Add product_id foreign key
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('user')
+                ->onDelete('cascade');
         });
     }
 
