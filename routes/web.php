@@ -126,6 +126,7 @@ Route::post('/product/{productId}/feedback/store', [FeedbackController::class, '
 Route::get('/product/{productId}/feedback/create', [FeedbackController::class, 'create'])->name('feedback.create');
 Route::delete('/products/{productId}/feedback/{feedbackId}', [FeedbackController::class, 'destroy'])->name('feedback.destroy');
 Route::put('/feedback/{productId}/{feedbackId}', [FeedbackController::class, 'update'])->name('feedback.update');
+Route::get('/statisticscomment', [FeedbackController::class, 'showStatistics'])->name('statistics');
 
 
 //comments

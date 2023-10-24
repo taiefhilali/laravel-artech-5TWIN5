@@ -26,6 +26,7 @@ class User extends Authenticatable
     
     ];
 
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -61,6 +62,11 @@ public function participant()
 //     return $this->participant->where('event_id', $event->id)->exists();
 // }
   
+public function feedback()
+{
+    return $this->hasMany(Feedback::class);
+}
+
 
 public function is_admin(): bool {
     return $this->role === 1;

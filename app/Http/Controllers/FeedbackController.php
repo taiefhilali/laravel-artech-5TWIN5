@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\FeedbackRequest ;
 
 use Illuminate\Http\Request;
 use App\Models\Feedback;
 use App\Models\Product;
 use Illuminate\Support\Facades\Date;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\Comment;
 
 class FeedbackController extends Controller
 {
@@ -36,26 +38,34 @@ class FeedbackController extends Controller
         
             return view('product.feedback.create', compact('product', 'feedbacks'));
         }
-    
-        public function store(Request $request, $productId)
+        public function store(Request $request, $productId, FeedbackRequest $feedbackRequest)
         {
-    
             $product = Product::findOrFail($productId);
-    
+            $user = Auth::user();
+            $userId = $user->id;        
+            // Add the user ID to the feedback form data.
+            // This will ensure that the user is associated with their feedback.
+            $feedbackRequest->request->add(['user_id' => $userId]);
+        
             $feedback = new Feedback([
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'description' => $request->input('description'),
                 'ratings' => $request->input('ratings'),
-                'date' => now(), 
+                'date' => now(),
             ]);
+            $feedback->user_id = $userId;
 
             $product->feedbacks()->save($feedback);
-    
-            return redirect()->route('product.product', ['id' => $productId])
-                ->with('success', 'Feedback submitted successfully');
+        
+            if ($feedback) {
+                return  redirect()->route('product.product', ['id' => $productId])
+                    ->with('success', 'Feedback submitted successfully');
+            } else {
+                return back()->withInput()->withErrors($request->validated());
+            }
         }
-    
+        
 
 
     
@@ -108,6 +118,19 @@ class FeedbackController extends Controller
         
             return redirect()->route('product.product', ['id' => $productId])->with('success', 'Feedback deleted successfully.');
         }
+     
         
+        public function showStatistics(Request $request)
+        {
+            // Retrieve all feedbacks with their comments
+            $feedbacks = Feedback::with('comments')->get();
+    
+            // Count the number of comments per feedback
+            $commentsPerFeedback = $feedbacks->mapWithKeys(function ($feedback) {
+                return [$feedback->id => $feedback->comments->count()];
+            });
+    
+            return view('Feedback.statisticscomment', compact('commentsPerFeedback'));
+        }
 
 } 

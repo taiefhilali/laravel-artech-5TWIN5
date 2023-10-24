@@ -9,11 +9,7 @@ class Comment extends Model
 {
     protected $fillable = ['dateComment','descriptionComment'];
 
-    // public function User()
-    // {
-    //     return $this->hasMany(User::class);
-    // }
-
+   
 
     public function feedback()
     {
