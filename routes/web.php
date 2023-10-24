@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\CommandeController;
 use  App\Http\Controllers\CartController;
 
+use  App\Http\Controllers\MuseumController;
+use  App\Http\Controllers\MuseumCategoriesController;
 
 use  App\Http\Controllers\ProductController;
 use  App\Http\Controllers\ProductTypeController;
@@ -55,6 +57,9 @@ Route::view('/admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
 //Commandes
 Route::get('/commande', [CommandeController::class, 'index'])->name('commande.indexB');
 Route::get('/commande/create', [CommandeController::class, 'create'])->name('commande.create');
+
+Route::resource('/museum', MuseumController::class);
+Route::resource('/category', MuseumCategoriesController::class);
 
 Route::post('/newCommande',[CommandeController::class,'store'])->name('commande.store');
 Route::get('/commande/{id}/edit',[CommandeController::class,'edit'])->name('commande.edit');
