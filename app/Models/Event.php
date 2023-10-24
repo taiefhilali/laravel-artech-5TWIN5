@@ -10,5 +10,10 @@ class Event extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function participants()
+{
+    return $this->hasMany(Participant::class);
+}
     // Define any relationships here
 }

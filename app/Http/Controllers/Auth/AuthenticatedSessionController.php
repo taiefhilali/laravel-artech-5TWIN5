@@ -29,20 +29,35 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended($this->redirectTo());
     }
 
     /**
      * Destroy an authenticated session.
      */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(Request $request)
     {
         Auth::guard('web')->logout();
-
+    
         $request->session()->invalidate();
-
+    
         $request->session()->regenerateToken();
-
+    
         return redirect('/');
     }
+
+    protected function redirectTo() {
+        if ( auth()->user()->is_admin() ) {
+            return '/admin/dashboard';
+            // Redirection pour les administrateurs
+        } elseif ( auth()->user()->is_client() ) {
+            return '/user';
+            // Redirection pour les clients
+        } elseif ( auth()->user()->is_livreur() ) {
+            return '/livreur/livraisonslist';
+            // Redirection pour les livreurs
+        } else {
+            return '/register';
+            // Redirection par défa
 }
+    }}

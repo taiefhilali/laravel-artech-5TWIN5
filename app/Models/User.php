@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username',
+        'phone',
+    
     ];
 
     /**
@@ -31,6 +34,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        
     ];
 
     /**
@@ -47,5 +51,29 @@ class User extends Authenticatable
 {
     return $this->belongsToMany(Product::class, 'favorites');
 }
+public function participant()
+{
+    return $this->hasOne(Participant::class);
+}
+// public function isParticipatingInEvent($event)
+// {
+//     // Check if the user is participating in the event
+//     return $this->participant->where('event_id', $event->id)->exists();
+// }
   
+
+public function is_admin(): bool {
+    return $this->role === 1;
+    // Si vous avez stocké 1 pour les administrateurs dans la base de données
+}
+
+public function is_client(): bool {
+    return $this->role === 0;
+    // Si vous avez stocké 1 pour les administrateurs dans la base de données
+}
+
+public function is_livreur(): bool {
+    return $this->role === 2;
+    // Si vous avez stocké 1 pour les administrateurs dans la base de données
+}
 }
