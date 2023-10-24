@@ -59,7 +59,7 @@
               </div>
 
               <div class="form-outline mb-4">
-                <input type="text" value="{{ $Product->title }} " class="form-control" name="description" style="height:150px;width:100%;resize:none"/>
+                <input type="text" value="{{ $Product->description }} " class="form-control" name="description" style="height:150px;width:100%;resize:none"/>
                 <label class="form-label" for="form3Example4">Description</label>
                 @error('description')
                   <i class="fa fa-exclamation-triangle" style="color:red"></i>

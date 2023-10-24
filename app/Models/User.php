@@ -69,12 +69,12 @@ public function feedback()
 
 
 public function is_admin(): bool {
-    return $this->role === 1;
+    return $this->role === 0;
     // Si vous avez stocké 1 pour les administrateurs dans la base de données
 }
 
 public function is_client(): bool {
-    return $this->role === 0;
+    return $this->role === 1;
     // Si vous avez stocké 1 pour les administrateurs dans la base de données
 }
 

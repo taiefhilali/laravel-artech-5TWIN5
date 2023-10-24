@@ -37,7 +37,7 @@ class ProductController extends Controller
         
         $products = Product::when($request->categories, function ($query) use ($request) {
             return $query->where('product_type_id', $request->categories);
-        })->paginate(3); // Add the paginate method here
+        })->paginate(4); // Add the paginate method here
     
     
         return view('product.products', compact('productType', 'products'));
