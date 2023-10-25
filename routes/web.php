@@ -7,6 +7,8 @@ use App\Http\Controllers\Participant;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ChatController;
+
 
 use  App\Http\Controllers\CommandeController;
 use  App\Http\Controllers\CartController;
@@ -107,7 +109,7 @@ Route::post('/comments/{feedbackId}/store', [CommentController::class, 'store'])
 
 
 //Front//
-Route::view('/user', 'user.userinterface')->name('user.userinterface');
+Route::get('/user', [MuseumController::class, 'indexf'])->name('user.userinterface');
 
 
 
@@ -148,8 +150,6 @@ Route::get('/product/{id}', [ProductController::class, 'indexP'])->name('product
 Route::post('/product/{productId}/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store');
 Route::get('/product/{productId}/feedback/create', [FeedbackController::class, 'create'])->name('feedback.create');
 Route::delete('/products/{productId}/feedback/{feedbackId}', [FeedbackController::class, 'destroy'])->name('feedback.destroy');
-Route::get('/cart/create', [CartController::class, 'create'])->name('cart.create');
-Route::get('/cart/create', [CartController::class, 'create'])->name('cart.create');
 Route::get('/cart/{id}/edit',[CartController::class,'edit'])->name('cart.editB');
 Route::put('/cart/update/{id}', [CartController::class,'update'])->name('cart.update');
 Route::delete('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
@@ -162,6 +162,12 @@ Route::put('cart/update/{id}', [CartController::class, 'updateProductInCart'])->
 Route::post('/cart/confirm', [CartController::class, 'confirm'])->name('cart.confirm');
 Route::get('/cart/export-to-pdf', [CartController::class, 'exportCartToPDF'])->name('cart.exportCartToPDF');
 Route::get('/cart/create', [CartController::class, 'create'])->name('cart.create');
+Route::post('/user/addfav/{productId}', [UserFavoriteProductsController::class, 'add'])->name('fav.add');
+Route::get('users/favorites', [UserFavoriteProductsController::class, 'index'])->name('product.indexFav');;
+Route::delete('user/removefav/{productId}', [UserFavoriteProductsController::class, 'remove'])->name('product.removeFav');
+Route::get('/museums', [MuseumController::class, 'indexf'])->name('museums.indexf');
+
+
 
 
 });
@@ -169,6 +175,7 @@ Route::group(['middleware' => 'is_admin'], function () {
 Route::view('/admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
 Route::get('/admin/products', [ProductController::class, 'index'])->name('product.indexProduct');
 Route::resource('/museum', MuseumController::class);
+Route::get('/eventsearch', [EventController::class, 'eventsearch'])->name('Event.eventsearch');
 Route::resource('/category', MuseumCategoriesController::class);
 Route::get('/admin/createProduct', [ProductController::class, 'create'])->name('product.create');
 Route::post('admin/addProduct', [ProductController::class, 'store'])->name('product.store');
@@ -179,9 +186,6 @@ Route::get('/statistics', [ProductController::class, 'showStatistics'])->name('p
 Route::get('/statisticscomment', [FeedbackController::class, 'showStatistics'])->name('statistics');
 Route::get('/admin/events', [EventController::class, 'indexb'])->name('Event.indexb');
 Route::delete('/admin/events/{event}', [EventController::class, 'destroyb'])->name('Event.destroyb');
-Route::get('users/favorites', [UserFavoriteProductsController::class, 'index'])->name('product.indexFav');;
-Route::post('/user/addfav/{productId}', [UserFavoriteProductsController::class, 'add'])->name('fav.add');
-Route::delete('user/removefav/{productId}', [UserFavoriteProductsController::class, 'remove'])->name('product.removeFav');
 Route::get('/admin/catalogs', [ProductTypeController::class, 'index'])->name('catalog.indexProductType');
 Route::get('/admin/createCatalog', [ProductTypeController::class, 'create'])->name('catalog.create');
 Route::post('admin/addCatalog', [ProductTypeController::class, 'store'])->name('catalog.store');
@@ -213,6 +217,17 @@ Route::put('/commande/update/{id}', [CommandeController::class,'update'])->name(
 Route::delete('/commande/delete/{id}', [CommandeController::class, 'destroy'])->name('commande.destroy');
 Route::get('/showPC/{id}', [ProductController::class, 'showCommandeWithProducts'])->name('commandes.showPC');
 Route::get('/admin/carts', [CartController::class, 'index'])->name('cart.indexB');
+Route::get('/cart/create', [CartController::class, 'create'])->name('cart.create');
+Route::get('/search', [ProductController::class, 'search'])->name('product.search');
+Route::get('/livraisons', [LivraisonController::class, 'index'])->name('Livraisons');
+Route::post('/livraison/create', [LivraisonController::class, 'store'])->name('livraison.store');
+Route::get('/livraison/{livraisonId}', [LivraisonController::class,'getLivraisonDetails']);
+Route::get('/calendar', [LivraisonController::class,'calendriertunis']);
+Route::put('/livraison/{livraisonId}/edit', [LivraisonController::class,'edit']);
+Route::delete('/livraison/{livraisonId}/delete', [LivraisonController::class,'delete']);
+
+
+
 
 
 
@@ -220,11 +235,6 @@ Route::get('/admin/carts', [CartController::class, 'index'])->name('cart.indexB'
 
 
 Route::group(['middleware' => 'is_livreur'], function () {
-    Route::get('/livraisons', [LivraisonController::class, 'index'])->name('Livraisons');
-    Route::post('/livraison/create', [LivraisonController::class, 'store'])->name('livraison.store');
-    Route::get('/livraison/{livraisonId}', [LivraisonController::class,'getLivraisonDetails']);
-    Route::put('/livraison/{livraisonId}/edit', [LivraisonController::class,'edit']);
-    Route::delete('/livraison/{livraisonId}/delete', [LivraisonController::class,'delete']);
     Route::get('/calendar', [LivraisonController::class,'calendriertunis']);
     Route::get('/livreur/livraisonsbase', [ClientLivraisonController::class, 'index'])->name('LivraisonsC');
     Route::get('/livreur/livraisonslist', [ClientLivraisonController::class, 'index2'])->name('LivraisonsList');
@@ -242,4 +252,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/chat', [ChatController::class, 'index'])->name('gpt.chat');
+Route::post('/chat/sendMessage', [ChatController::class, 'sendMessage'])->name('chat.sendMessage');
+
+
 require __DIR__.'/auth.php';
+
+

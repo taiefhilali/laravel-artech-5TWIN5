@@ -20,6 +20,15 @@ class MuseumController extends Controller
         return view ('museums.index')->with('museums', $museums);
         //
     }
+    public function indexf()
+    {
+        $museums = Museum::join('museum_categories', 'museums.category_id', '=', 'museum_categories.id')
+        ->select('museums.*', 'museum_categories.name as category_name')
+        ->get();
+        //$museums = Museum::all();
+        return view ('user.userinterface')->with('museums', $museums);
+        //
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -35,16 +44,14 @@ class MuseumController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
-            'name' => 'required',
+            'name' => 'string|required|max:20',
             'address' => 'required',
             'category_id' => 'required',
             'zip_code' => 'required',
             'phone_number' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
+        ], ['name.max' => 'The name field is too long.',]);
 
         $imagePath = $request->file('image')->store('museum_images', 'public');
 

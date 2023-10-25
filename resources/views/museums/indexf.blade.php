@@ -1,23 +1,14 @@
-@extends('layouts.layout')
-
-@section('title', 'Advance Card')
 
 
-@section('content')
 
-<div class="row m-0 mb-1">
-<a href="{{url('/museum/create')}}" class="btn btn-primary">
-                    Add new museum
-        </a>
-</div>
 
 <div class="row">
 @foreach($museums as $item)
           <!-- Developer Meetup Card -->
   <div class="col-lg-4 col-md-6 col-12">
-    <div class="card card-developer-meetup">
+    <div class="card card-developer-meetup" style="background-color: gray;">
       <div class="meetup-img-wrapper rounded-top text-center">
-      <img src="{{ asset('storage/' . $item->image) }}" style="width: 100%;
+        <img src="{{ asset('storage/' . $item->image) }}" style="width: 100%;
     object-fit: cover;" alt="Meeting Pic" height="170" />
       </div>
       <div class="card-body">
@@ -51,30 +42,7 @@
           </div>
         </div>
 
-        <div class="row justify-content-even mt-1">
-        <div class="col-auto">
-        <a href="{{url('/museum/' . $item->id)}}" class="btn btn-primary">
-            Details
-        </a>
-        </div>
-
-        <div class="col-auto">
-        <a href="{{url('/museum/' . $item->id . '/edit')}}" class="btn btn-warning">
-                    Edit
-        </a>
-        </div>
-
-        <div class="col-auto">
-
-        <form method="POST" action="{{ url('/museum' . '/' . $item->id)}}" style="">
-        {{ method_field('DELETE')}}
-        {{ csrf_field() }}
-        <button type="submit" class="btn btn-danger" title="Delete museum" onclick="retun confirm('Confirm delete?')">
-                    Delete
-        </button>
-        </form>
-
-        </div>
+   
 
         </div>
 
@@ -84,11 +52,7 @@
 
       </div>
     </div>
-  </div>
   <!--/ Developer Meetup Card -->
 
 @endforeach
 </div>
-
-
-@endsection

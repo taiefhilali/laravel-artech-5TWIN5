@@ -161,14 +161,12 @@
 	 </div>
 	</div>
 	<div class="col-md-9">
-<<<<<<< Updated upstream
 
 
 
         @yield('content')
 
 
->>>>>>> Stashed changes
 	  </div>
 	  <div class="pages">
 		 <div class="col-md-12">

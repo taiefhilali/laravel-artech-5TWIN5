@@ -1,4 +1,7 @@
 @extends('layouts.layoutfront')
 @section('content')
 
- @endsection
+@include('museums/indexf', ['museums' => $museums])
+
+
+        @endsection

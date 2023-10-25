@@ -17,6 +17,9 @@
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" name="name" id="name" class="form-control" required>
+                    @error('name')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
                 </div>
                 </div>
 
@@ -24,6 +27,7 @@
                 <div class="form-group">
                     <label for="phone_number">phone number:</label>
                     <input type="text" name="phone_number" id="phone_number" class="form-control" required>
+                    
                 </div>
                 </div>
 

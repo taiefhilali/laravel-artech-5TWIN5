@@ -255,6 +255,26 @@ public function showStatistics(Request $request)
 }
 
 
+public function search(Request $request)
+{
+    $output = "";
+
+    $products = Product::where('title', 'like', '%' . $request->search . '%')->get();
+
+    foreach ($products as $product) {
+        $output.= '
+            <tr>
+                <td>'.$product->title.'</td>
+                <td>'.$product->description.'</td>
+                <td>'.$product->creation_date.'</td>
+                <td>'.$product->price.'</td>
+                <td>'.$product->quantity.'</td>
+                <td>'.$product->image_url.'</td>
+            </tr>';
+    }
+
+    return response($output);
+}
 
 
 }

@@ -1,5 +1,7 @@
 @extends('layouts.layout')
-
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
 @section('content')
 <div class="table-responsive">
     @if(session('success'))
@@ -11,8 +13,14 @@
 @include('partials.deleteProductModal')
 
 <br>
-<br>
-<br>
+
+<div class="container">
+    <div class="search">
+        <input type="search" name="search" id="search" placeholder="Search product ..."
+        class="form-control"
+        />
+    </div>
+</div>
 
 
     <table class="table">
@@ -30,7 +38,7 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="alldata" >
             @foreach ($products as $products)
             <tr>
                
@@ -67,11 +75,10 @@
            
             @endforeach
             
-           
         </tbody>
+        <tbody id="Content" class="searchdata" ></tbody>
     </table>
 
-    
 </div>
 </div>
 @section('scriptt')
@@ -84,6 +91,28 @@
             $('#deleteProductModal').modal('show');
         });
     });
+</script>
+<script type="text/javascript" >
+    $('#search').on('keyup',function(){
+        $value=$(this).val();
+        if($value){
+            $('.alldata').hide();
+            $('.searchdata').show();
+        }
+        else{
+            $('.alldata').show();
+            $('.searchdata').hide();
+        }
+        $.ajax({
+            type: 'get',
+            url: '{{URL::to('search')}}',
+            data: {'search': $value},
+            success: function (data) { 
+                $('#Content').html(data);
+            }
+        });
+    })
+
 </script>
 @endsection
 

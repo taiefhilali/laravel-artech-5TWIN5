@@ -41,7 +41,7 @@ class CartController extends Controller
         $validatedData = $request->validate([
             'user_id' => 'required|integer',
             'commande_id' => 'required|integer',
-            'quantite' => 'required|integer',
+            'quantity' => 'required|integer',
             // Ajoutez d'autres champs si nécessaire
         ]);
     
@@ -99,7 +99,7 @@ class CartController extends Controller
         $validatedData = $request->validate([
             'user_id' => 'required|integer',
             'commande_id' => 'required|integer',
-            'quantite' => 'required|integer',
+            'quantity' => 'required|integer',
             // Ajoutez d'autres champs si nécessaire
         ]);
 

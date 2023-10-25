@@ -72,7 +72,9 @@ class EventController extends Controller
         
               // Create a new event using the validated data
               $event = Event::create($validatedData);
+
               $event->category()->associate($request->input('category_id'));
+              $event->save();
               // Display a sweetalert2 message
     
         // Redirect to a success page or route
@@ -112,7 +114,7 @@ class EventController extends Controller
             'description' => 'required|string|min:10',
             'date' => 'required|date|after_or_equal:today',
             'owner' => 'required|string|max:255',
-            'category_id' => 'exists:categories,id', // Validate that the category exists
+            // 'category_id' => 'exists:categories,id', // Validate that the category exists
         ]);
     
         $event = Event::find($id);
@@ -185,4 +187,23 @@ class EventController extends Controller
     //     return redirect()->route('Event.show', $event);
     // }
 
+    public function eventsearch(Request $request)
+{
+    $output = "";
+
+    $events = Event::where('name', 'like', '%' . $request->eventsearch . '%')->get();
+
+    foreach ($events as $event) {
+        $output.= '
+            <tr>
+                <td>'.$event->name.'</td>
+                <td>'.$event->description.'</td>
+                <td>'.$event->date.'</td>
+                <td>'.$event->owner.'</td>
+                <td>'.$event->image .'</td>
+            </tr>';
+    }
+
+    return response($output);
+}
 }
